@@ -24,11 +24,11 @@ class wpsection_wps_allslider_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'ShortCode Slider', 'wpsection' );
+		return __( 'All Slider', 'wpsection' );
 	}
 
 	public function get_icon() {
-		 return 'eicon-post-slider';
+		 return 'eicon-slider-album';
 	}
 
 	public function get_keywords() {

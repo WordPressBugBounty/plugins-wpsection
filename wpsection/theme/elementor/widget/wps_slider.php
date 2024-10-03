@@ -144,7 +144,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .wps_floating_img_area {
+        .wps_floating_img_area {
             display: none !important;
         }
     }

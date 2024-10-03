@@ -33,7 +33,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-global-settings';
+        return 'eicon-info-box';
     }
 
     public function get_keywords()

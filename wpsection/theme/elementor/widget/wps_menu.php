@@ -31,6 +31,21 @@ class wpsection_wps_menu_Widget extends \Elementor\Widget_Base {
 
 
 	
+// Function to get available WordPress menus
+protected function get_available_menus() {
+    $menus = wp_get_nav_menus();
+    $options = [];
+
+    if (!empty($menus)) {
+        foreach ($menus as $menu) {
+            $options[$menu->slug] = $menu->name;
+        }
+    } else {
+        $options['none'] = esc_html__('No menus found', 'nexmart');
+    }
+
+    return $options;
+}
 
 	protected function register_controls() {
 		$this->start_controls_section(
@@ -41,8 +56,17 @@ class wpsection_wps_menu_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-	
-	
+// Control for menu selection in Elementor widget
+$this->add_control(
+    'selected_menu',
+    [
+        'label' => esc_html__('Select Menu', 'nexmart'),
+        'type' => \Elementor\Controls_Manager::SELECT,
+        'options' => $this->get_available_menus(),  // Dynamically populate options from available menus
+        'default' => 'main_menu',  // Set 'main_menu' as the default value
+    ]
+);
+
 		
 		
   $this->add_control(
@@ -2775,24 +2799,36 @@ echo '<i class="' . esc_attr( $icon_class ) . '"></i>';
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
 									<ul class="mr_navigation clearfix home-menu ">
 										
+									
 <?php
-if (has_nav_menu('main_menu')) {
-    wp_nav_menu(array( 
-        'theme_location' => 'main_menu', 
+
+		
+// Fetch and render selected menu
+$selected_menu = $this->get_settings('selected_menu'); // Fetch the selected menu slug
+
+if ($selected_menu) {
+    wp_nav_menu([
+        'menu' => $selected_menu,  // Directly use the menu slug
         'container_id' => 'navbarSupportedContent',
         'container_class' => 'collapse navbar-collapse sub-menu-bar',
         'menu_class' => 'nav navbar-nav',
         'fallback_cb' => false, 
         'add_li_class' => 'nav-item',
-        'items_wrap' => '%3$s', 
+        'items_wrap' => '%3$s',  // Only wrap menu items
         'container' => false,
-        'depth' => '3',
-        'walker' => new Bootstrap_walker()  
-    ));
+        'depth' => 3,
+        'walker' => new Bootstrap_walker(),  // Your custom walker (if needed)
+    ]);
 } else {
-    echo '<ul class="nav navbar-nav"><li>' . esc_html__('No menu assigned to Menu location, Set a Menu', 'wpsection') . '</li></ul>';
+    echo '<ul class="nav navbar-nav"><li>' . esc_html__('No menu assigned to this location, Set a Menu', 'wpsection') . '</li></ul>';
 }
+	
+		
 ?>
+										
+										
+										
+										
 
 
                                     </ul>

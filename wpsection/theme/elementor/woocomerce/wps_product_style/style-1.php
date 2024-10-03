@@ -89,6 +89,18 @@ echo '
                 <!-- End Product Column -->
             <?php endwhile; ?>
             <!-- End While Loop Area -->
-        </div>
+		      </div>
+		
+<?php require $templatePartDir . 'pagination.php'; ?>
+              
+
+
+        
+
+
+			
+			
+  
+
     </div>
 </section>

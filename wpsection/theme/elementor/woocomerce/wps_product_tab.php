@@ -39,6 +39,7 @@ public function get_name() {
          return [  'wpsection_shop' ];
     }
 
+public $tabid = array();
     
     private function get_all_categories() {
         $options  = array();
@@ -420,16 +421,8 @@ $this->end_controls_section();
             ]
         );
 
- /*
-       $this->add_control(
-                'wps_block_pagination',
-                [
-                    'label'   => __('Enable Pagination', 'wpsection'),
-                    'type'    => \Elementor\Controls_Manager::SWITCHER,
-                    'default' => 'yes',
-                ]
-            );
-*/
+
+
         
     $this->end_controls_section();
 

@@ -27,6 +27,10 @@ $this->start_controls_section(
                 
             )
         );
+
+
+
+
         
 $this->add_control(
                     'hide_sold_text',
@@ -49,13 +53,43 @@ $this->add_control(
 
                         ),
                     )
-                );      
-    
+                ); 
+
+
+$this->add_control(
+    'product_progress_percenatge',
+    [
+        'label'     => esc_html__( 'Select Text Style', 'wpsection' ),
+        'type'      => \Elementor\Controls_Manager::SELECT,
+        'default'   => 'progress_text', // Adjust default value if necessary
+        'options'   => [
+            'progress_text' => esc_html__( 'Product Number', 'wpsection' ),
+            'progress_percentage'  => esc_html__( 'Product Percentage', 'wpsection' ),
+        ],
+    ]
+);
+
+$this->add_control(
+    'product_percenatge_digot',
+    [
+        'label'     => esc_html__( 'Select Percentage Digit ', 'wpsection' ),
+		'condition'    => array( 'product_progress_percenatge' => 'progress_percentage' ),
+        'type'      => \Elementor\Controls_Manager::SELECT,
+        'default'   => 'digit_all', // Set a sensible default
+        'options'   => [
+            'digit_all' => esc_html__( 'Full Number', 'wpsection' ),
+            'digit_two'  => esc_html__( 'Two Decimal', 'wpsection' ),
+           
+        ],
+    ]
+);
+
+
     $this->add_control(
             'sold_text',
             array(
                 'label'       => __( 'Sold Text', 'wpsection' ),
-                'condition'    => array( 'hide_sold_text' => 'show' ),
+                
                 'type'        => \Elementor\Controls_Manager::TEXT,
                 'dynamic'     => [
                     'active' => true,
@@ -63,6 +97,7 @@ $this->add_control(
                 'default' => __( 'sold', 'wpsection' ),
             )
         );
+
      $this->add_control(
                     'wps_sold_alingment',
                     array(
@@ -89,6 +124,8 @@ $this->add_control(
                         ),
                     )
                 ); 
+
+
         $this->add_control(
                     'sold_color',
                     array(
@@ -139,74 +176,106 @@ $this->add_control(
                 );      
     
 
+$this->add_control(
+    'border_defult',
+    array(
+        'label'     => __( 'Bar Background', 'wpsection' ),
+        'condition' => array( 'show_progress' => 'show' ),
+        'type'      => \Elementor\Controls_Manager::COLOR,
+        'selectors' => array(
+            '{{WRAPPER}} .mr_shop .product-single-item-bar' => 'background: {{VALUE}} !important',
+        ),
+    )
+);
 
-    
-        $this->add_control(
-                    'border_green',
-                    array(
-                        'label'     => __( 'Background One', 'wpsection' ),
-                        'condition'    => array( 'show_progress' => 'show' ),
-                        'type'      => \Elementor\Controls_Manager::COLOR,
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_product_progress span.border-green' => 'background: {{VALUE}} !important',
 
-                        ),
-                    )
-                );
-        
-        $this->add_control(
-            'level_one',
-            array(
-                'label'       => __( 'Level One', 'wpsection' ),
-                'condition'    => array( 'show_progress' => 'show' ),
-                'type'        => \Elementor\Controls_Manager::NUMBER,
-                'dynamic'     => [
-                    'active' => true,
-                ],
-                 'default' => __( '50', 'wpsection' ),
-            )
-        );
-        
-        
-        $this->add_control(
-                    'border_yellow',
-                    array(
-                        'label'     => __( 'Background Color Three', 'wpsection' ),
-                        'condition'    => array( 'show_progress' => 'show' ),
-                        'type'      => \Elementor\Controls_Manager::COLOR,
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_product_progress span.border-yellow' => 'background: {{VALUE}} !important',
 
-                        ),
-                    )
-                );  
-    $this->add_control(
-            'level_two',
-            array(
-                'label'       => __( 'Level Two', 'wpsection' ),
-                'condition'    => array( 'show_progress' => 'show' ),
-                'type'        => \Elementor\Controls_Manager::NUMBER,
-                'dynamic'     => [
-                    'active' => true,
-                ],
-                'default' => __( '75', 'wpsection' ),
-            )
-        );
-        $this->add_control(
-                    'border_red',
-                    array(
-                        'label'     => __( 'Background Color Two', 'wpsection' ),
-                        'condition'    => array( 'show_progress' => 'show' ),
-                        'type'      => \Elementor\Controls_Manager::COLOR,
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_product_progress span.border-red' => 'background: {{VALUE}} !important',
+// Control for Level One (Progress Level One)
+$this->add_control(
+    'level_one',
+    array(
+        'label'       => __( 'Progress Level One', 'wpsection' ),
+        'condition'   => array( 'show_progress' => 'show' ),
+        'type'        => \Elementor\Controls_Manager::NUMBER,
+        'dynamic'     => [
+            'active' => true,
+        ],
+        'default'     => __( '35', 'wpsection' ), // Default to 35%
+    )
+);
 
-                        ),
-                    )
-                );
+// Color for Level One (Green)
+$this->add_control(
+    'border_green',
+    array(
+        'label'     => __( 'Level One Background', 'wpsection' ),
+        'condition' => array( 'show_progress' => 'show' ),
+        'type'      => \Elementor\Controls_Manager::COLOR,
+        'selectors' => array(
+            '{{WRAPPER}} .mr_product_progress span.border-green' => 'background: {{VALUE}} !important',
+        ),
+    )
+);
 
+// Control for Level Two (Progress Level Two)
+$this->add_control(
+    'level_two',
+    array(
+        'label'       => __( 'Progress Level Two', 'wpsection' ),
+        'condition'   => array( 'show_progress' => 'show' ),
+        'type'        => \Elementor\Controls_Manager::NUMBER,
+        'dynamic'     => [
+            'active' => true,
+        ],
+        'default'     => __( '66', 'wpsection' ), // Default to 66%
+    )
+);
+
+// Color for Level Two (Yellow)
+$this->add_control(
+    'border_yellow',
+    array(
+        'label'     => __( 'Level Two Background', 'wpsection' ),
+        'condition' => array( 'show_progress' => 'show' ),
+        'type'      => \Elementor\Controls_Manager::COLOR,
+        'selectors' => array(
+            '{{WRAPPER}} .mr_product_progress span.border-yellow' => 'background: {{VALUE}} !important',
+        ),
+    )
+);
+
+// Control for Level Three (Progress Level Three)
+$this->add_control(
+    'level_three',
+    array(
+        'label'       => __( 'Progress Level Three', 'wpsection' ),
+        'condition'   => array( 'show_progress' => 'show' ),
+        'type'        => \Elementor\Controls_Manager::NUMBER,
+        'dynamic'     => [
+            'active' => true,
+        ],
+        'default'     => __( '90', 'wpsection' ), // Default to 90%
+    )
+);
+
+
+
+// Control for Level Four (Progress Level Four - Maximum)
+$this->add_control(
+    'border_red',
+    array(
+        'label'     => __( 'Level Three Background', 'wpsection' ),
+        'condition' => array( 'show_progress' => 'show' ),
+        'type'      => \Elementor\Controls_Manager::COLOR,
+        'selectors' => array(
+            '{{WRAPPER}} .mr_product_progress span.border-red' => 'background: {{VALUE}} !important',
+        ),
+    )
+);
 
             
+
+
     $this->add_control(
             'progress_button_padding',
             array(

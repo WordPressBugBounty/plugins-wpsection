@@ -25,7 +25,7 @@ class wpsection_wps_lightbox_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon() {
-		 return 'eicon-post-slider';
+		 return 'eicon-lightbox-expand';
 	}
 
 	public function get_keywords() {

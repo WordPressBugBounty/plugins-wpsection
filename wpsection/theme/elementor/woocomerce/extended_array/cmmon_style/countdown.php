@@ -77,6 +77,30 @@ $this->start_controls_section(
                     ]
                 );   
 
+  $this->add_control( 'wps_counter_height',
+                    [
+                        'label' => esc_html__( 'Height',  'wpsection' ),
+                        'type' => \Elementor\Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 2000,
+                                'step' => 1,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        
+                        'selectors' => [
+                            '{{WRAPPER}} .wps-countdown .wps_date' => 'height: {{SIZE}}{{UNIT}};',
+                        ]
+                    
+                    ]
+                ); 
+
 
     $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),

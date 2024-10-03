@@ -18,7 +18,7 @@ if (class_exists('woocommerce')) {
 
         public function get_icon()
         {
-            return 'eicon-product-images';
+            return 'eicon-table';
         }
 
         public function get_keywords()

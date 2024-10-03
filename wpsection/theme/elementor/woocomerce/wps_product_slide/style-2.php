@@ -94,5 +94,6 @@ if ( 'none' === $settings['slider_path_hide_sweep_mobile'] ) {
             <!-- End While Loop Area -->
         </div>
         <div class="wps_slider_two_dot swiper-pagination"></div>
+		<?php require $templatePartDir . 'pagination.php'; ?>
     </div>
 </section>

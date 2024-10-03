@@ -8,6 +8,197 @@
 
 
 
+
+
+// Enqueue the script for adding to cart via AJAX
+function enqueue_add_plugin_to_cart_ajax_script() {
+    wp_enqueue_script('ajax-add-to-cart', get_template_directory_uri() . '/assets/js/ajax-add-to-cart.js', array('jquery'), null, true);
+
+    // Localize the script with the necessary data
+    $ajax_params = array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('add-to-cart-nonce'),
+        'site_url' => site_url(),
+    );
+    wp_localize_script('ajax-add-to-cart', 'ajax_add_to_cart_params', $ajax_params);
+}
+add_action('wp_enqueue_scripts', 'enqueue_add_plugin_to_cart_ajax_script');
+
+
+// AJAX callback function to add item to cart
+function add_to_cart_plugin_ajax_callback() {
+    check_ajax_referer('add-to-cart-nonce', 'security');
+
+    $product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : 0;
+    $product    = wc_get_product($product_id);
+
+    if (!$product) {
+        wp_send_json_error('Invalid product');
+    }
+
+    // Get the quantity from the AJAX request
+    //$quantity = isset($_POST['quantity']) ? wc_stock_amount($_POST['quantity']) : 1;
+    //// Unslash and sanitize the quantity input
+// Check if 'quantity' is set, unslash it, and sanitize it
+$quantity = isset($_POST['quantity']) ? wc_stock_amount(absint(wp_unslash($_POST['quantity']))) : 1;
+
+
+
+    // Add the product to the cart with the correct quantity
+    $cart_item_key = WC()->cart->add_to_cart($product_id, $quantity);
+
+    if ($cart_item_key) {
+        // Get information about the added product
+        $thumbnail = get_the_post_thumbnail($product_id, 'thumbnail');
+        $title     = $product->get_title();
+
+        // Calculate the count of the items for the specific product just added
+        $itemCount = 0;
+        foreach (WC()->cart->get_cart() as $cart_item) {
+            if ($cart_item['product_id'] === $product_id) {
+                $itemCount += $cart_item['quantity'];
+            }
+        }
+        
+        $response = array(
+            'success'    => true,
+            'thumbnail'  => $thumbnail,
+            'title'      => $title,
+            'itemCount'  => $itemCount,
+        );
+    } else {
+        $response = array(
+            'success' => false,
+            'message' => __('Failed to add item to the cart', 'nexmart'),
+        );
+    }
+
+    wp_send_json($response);
+}
+add_action('wp_ajax_add_to_cart', 'add_to_cart_plugin_ajax_callback');
+add_action('wp_ajax_nopriv_add_to_cart', 'add_to_cart_plugin_ajax_callback');
+
+
+
+//Recently Viewd
+function nest_track_product_view() {
+    if ( ! is_singular( 'product' ) ) {
+        return;
+    }
+
+    global $post;
+
+    if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) ) {
+        $viewed_products = array();
+    } else {
+        //$viewed_products = (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) );
+        // Check if the cookie is set and unslash and sanitize the input
+$viewed_products = isset($_COOKIE['woocommerce_recently_viewed']) ? (array) explode('|', sanitize_text_field(wp_unslash($_COOKIE['woocommerce_recently_viewed']))) : array();
+
+// Further sanitize the product IDs
+$viewed_products = array_map('absint', $viewed_products);
+
+    }
+
+    if ( ! in_array( $post->ID, $viewed_products ) ) {
+        $viewed_products[] = $post->ID;
+    }
+
+    if ( sizeof( $viewed_products ) > 15 ) {
+        array_shift( $viewed_products );
+    }
+
+    // Store for session only.
+    wc_setcookie( 'woocommerce_recently_viewed', implode( '|', $viewed_products ) );
+}
+add_action( 'template_redirect', 'nest_track_product_view', 20 );
+
+
+
+
+
+
+// Handle AJAX request to remove cart item
+function woocommerce_remove_cart_item() {
+    check_ajax_referer('woocommerce-cart', '_wpnonce');
+
+    if (!isset($_POST['cart_item_key'])) {
+        wp_send_json_error(array('error' => 'Invalid request'));
+    }
+
+    //$cart_item_key = sanitize_text_field($_POST['cart_item_key']);
+	// Unslash and sanitize the cart_item_key
+$cart_item_key = isset($_POST['cart_item_key']) ? sanitize_text_field(wp_unslash($_POST['cart_item_key'])) : '';
+
+	
+    WC()->cart->remove_cart_item($cart_item_key);
+
+    // Calculate updated cart total
+    WC()->cart->calculate_totals();
+    $cart_total = WC()->cart->get_cart_total();
+
+    wp_send_json_success(array('cart_total' => $cart_total));
+}
+add_action('wp_ajax_woocommerce_remove_cart_item', 'woocommerce_remove_cart_item');
+add_action('wp_ajax_nopriv_woocommerce_remove_cart_item', 'woocommerce_remove_cart_item');
+
+
+// Handle AJAX request to update cart item quantity
+function woocommerce_update_cart_item_quantity() {
+    check_ajax_referer('woocommerce-cart', '_wpnonce');
+
+    if (!isset($_POST['cart_item_key']) || !isset($_POST['quantity'])) {
+        wp_send_json_error(array('error' => 'Invalid request'));
+    }
+
+   // $cart_item_key = sanitize_text_field($_POST['cart_item_key']);
+// Unslash and sanitize the cart_item_key
+$cart_item_key = isset($_POST['cart_item_key']) ? sanitize_text_field(wp_unslash($_POST['cart_item_key'])) : '';
+
+    $quantity = intval($_POST['quantity']);
+
+    if ($quantity > 0) {
+        WC()->cart->set_quantity($cart_item_key, $quantity);
+
+        // Recalculate totals to account for coupon
+        WC()->cart->calculate_totals();
+        $cart_total = WC()->cart->get_cart_total();
+
+        wp_send_json_success(array('cart_total' => $cart_total));
+    } else {
+        wp_send_json_error(array('error' => 'Invalid quantity'));
+    }
+}
+add_action('wp_ajax_woocommerce_update_cart_item_quantity', 'woocommerce_update_cart_item_quantity');
+add_action('wp_ajax_nopriv_woocommerce_update_cart_item_quantity', 'woocommerce_update_cart_item_quantity');
+
+
+
+
+
+// shop_functions.php
+
+function nest_get_product_x_categories() {
+    $options = array();
+    $taxonomy = 'product_cat';
+
+    if (!empty($taxonomy)) {
+        $terms = get_terms(array(
+            'taxonomy'   => $taxonomy,
+            'hide_empty' => false,
+        ));
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            foreach ($terms as $term) {
+                $options[$term->slug] = $term->name; // Store slug as key and name as value
+            }
+        }
+    }
+
+    return $options;
+}
+
+
 function  wpsection_the_pagination($args = array(), $echo = 1)
 {
 	
@@ -83,30 +274,6 @@ function display_review_count() {
 }
 
 
-
-/*===============================
-    Quick View
-==============================*/
- 
-function wpsection_quick_view_scripts() {
-    wp_enqueue_script('wc-add-to-cart-variation');
-  
-		wp_enqueue_style( 'quick-view', get_template_directory_uri() . '/assets/css/quick-view.css', array(), '1.0.0' );
-		wp_enqueue_style( 'popupcss', get_template_directory_uri() . '/assets/css/popupcss.css', array(), '1.0.0' );
-        wp_enqueue_script( 'magnific-popup', get_template_directory_uri().'/assets/js/jquery.magnific-popup.js', array( 'jquery' ), '1.1.0', true );
-        wp_enqueue_script( 'wpsection-quick-ajax', get_template_directory_uri().'/assets/js/quick.js', array( 'jquery' ), '1.0.0', true );
-
-         // Generate a nonce token
-         $wpsection_nonce = wp_create_nonce('wpsection_nonce'); 
-         // Add the nonce to the localized script
-         wp_localize_script('wpsection-quick-ajax', 'WpsectionAjax', array(
-             'ajaxurl' => esc_url(admin_url('admin-ajax.php')),
-             'nonce' => $wpsection_nonce, // Add the nonce to the array
-         ));
-
-}
-add_action( 'wp_enqueue_scripts', 'wpsection_quick_view_scripts' );
- 
 
 
 

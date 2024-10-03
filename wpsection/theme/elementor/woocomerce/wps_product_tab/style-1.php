@@ -324,13 +324,15 @@ if (isset($settings['show_product_x_thumbnail']) && $settings['show_product_x_th
                                         <!-- End Product Column -->
                                     <?php endwhile; ?>
 
-
+ 
                                 <?php } ?>
                             </div>
                         </div>
                         <?php $i++;
                     } ?>
                 </div>
+		   
+		 
             </div>
         </div>
    

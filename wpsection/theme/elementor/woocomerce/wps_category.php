@@ -45,6 +45,17 @@ public function get_name() {
             ]
         );
 
+         $this->add_control(
+                'show_product_cat_features',
+               array(
+                    'label' => __( 'Show Catagory', 'wpsection' ),
+                    'type'     => \Elementor\Controls_Manager::SWITCHER,
+                     'return_value' => '1',
+                     'default'      => '1',
+                    'placeholder' => __( 'Show Catagory', 'wpsection' ),
+                )
+            );		
+		
         $this->add_control(
             'style',
             [
@@ -63,17 +74,17 @@ public function get_name() {
         );
 
 
+    $this->add_control(
+        'query_category',
+        [
+            'label'       => __( 'Single Category', 'wpsection' ),
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'options'     => nest_get_product_x_categories(), // Use slugs
+            'default'     => '',
+            'description' => esc_html__( 'Select a category.', 'wpsection' ),
+        ]
+    );
 
-$this->add_control(
-    'query_category',
-    array(
-        'label' => __( 'Select Category', 'wpsection' ),
-        'type' => \Elementor\Controls_Manager::SELECT,
-        'options' => mr_all_cat_list(),
-        'default' => mr_get_first_cat_id(),
-        'description' => esc_html__( 'All Categories are Selected. Click Cross to Select Again', 'wpsection' ),
-    )
-);
 
 
 	$this->add_control(
@@ -89,16 +100,7 @@ $this->add_control(
 		);
 
 
-         $this->add_control(
-                'show_product_cat_features',
-               array(
-                    'label' => __( 'Show Catagory', 'wpsection' ),
-                    'type'     => \Elementor\Controls_Manager::SWITCHER,
-                     'return_value' => '1',
-                     'default'      => '1',
-                    'placeholder' => __( 'Show Catagory', 'wpsection' ),
-                )
-            );
+
 $this->end_controls_section();
 
 
@@ -697,6 +699,11 @@ protected function render() {
 
 
 
+	
+	
+	
+	
+
       global $product;
         global $wp_query;
         $settings = $this->get_settings_for_display();
@@ -710,7 +717,6 @@ protected function render() {
         $product_per_page = 1;
         $product_order_by = 'date';
         $product_order    = 'DESC';
-
         $query_category = $settings['query_category'];
  
      
@@ -722,15 +728,35 @@ protected function render() {
                         'tax_query' => array(
                             array(
                                 'taxonomy' => 'product_cat',
-                                'field' => 'term_id',
+                                'field' => 'slug',
                                 'terms' => $query_category,
                                 'operator' => 'IN',
                             ),
                         ),
                     );
                
-      
+     
+/*
+    // Set default arguments for recent products
+		$args = [
+			'posts_per_page' => $product_per_page,
+			'post_type'      => 'product',
+			'orderby'        => $product_order_by,
+			'order'          => $product_order,
+		];
 
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug', // Use slug instead of term_id
+                'terms'    => $query_category,
+                'operator' => 'IN',
+            ],
+        ];
+ 	
+*/	
+	
+	
 
 
 

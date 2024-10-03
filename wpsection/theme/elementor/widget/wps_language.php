@@ -18,7 +18,8 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon() {
-		 return ' fas fa-language';
+		 return ' eicon-text-area
+';
 	}
 
 	public function get_keywords() {
@@ -1241,6 +1242,10 @@ echo '
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var dropdown = document.getElementById("language-dropdown");
+
+  // Add null check for the dropdown
+  if (!dropdown) return;
+
   var selectedOption = dropdown.querySelector(".selected-option");
   var options = dropdown.querySelectorAll(".option");
 
@@ -1266,7 +1271,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-</script>'; 
+</script>';
 
 
 

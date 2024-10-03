@@ -26,7 +26,7 @@ class wpsection_wps_blog_grid_Widget extends \Elementor\Widget_Base
 
 	public function get_icon()
 	{
-		return 'wpsd dashicons eicon-post';
+		return 'eicon-single-post';
 	}
 
 	public function get_keywords()
@@ -186,7 +186,7 @@ $this->add_control(
 		);
 		
 		
-/*
+
 		$this->add_control(
 			'show_pagination',
 			[
@@ -198,7 +198,7 @@ $this->add_control(
 				'placeholder' => __('Enable/Disable Pagination', 'wpsection'),
 			]
 		);
-*/		
+		
 		$this->add_control(
 			'comment_icons',
 			[
@@ -1490,11 +1490,11 @@ $this->add_control(
 $settings = $this->get_settings_for_display();
 
 $allowed_tags = wp_kses_allowed_html('post');		
-
-//$paged = wpsection_set($_POST, 'paged') ? esc_attr($_POST['paged']) : 1;
-
+		
 $this->add_render_attribute('wrapper', 'class', 'templatepath-wpsection');
 					
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+		
 $args = array(
     'post_type'      => 'post',
     'posts_per_page' => wpsection_set($settings, 'query_number'),
@@ -1502,6 +1502,7 @@ $args = array(
     'order'          => wpsection_set($settings, 'query_order'),
     'paged'          => $paged
 );
+		
 
 if (wpsection_set($settings, 'query_exclude')) {
     $settings['query_exclude'] = explode(',', $settings['query_exclude']);
@@ -1521,7 +1522,6 @@ if (wpsection_set($settings, 'query_category')) {
 }
 
 $query = new \WP_Query($args);		
-		
 
 		if ($query->have_posts()) { ?>
 
@@ -1591,8 +1591,26 @@ $query = new \WP_Query($args);
                         </div>
                     </div>
                 </div>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
+            <?php endwhile; ?>
+			
+       
+ <?php
+$enable_pagination = $settings['show_pagination'] === 'yes';
+if ($enable_pagination) {
+    echo '<div class="wps_pagination_priduct_area">';
+    wpsection_the_pagination(array(
+        'total' => $query->max_num_pages,
+        'next_text' => '<i class="eicon-arrow-right"></i> ',
+        'prev_text' => '<i class="eicon-arrow-left"></i>'
+    ));
+    echo '</div>';
+}
+?>
+     
+ 	
+			
+								   
+      <?php      wp_reset_postdata(); ?>
         </div>
     </div>
 </section>

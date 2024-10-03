@@ -131,6 +131,7 @@ if ( 'none' === $settings['slider_path_hide_mobile'] ) {
             <!-- End While Loop Area -->
 
         </div>
+		<?php require $templatePartDir . 'pagination.php'; ?>
     </div>
 </section>
 

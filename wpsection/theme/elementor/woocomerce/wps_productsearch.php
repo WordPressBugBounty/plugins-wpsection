@@ -12,7 +12,7 @@ use Elementor\Utils;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Plugin;
 
-
+if (class_exists('MrwooMart')) {
 if (class_exists('woocommerce')) {
 
 class wpsection_wps_productsearch_Widget extends \Elementor\Widget_Base {
@@ -27,7 +27,7 @@ class wpsection_wps_productsearch_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-site-search';
+        return 'eicon-archive-posts';
     }
 
     public function get_keywords() {
@@ -378,4 +378,4 @@ $this->add_control( 'wps_button_width',
 // Register widget
 Plugin::instance()->widgets_manager->register( new \wpsection_wps_productsearch_Widget() );
 
- }
+ } }

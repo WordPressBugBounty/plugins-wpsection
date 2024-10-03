@@ -26,7 +26,7 @@ class wpsection_wps_slider_swiper_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon() {
-		 return 'eicon-post-slider';
+		 return 'eicon-slides';
 	}
 
 	public function get_keywords() {
@@ -126,7 +126,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .wps_floating_img_area {
+        .wps_floating_img_area {
             display: none !important;
         }
     }
@@ -2487,7 +2487,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .wps_slider_two_dot {
+        .wps_slider_two_dot {
             display: none !important;
         }
     }

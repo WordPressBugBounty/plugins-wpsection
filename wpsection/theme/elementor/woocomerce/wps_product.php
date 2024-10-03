@@ -73,13 +73,14 @@ require 'extended_array/common_style.php';
     }
       
 protected function render() {
-    
     require 'extended_array/render_settings.php'; 
     
+  
     $query = new \WP_Query($args);
     if ($query->have_posts()) {
         ?>
-        <?php if ('style-1' === $settings['style']) : 
+   
+    <?php if ('style-1' === $settings['style']) : 
             $style_folder = __DIR__ . '/wps_product_style/style-1.php';
             if (is_readable($style_folder)) {
                 require $style_folder;
@@ -89,10 +90,15 @@ protected function render() {
         endif; ?>
 
 
+   
         <?php
-    }
+    } else {
+    esc_html_e('No products found', 'wpsection');
+}
+
     wp_reset_postdata();
 }
+
 
 }
 

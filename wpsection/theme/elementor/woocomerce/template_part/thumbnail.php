@@ -3,7 +3,7 @@
 	$unique_id = 'id_' . uniqid(); // Generate a unique ID
 	?>
        .wps_thumb_<?php echo esc_attr($unique_id); ?> .product_block_one .hover-slider-indicator {
-            display: none;
+            display:none!important;
         }
     <?php endif; ?>
 
@@ -48,14 +48,27 @@ if ($thumbnail_bg_option === 'bg_meta') {
 $default_bg_color = isset($settings['wps_thumbnail_bg']) ? $settings['wps_thumbnail_bg'] : '';
 
 // Generate inline style based on the selected color or default
-$inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', esc_attr($thumbnail_bg_color)) : sprintf('style="background-color: %s;"', esc_attr($default_bg_color));
+// $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', esc_attr($thumbnail_bg_color)) : sprintf('style="background-color: %s;"', esc_attr($default_bg_color));
+// 
+$bg_color = $thumbnail_bg_color ? esc_attr($thumbnail_bg_color) : ($default_bg_color ? esc_attr($default_bg_color) : '');
+
+$inlineStyle = $bg_color ? sprintf('background-color: %s;', $bg_color) : '';
+
 ?>
-<?php if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_view_setting'])) : ?>
+
+
+
+
+
+<?php
+//************* This aea is thumbnail Meta  Input Settings ===================================**
+
+if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_view_setting'])) : ?>
 
     <div class="wps_thumbnail_area">
 
         <?php if ($thumbnail_style === 'style-2') : ?>
-            <!-- Style 2: Single Image -->
+         
             <div class="mr_product_thumb product_image">
                 <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
                     <a href="<?php echo esc_url(get_permalink(get_the_ID())); ?>">
@@ -100,28 +113,35 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
                 </div>
             </div>
 
+
+		
         <?php elseif ($thumbnail_style === 'style-5') : ?>
             <!-- Style 5: Hover Slide -->
             <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
                 <div class="product-inner">
                     <div class="product_image" style="<?php echo esc_attr($inlineStyle); ?>">
-                        <?php
-                        $images = $repeater_images['select_image_media'];
-                        $image_urls = array();
-                        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 
-                        foreach ($images as $key => $image_set) {
-                            $image_url = isset($image_set['url']) ? $image_set['url'] : '';
-                            $first_image_url = isset($images[0]['url']) ? $images[0]['url'] : '';
+			<?php
+            $images = isset($repeater_images['select_image_media']) && is_array($repeater_images['select_image_media']) ? $repeater_images['select_image_media'] : array();
+            $image_urls = array();
+            $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 
-                            if ($image_url && $key !== 0) {
-                                $image_urls[] = esc_url($image_url);
-                            }
-                        }
+            // Process images only if $images is not empty
+            if (!empty($images)) {
+                foreach ($images as $key => $image_set) {
+                    $image_url = isset($image_set['url']) ? $image_set['url'] : '';
+                    $first_image_url = isset($images[0]['url']) ? $images[0]['url'] : '';
 
-                        $image_hover_slides = implode(',', $image_urls);
+                    if ($image_url && $key !== 0) {
+                        $image_urls[] = esc_url($image_url);
+                    }
+                }
+            }
 
-                        if (!empty($image_hover_slides)) : ?>
+            $image_hover_slides = implode(',', $image_urls);
+
+            if (!empty($image_hover_slides)) : ?>
+						
                             <img src="<?php echo esc_url($first_image_url); ?>" data-hover-slides="<?php echo esc_attr($image_hover_slides); ?>" data-options="{&quot;touch&quot;: &quot;end&quot; }">
                         <?php else : ?>
                             <figure class="image-box">
@@ -147,15 +167,62 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
 <?php endif; ?>
 
 
-<?php if ('thumbnai_elementor_optins' === sanitize_text_field($settings['show_thumbnaili_view_setting'])) : ?>
+
+
+<?php
+//************* This aea is thumbnail Elemntor Input Settings ===================================***/
+
+if ('thumbnai_elementor_optins' === sanitize_text_field($settings['show_thumbnaili_view_setting'])) : ?>
 
     <div class="wps_thumbnail_area">
 
-        <?php if ('meta_flip' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
+         	<?php
+		// Elemntor Thumbnail
+		
+		if ('thumbnail' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
+                <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                    <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                        <?php echo get_the_post_thumbnail(); ?>
+                    </figure>
+                </div>
+          <?php endif; ?>
+		
+		
+		
+		
+		<?php
+		// Elemntor Thumb Meta
+		
+		if ('meta' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
+            <!-- Meta Style -->
+            <?php if (!empty($meta_image['id']) && $meta_image['id'] > 0) : ?>
+                <div class="mr_product_thumb product_image">
+                    <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                        <a href="<?php echo esc_url(get_permalink(get_the_ID())); ?>">
+                            <?php echo wp_get_attachment_image($meta_image['id'], 'full', false, array('alt' => '')); ?>
+                        </a>
+                    </figure>
+                </div>
+            <?php else : ?>
+                <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                    <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                        <?php echo get_the_post_thumbnail(); ?>
+                    </figure>
+                </div>
+            <?php endif; ?>
+
+        <?php endif; ?>
+		
+		
+		
+		<?php
+		// Elemntor Meta Flip
+		
+		if ('meta_flip' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
             <!-- Meta Flip Style -->
             <?php if (!empty($meta_image['id']) && !empty($meta_image_two['id']) && $meta_image['id'] && $meta_image_two['id']) : ?>
                 <div class="flip-box mr_product_thumb product_image">
-                    <div class="flip-box-inner">
+                    <div class="flip-box-inner" style="<?php echo esc_attr($inlineStyle); ?>">
                         <div class="flip-box-front">
                             <?php echo wp_get_attachment_image($meta_image['id'], 'full', false, array('style' => 'width:100%;height:100%')); ?>
                         </div>
@@ -166,7 +233,7 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
                 </div>
             <?php else : ?>
                 <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
-                    <figure class="image-box">
+                    <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
                         <?php echo get_the_post_thumbnail(); ?>
                     </figure>
                 </div>
@@ -174,30 +241,18 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
 
         <?php endif; ?>
 
-        <?php if ('meta' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
-            <!-- Meta Style -->
-            <?php if (!empty($meta_image['id']) && $meta_image['id'] > 0) : ?>
-                <div class="mr_product_thumb product_image">
-                    <figure class="image-box">
-                        <a href="<?php echo esc_url(get_permalink(get_the_ID())); ?>">
-                            <?php echo wp_get_attachment_image($meta_image['id'], 'full', false, array('alt' => '')); ?>
-                        </a>
-                    </figure>
-                </div>
-            <?php else : ?>
-                <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
-                    <figure class="image-box">
-                        <?php echo get_the_post_thumbnail(); ?>
-                    </figure>
-                </div>
-            <?php endif; ?>
+		
+		
+ 
 
-        <?php endif; ?>
-
-        <?php if ('slide_number' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
+        <?php
+		
+		// This is Elemnt Thumb Slide
+		if ('slide_number' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
             <!-- Slide Number Style -->
             <?php if (!empty($repeater_images['select_image_media']) && is_array($repeater_images['select_image_media'])) : ?>
-                <?php
+               
+		       <?php
                 $has_images = false;
 
                 foreach ($repeater_images['select_image_media'] as $image_set) {
@@ -213,7 +268,7 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
 
                 <?php if ($has_images) : ?>
                     <div class="mr_product_thumb product_image">
-                        <div class="swiper mySwiper">
+                        <div class="swiper mySwiper" style="<?php echo esc_attr($inlineStyle); ?>">
                             <div class="swiper-wrapper">
                                 <?php foreach ($repeater_images['select_image_media'] as $image_set) : ?>
                                     <?php
@@ -232,24 +287,33 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
                                 <div class="swiper-pagination"></div>
                             <?php endif; ?>
                         </div>
-                    </div>
-                <?php else : ?>
+                    </div>  
+                <?php endif; ?>
+
+        
+		
+		    <?php else : ?>
                     <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
-                        <figure class="image-box">
+                        <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
                             <?php echo get_the_post_thumbnail(); ?>
                         </figure>
                     </div>
-                <?php endif; ?>
-
-            <?php endif; ?>
+		
+		
+		 <?php endif; ?>
+		
         <?php endif; ?>
 
-        <?php if ('hover_slide' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
+        <?php
+		
+		// **** This is Elemnt Hove Slide 
+		
+		if ('hover_slide' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
             <!-- Hover Slide Style -->
             <?php if (isset($repeater_images['select_image_media']) && !empty($repeater_images['select_image_media'])) : ?>
                 <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
                     <div class="product-inner">
-                        <div class="product_image">
+                        <div class="product_image" style="<?php echo esc_attr($inlineStyle); ?>">
                             <?php
                             $images = $repeater_images['select_image_media'];
                             $image_urls = array();
@@ -276,8 +340,17 @@ $inlineStyle = $thumbnail_bg_color ? sprintf('style="background-color: %s;"', es
                         </div>
                     </div>
                 </div>
+		
+		    <?php else : ?>
+                    <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                        <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                            <?php echo get_the_post_thumbnail(); ?>
+                        </figure>
+                    </div>
+		
             <?php endif; ?>
         <?php endif; ?>
+
 
     </div>
 

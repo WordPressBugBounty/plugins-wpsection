@@ -168,7 +168,7 @@ $this->add_control(
 						'icon' => 'eicon-close-circle',
 					],
 				],
-				'default' => 'none',
+				'default' => 'show',
 				'selectors' => array(
 					'{{WRAPPER}} .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'display: {{VALUE}} !important',
 				),
@@ -979,6 +979,7 @@ $this->end_controls_section();
 
   $this->end_controls_section();            
 
+if (class_exists('MrwooMart')) : 
 // ====================================== Wish List ==============================================
  $this->start_controls_section(
                 'meta_wishlist_settings',
@@ -1003,19 +1004,20 @@ $this->end_controls_section();
             )
         );  
 
-$this->add_control(
-            'wps_wishlist_link', [
-                'label'       => esc_html__( 'Wish List Page Link', 'wpsection' ),
-                      'condition'    => array( 'show_whishlist' => '1' ),
-                'type'        => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default' => ' Wish List Link',
-                'dynamic'     => [
-                    'active' => true,
-                ],
-            ]
-        );
-        
+
+    $this->add_control(
+    'wishlist_icon',
+    [
+        'label' => __( 'Icon', 'wpsection' ),
+        'condition'    => array( 'show_whishlist' => '1' ),
+        'type' => \Elementor\Controls_Manager::ICONS,
+        'default' => [
+            'value' => 'eicon-heart-o',
+            'library' => 'solid',
+        ],
+    ]
+    );
+     
 
   $this->add_control(
             'overlay_order_one',
@@ -1050,6 +1052,7 @@ $this->add_control(
                 
   $this->end_controls_section();  
 
+
  // ======================================Show Compare ==============================================    
  $this->start_controls_section(
                     'meta_compare_settings',
@@ -1081,7 +1084,7 @@ $this->add_control(
         'condition'    => array( 'show_compare' => '1' ),
         'type' => \Elementor\Controls_Manager::ICONS,
         'default' => [
-            'value' => 'eicon-product-related',
+            'value' => 'eicon-user-preferences',
             'library' => 'solid',
         ],
     ]
@@ -1117,7 +1120,7 @@ $this->add_control(
                 )
             );      
  $this->end_controls_section(); 
-
+endif;
  // ====================================== Quick view ============================================== 
       $this->start_controls_section(
                     'meta_quickview_settings',

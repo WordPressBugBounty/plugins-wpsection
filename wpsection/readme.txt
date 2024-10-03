@@ -3,9 +3,9 @@ Contributors: rashid87
 Donate link: http://mahfuzrashid.com/
 Tags: wpsection, envato theme
 Requires at least: 4.6
-Tested up to: 6.5.5
-Tested up to WooCommerce: 6.3.1
-Stable tag: 1.3.9
+Tested up to: 6.6.2
+Tested up to WooCommerce: 9.1.4
+Stable tag: 1.4.0
 Requires PHP: 5.6
 Requires WooCommerce: 3.0
 Text Domain: wpsection

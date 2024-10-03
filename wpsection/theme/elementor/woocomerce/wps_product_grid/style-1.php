@@ -93,6 +93,7 @@ echo '
                 <!-- End Product Column -->
             <?php endwhile; ?>
         </div>
+		<?php require $templatePartDir . 'pagination.php'; ?>
     </div>
 </section>
 

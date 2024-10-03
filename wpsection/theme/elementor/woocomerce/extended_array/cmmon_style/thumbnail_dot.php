@@ -125,6 +125,7 @@ $this->add_control(
 				'label'     => __( 'Dot Hover Color', 'wpsection' ),
 			 'condition'    => array( 'wps_product_color_dot' => 'product_dot' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default' => '#000',
 				'selectors' => array(
 					'{{WRAPPER}} .wps_thumbnail_area .swiper-pagination .swiper-pagination-bullet:hover' => 'background: {{VALUE}} !important',
 
@@ -134,10 +135,10 @@ $this->add_control(
 $this->add_control(
 			'slider_prodcut_m_bg_color',
 			array(
-				'label'     => __( 'Active Color', 'wpsection' ),
+				'label'     => __( 'Active Dot Color', 'wpsection' ),
 			 'condition'    => array( 'wps_product_color_dot' => 'product_dot' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'default' => '#fff',
+				'default' => '#ff1212',
 				'selectors' => array(
 					'{{WRAPPER}} .wps_thumbnail_area .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active  ' => 'background: {{VALUE}} !important',
 				),
@@ -201,7 +202,7 @@ $this->add_control(
 		
 				$this->add_control( 'slider_prodcut_m_dot_horizontal',
 					[
-						'label' => esc_html__( 'Horizontal Position ',  'wpsection' ),
+						'label' => esc_html__( 'Horizontal Area Position ',  'wpsection' ),
 					
 						'type' => \Elementor\Controls_Manager::SLIDER,
 					
@@ -219,8 +220,8 @@ $this->add_control(
 							],
 						],
 						'default' => [
-							'unit' => 'px',
-							'size' => 0,
+							'unit' => '%',
+							'size' => 3,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .swiper-pagination ' => 'left: {{SIZE}}{{UNIT}};',
@@ -232,7 +233,7 @@ $this->add_control(
 
 				$this->add_control( 'slider_prodcut_m_dot_vertical',
 					[
-						'label' => esc_html__( 'Vertical Position', 'wpsection' ),
+						'label' => esc_html__( 'Vertical Area Position', 'wpsection' ),
 					
 						'type' => \Elementor\Controls_Manager::SLIDER,
 						'size_units' => [ 'px', '%' ],
@@ -248,8 +249,8 @@ $this->add_control(
 							],
 						],
 						'default' => [
-							'unit' => 'px',
-							'size' => 0,
+							'unit' => '%',
+							'size' => 80,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .swiper-pagination' => 'top: {{SIZE}}{{UNIT}};',
@@ -264,7 +265,7 @@ $this->add_control(
 
 $this->add_control( 'slider_prodcut_m_area_width',
 					[
-						'label' => esc_html__( 'Dot Width',  'wpsection' ),
+						'label' => esc_html__( 'Dot Area Width',  'wpsection' ),
 						'type' => \Elementor\Controls_Manager::SLIDER,
 						'size_units' => [ 'px', '%' ],
 						'range' => [
@@ -280,7 +281,7 @@ $this->add_control( 'slider_prodcut_m_area_width',
 						],
 						'default' => [
 							'unit' => 'px',
-							'size' => 10,
+							'size' => 100,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .swiper-pagination ' => 'width: {{SIZE}}{{UNIT}};',
@@ -291,7 +292,7 @@ $this->add_control( 'slider_prodcut_m_area_width',
 			
 				$this->add_control( 'slider_prodcut_m_dot_area_height',
 					[
-						'label' => esc_html__( 'Dot Height', 'wpsection' ),
+						'label' => esc_html__( 'Dot Area Height', 'wpsection' ),
 					
 						'type' => \Elementor\Controls_Manager::SLIDER,
 						'size_units' => [ 'px', '%' ],
@@ -308,7 +309,7 @@ $this->add_control( 'slider_prodcut_m_area_width',
 						],
 						'default' => [
 							'unit' => 'px',
-							'size' => 10,
+							'size' => 30,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .swiper-pagination ' => 'height: {{SIZE}}{{UNIT}};',
@@ -321,7 +322,7 @@ $this->add_control( 'slider_prodcut_m_area_width',
 $this->add_control(
 			'slider_prodcut_m_bg_area_color',
 			array(
-				'label'     => __( 'BG Color', 'wpsection' ),
+				'label'     => __( 'Area BG Color', 'wpsection' ),
 			 'condition'    => array( 'wps_product_color_dot' => 'product_dot' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default' => '#fff',
@@ -563,7 +564,7 @@ $this->add_control(
 		
 				$this->add_control( 'slider_prodcut_hover_dot_horizontal',
 					[
-						'label' => esc_html__( 'Horizontal Position',  'wpsection' ),
+						'label' => esc_html__( 'Horizontal Area Position',  'wpsection' ),
 					
 						'type' => \Elementor\Controls_Manager::SLIDER,
 						'size_units' => [ 'px', '%' ],
@@ -579,8 +580,8 @@ $this->add_control(
 							],
 						],
 						'default' => [
-							'unit' => 'px',
-							'size' => 0,
+							'unit' => '%',
+							'size' => 3,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'left: {{SIZE}}{{UNIT}};',
@@ -592,7 +593,7 @@ $this->add_control(
 
 				$this->add_control( 'slider_prodcut_hover_dot_are_vertical',
 					[
-						'label' => esc_html__( 'Vertical Position', 'wpsection' ),
+						'label' => esc_html__( 'Vertical Area Position', 'wpsection' ),
 					
 						'type' => \Elementor\Controls_Manager::SLIDER,
 						'size_units' => [ 'px', '%' ],
@@ -608,8 +609,8 @@ $this->add_control(
 							],
 						],
 						'default' => [
-							'unit' => 'px',
-							'size' => 0,
+							'unit' => '%',
+							'size' => 80,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'top: {{SIZE}}{{UNIT}};',
@@ -643,7 +644,7 @@ $this->add_control(
 						],
 						'default' => [
 							'unit' => 'px',
-							'size' => 10,
+							'size' => 100,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'width: {{SIZE}}{{UNIT}};',
@@ -671,7 +672,7 @@ $this->add_control(
 						],
 						'default' => [
 							'unit' => 'px',
-							'size' => 10,
+							'size' => 30,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'height: {{SIZE}}{{UNIT}};',
@@ -686,7 +687,7 @@ $this->add_control(
 				'label'     => __( 'BG Color', 'wpsection' ),
 			 'condition'    => array( 'wps_product_color_dot' => 'product_dot' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'default' => '#222',
+				'default' => ' ',
 				'selectors' => array(
 					'{{WRAPPER}}  .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'background: {{VALUE}} !important',
 

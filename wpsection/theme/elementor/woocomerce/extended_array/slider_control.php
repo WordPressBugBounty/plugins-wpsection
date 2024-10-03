@@ -77,7 +77,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .slider_path .owl-nav {
+        .slider_path .owl-nav {
             display: none !important;
         }
     }
@@ -431,7 +431,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .slider_path .owl-dots {
+        .slider_path .owl-dots {
             display: none !important;
         }
     }
@@ -770,7 +770,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .wps_slider_two_dot .swiper-pagination-bullet {
+        .wps_slider_two_dot .swiper-pagination-bullet {
             display: none !important;
         }
     }

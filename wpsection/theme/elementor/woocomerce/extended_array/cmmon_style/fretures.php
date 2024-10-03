@@ -74,7 +74,8 @@ use Elementor\Plugin;
                 'toggle' => true,
                 'selectors' => array(
                 
-                    '{{WRAPPER}} .wps_meta_text ' => 'text-align: {{VALUE}} !important',
+                    '{{WRAPPER}} .wps_meta_text ul li' => 'text-align: {{VALUE}} !important',
+					'{{WRAPPER}} .wps_meta_text' => 'text-align: {{VALUE}} !important',
                 ),
             )
         );          

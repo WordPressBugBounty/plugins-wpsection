@@ -831,94 +831,9 @@ $this->add_control(
 ?>
 
 <?php
- echo '
- <style>
- 
- //CSS code Will be here 
- 
-.category-box{
-  position: absolute;
-  left: 0px;
-  top: 9px;
-  width: 300px;
-  border: solid;
-  border-width: 1px;
-  border-bottom: none;
-  border-radius: 5px 5px 0px 0px;
-  padding: 15px 20px;
-  cursor: pointer;
-}
-
-
-.category-box .category-list{
-  position: absolute;
-  left: 0px;
-  top: 100%;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0px 0px 10px 0px #00000012;
-  padding: 15px 10px;
-  border-radius: 0px 0px 5px 5px;
-  opacity: 0;
-  transform-origin: top center;
-  transform: scaleY(0);
-  visibility: hidden;
-  width: 300px;
-  transition: all 500ms ease;
-	z-index:9999;
-}
-
- .category-box:hover .category-list{
-  opacity: 1;
-  transform: scaleY(1);
-  visibility: visible;
-}
-
- .category-box .category-list > li{
-  position: relative;
-  display: block;
-}
-
-
-
-.category-box .category-list .list-inner{
-  position: absolute;
-  left: 100%;
-  top: 0px;
-  width: 990px;
-  background: #fff;
-  box-shadow: 0px 0px 10px 0px #00000012;
-  border-radius: 5px;
-  opacity: 0;
-  transform-origin: left center;
-  transform: scaleY(.7);
-  visibility: hidden;
-  overflow: hidden;
-  padding-right: 280px;
-  margin-left: 10px;
-  transition: all 500ms ease;
-}
-
-.category-box .category-list li:hover .list-inner{
-  transform: scaleX(1);
-  visibility: visible;
-  opacity: 1;
-}
-
-.category-box .list-inner .inner-box{
-  position: relative;
-  padding: 40px 50px;
-  max-height: 320px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
- 
- //CSS code End Here
- 
-</style>';		
+		
 		
 
-	
       echo '
      <script>
  jQuery(document).ready(function($)

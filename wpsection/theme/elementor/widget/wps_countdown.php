@@ -424,91 +424,93 @@ $this->start_controls_section(
 		
     }
 
-    // Render Widget Output
-    protected function render() {
-        $settings = $this->get_settings();
-        $countdown_date = $settings['countdown_date'];
-        $show_months = $settings['show_months'] === 'yes';
-        $show_days = $settings['show_days'] === 'yes';
-        $show_hours = $settings['show_hours'] === 'yes';
-        $show_minutes = $settings['show_minutes'] === 'yes';
-        $show_seconds = $settings['show_seconds'] === 'yes';
-        ?>
+// Render Widget Output
+protected function render() {
+    $settings = $this->get_settings();
+    $countdown_date = esc_attr( $settings['countdown_date'] );
+    $show_months = $settings['show_months'] === 'yes';
+    $show_days = $settings['show_days'] === 'yes';
+    $show_hours = $settings['show_hours'] === 'yes';
+    $show_minutes = $settings['show_minutes'] === 'yes';
+    $show_seconds = $settings['show_seconds'] === 'yes';
+    $unique_id = esc_attr( uniqid('wps_countdown_') ); // Generate a unique ID and escape it
+    ?>
 
- <div class="wps_date_count_area">
+    <div id="<?php echo esc_attr($unique_id); ?>" class="wps_date_count_area">
         <div class="timer">
-            <div class="cs-countdown" data-countdown="<?php echo esc_attr($countdown_date); ?>"><?php echo esc_attr($countdown_date); ?></div>
+            <div class="cs-countdown" data-countdown="<?php echo esc_attr($countdown_date); ?>">
+                <?php echo esc_html($countdown_date); ?>
+            </div>
         </div>
-</div>
+    </div>
 
-        <?php
-        echo '
-        <script>
-          jQuery(document).ready(function($)
-          {
-            if($(".timer").length){
-              $(".cs-countdown").each(function() {
-                var $this = $(this);
+    <?php
+    // Escaping for JS strings and variables
+    echo '
+    <script>
+        jQuery(document).ready(function($) {
+            if($("#' . esc_js( $unique_id ) . ' .timer").length) {
+                var $this = $("#' . esc_js( $unique_id ) . ' .cs-countdown");
                 var countdownDate = new Date($this.data("countdown"));
                 var interval = setInterval(function() {
-                  var now = new Date().getTime();
-                  var distance = countdownDate - now;
-                  if (distance < 0) {
-                    clearInterval(interval);
-                    $this.html("Offer expired");
-                  } else {
-                    var remainingTime = "";
+                    var now = new Date().getTime();
+                    var distance = countdownDate - now;
+                    if (distance < 0) {
+                        clearInterval(interval);
+                        $this.html("Offer expired");
+                    } else {
+                        var remainingTime = "";
 
-                    var months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30));
-                    if (' . ($show_months ? 'true' : 'false') . ') {
-                        if (months > 0) {
-                            remainingTime += "<span class=\"wps_count_month\">" + months + " " + "' . esc_js($settings['months_text']) . '" + "</span> ";
+                        var months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30));
+                        if (' . ($show_months ? 'true' : 'false') . ') {
+                            if (months > 0) {
+                                remainingTime += "<span class=\"wps_count_month\">" + months + " " + "' . esc_js( $settings['months_text'] ) . '" + "</span> ";
+                            }
                         }
-                    }
 
-                    var days = Math.floor(distance % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24));
-                    if (' . ($show_days ? 'true' : 'false') . ') {
-                        if (days > 0 || months > 0) {
-                            remainingTime += "<span class=\"wps_count_day\">" + days + " " + "' . esc_js($settings['days_text']) . '" + "</span> ";
+                        var days = Math.floor(distance % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24));
+                        if (' . ($show_days ? 'true' : 'false') . ') {
+                            if (days > 0 || months > 0) {
+                                remainingTime += "<span class=\"wps_count_day\">" + days + " " + "' . esc_js( $settings['days_text'] ) . '" + "</span> ";
+                            }
                         }
-                    }
 
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    if (' . ($show_hours ? 'true' : 'false') . ') {
-                        remainingTime += "<span class=\"wps_count_hour\">" + hours + " " + "' . esc_js($settings['hours_text']) . '" + "</span> ";
-                    }
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        if (' . ($show_hours ? 'true' : 'false') . ') {
+                            remainingTime += "<span class=\"wps_count_hour\">" + hours + " " + "' . esc_js( $settings['hours_text'] ) . '" + "</span> ";
+                        }
 
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    if (' . ($show_minutes ? 'true' : 'false') . ') {
-                        remainingTime += "<span class=\"wps_count_min\">" + minutes + " " + "' . esc_js($settings['minutes_text']) . '" + "</span> ";
-                    }
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        if (' . ($show_minutes ? 'true' : 'false') . ') {
+                            remainingTime += "<span class=\"wps_count_min\">" + minutes + " " + "' . esc_js( $settings['minutes_text'] ) . '" + "</span> ";
+                        }
 
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    if (' . ($show_seconds ? 'true' : 'false') . ') {
-                        remainingTime += "<span class=\"wps_count_sec\">" + seconds + " " + "' . esc_js($settings['seconds_text']) . '" + "</span>";
-                    }
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        if (' . ($show_seconds ? 'true' : 'false') . ') {
+                            remainingTime += "<span class=\"wps_count_sec\">" + seconds + " " + "' . esc_js( $settings['seconds_text'] ) . '" + "</span>";
+                        }
 
-                    $this.html(remainingTime);
-                  }
+                        $this.html(remainingTime);
+                    }
                 }, 1000);
-              });
             }
-          });
-        </script>'; ?>
-		
-	<?php
-        echo '
-		 <style>
-		 
-.cs-countdown{
-  position: relative;
-  display: flex;
-  align-content: center;
+        });
+    </script>';
+
+    echo '
+    <style>
+        #' . esc_attr($unique_id) . ' .cs-countdown {
+            position: relative;
+            display: flex;
+            align-content: center;
+        }
+    </style>';
 }
-		  </style> ' ;
-		
 	
-    }
+	
+	
+	
+	
 }
 
 // Register widget

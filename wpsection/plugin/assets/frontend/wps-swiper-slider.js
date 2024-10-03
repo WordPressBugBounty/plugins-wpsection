@@ -170,3 +170,7 @@ var swiperSixCol = new Swiper(".wps_slide_el_bloc_six", {
 });
 
 })(window.jQuery);
+
+
+
+

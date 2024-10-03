@@ -61,9 +61,7 @@ if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
                         <?php  include_once(WPSECTION_PLUGIN_DIR . 'plugin/adminboard/widget.php'); ?>
                     </div>
                     <!-- Area Three for Template Settings -->
-                    <div class="tab-pane fadeInUp animated " id="tab-three" role="tabpanel" aria-labelledby="tab-three">
-                           <?php  include_once(WPSECTION_PLUGIN_DIR . 'plugin/adminboard/settings.php'); ?>
-                    </div>                    <!-- Area Four Free Vs Pro -->
+                                   <!-- Area Four Free Vs Pro -->
                     <div class="tab-pane fadeInUp animated" id="tab-four" role="tabpanel" aria-labelledby="tab-four">
                          <?php  include_once(WPSECTION_PLUGIN_DIR . 'plugin/adminboard/compare.php'); ?>
 						 

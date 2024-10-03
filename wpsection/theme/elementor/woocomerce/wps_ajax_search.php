@@ -8,7 +8,9 @@ use Elementor\Repeater;
 
 
 
+if (class_exists('MrwooMart')) {
 if (class_exists('woocommerce')) {
+
 
 class wpsection_wps_ajax_search_Widget extends \Elementor\Widget_Base {
 	public function get_name() {
@@ -28,7 +30,7 @@ class wpsection_wps_ajax_search_Widget extends \Elementor\Widget_Base {
 	}
 
 	  public function get_categories() {
-          return ['wpsection_category'];
+          return ['wpsection_shop'];
     }
 
 
@@ -256,7 +258,7 @@ $this->add_control(
 echo '
 <style>
     @media screen and (max-width: 1000px) {
-        {{WRAPPER}} .wps_product_search {
+        .wps_product_search {
             display: none !important;
         }
     }
@@ -982,4 +984,4 @@ $this->add_control(
 // Register widget
 Plugin::instance()->widgets_manager->register( new \wpsection_wps_ajax_search_Widget() );
 	
-}
+} }

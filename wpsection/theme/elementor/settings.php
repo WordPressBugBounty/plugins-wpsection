@@ -55,8 +55,19 @@ final class wpsection_Elementor_Extension {
 		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'elementor_assets'] );
 	}
 
-/*
+
 public function admin_notice_missing_main_plugin() {
+	
+	$nonce       = wpsection()->get_settings_atts( 'wpsection_nonce', '', $posted_data );
+
+if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
+
+	$elements_active = wpsection()->get_settings_atts( 'wpsection_elements_active', array(), $posted_data );
+
+	if ( is_array( $elements_active ) ) {
+		update_option( 'wpsection_elements_active', $elements_active );
+	}
+}	
 
     if ( isset( $_GET['activate'] ) ) {
         unset( $_GET['activate'] );
@@ -64,9 +75,8 @@ public function admin_notice_missing_main_plugin() {
 
     $message = sprintf(
  
-        esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'wpsection' ),
-        '<strong>' . esc_html__( 'wpsection Elementor Extension', 'wpsection' ) . '</strong>',
-        '<strong>' . esc_html__( 'Elementor', 'wpsection' ) . '</strong>'
+        esc_html__( ' WpSection requires Elementor to be installed and activated.', 'wpsection' ),
+
     );
 
     // Escape the message when outputting it
@@ -76,27 +86,53 @@ public function admin_notice_missing_main_plugin() {
 
 
 	public function admin_notice_minimum_elementor_version() {
+		
+$nonce       = wpsection()->get_settings_atts( 'wpsection_nonce', '', $posted_data );
+
+if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
+
+	$elements_active = wpsection()->get_settings_atts( 'wpsection_elements_active', array(), $posted_data );
+
+	if ( is_array( $elements_active ) ) {
+		update_option( 'wpsection_elements_active', $elements_active );
+	}
+}			
+		
+		
 
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
 
-		$message = sprintf(
 		
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpsection' ),
-			'<strong>' . esc_html__( 'wpsection Elementor Extension', 'wpsection' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'wpsection' ) . '</strong>',
-			 self::MINIMUM_ELEMENTOR_VERSION
-		);
+$message = sprintf(
+	// Translators: 1: wpsection Elementor Extension, 2: Elementor, 3: Minimum Elementor version required
+    esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpsection' ),
+    esc_html__( 'wpsection Elementor Extension', 'wpsection' ),
+    esc_html__( 'Elementor', 'wpsection' ),
+    self::MINIMUM_ELEMENTOR_VERSION
+);
+
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message )  );
 
 	}
 
 	public function admin_notice_minimum_php_version() {
+		
+		$nonce       = wpsection()->get_settings_atts( 'wpsection_nonce', '', $posted_data );
+
+if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
+
+	$elements_active = wpsection()->get_settings_atts( 'wpsection_elements_active', array(), $posted_data );
+
+	if ( is_array( $elements_active ) ) {
+		update_option( 'wpsection_elements_active', $elements_active );
+	}
+}	
 
 		if ( isset( $_GET['activate'] ) ) unset( $_GET['activate'] );
 
 		$message = sprintf(
-			
+			// Translators: 1: wpsection Elementor Extension, 2: Elementor, 3: Minimum Elementor version required
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'wpsection' ),
 			'<strong>' . esc_html__( 'wpsection Elementor Extension', 'wpsection' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'wpsection' ) . '</strong>',
@@ -107,8 +143,7 @@ public function admin_notice_missing_main_plugin() {
 
 	}
 	
-	*/
-	
+
 	
 
 public function add_elementor_widget_categories( $elements_manager ) {

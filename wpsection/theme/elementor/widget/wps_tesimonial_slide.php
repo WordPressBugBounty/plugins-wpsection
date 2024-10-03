@@ -61,6 +61,34 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
                 'placeholder' => __('Enter Section Class', 'Testimonial'),
             ]
         );
+		
+		   $this->add_control(
+            'testi_slid_container_width',
+            [
+                'label' => esc_html__( 'Section Width ', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 3000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 1320,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wps_testi_slide_width' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );  
+		
         $this->add_control(
             'wps_columns',
             array(
@@ -118,7 +146,18 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
             ]
         );
 
-
+  $repeater->add_control(
+            'block_quoter_image',
+            [
+                'label' => __('Quote Image', 'rashid'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => ['url' => Utils::get_placeholder_image_src(),],
+            ]
+        );
+		
+		
+		
+		  
 		
 			
         $repeater->add_control(
@@ -595,6 +634,194 @@ $this->add_control(
 		
 		
         $this->end_controls_section();
+	
+//Testi Quote Image SEtting 		
+	
+		
+        $this->start_controls_section(
+            'wps_quote_thumbnail_control',
+            array(
+                'label' => __('Quote Image Settings', 'wpsection'),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            )
+        );
+
+        $this->add_control(
+            'wps_quote_show_thumbnail',
+            array(
+                'label' => esc_html__('Show Quote Image', 'wpsection'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'show' => [
+                        'show' => esc_html__('Show', 'wpsection'),
+                        'icon' => 'eicon-check-circle',
+                    ],
+                    'none' => [
+                        'none' => esc_html__('Hide', 'wpsection'),
+                        'icon' => 'eicon-close-circle',
+                    ],
+                ],
+                'default' => 'show',
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_testimonials .wps_quote-box' => 'display: {{VALUE}} !important',
+                )
+            )
+        );
+
+		
+		
+        $this->add_control(
+            'testi_quote_slider_width',
+            [
+                'label' => esc_html__('Quote Thumb Width',  'wpsection'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 2000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .wps_testimonials .wps_quote-box' => 'width: {{SIZE}}{{UNIT}};',
+                ]
+
+            ]
+        );
+		
+ 
+	$this->add_control( 'wps_quoter_vertical_horizontal',
+					[
+						'label' => esc_html__( 'Horizontal Position ',  'wpsection' ),
+						
+						'type' => \Elementor\Controls_Manager::SLIDER,
+						'size_units' => [ 'px', '%' ],
+						'range' => [
+							'px' => [
+								'min' => 0,
+								'max' => 2000,
+								'step' => 1,
+							],
+							'%' => [
+								'min' => 0,
+								'max' => 100,
+							],
+						],
+						'default' => [
+							'unit' => 'px',
+							'size' => 0,
+						],
+						'selectors' => [
+							'{{WRAPPER}} .wps_testimonials .wps_quote-box' => 'left: {{SIZE}}{{UNIT}};',
+						]
+					
+					]
+				);
+			
+
+				$this->add_control( 'wps_quoter_vertical',
+					[
+						'label' => esc_html__( 'Vertical Position', 'wpsection' ),
+					
+						'type' => \Elementor\Controls_Manager::SLIDER,
+						'size_units' => [ 'px', '%' ],
+						'range' => [
+							'px' => [
+								'min' => 0,
+								'max' => 1000,
+								'step' => 1,
+							],
+							'%' => [
+								'min' => 0,
+								'max' => 100,
+							],
+						],
+						'default' => [
+							'unit' => 'px',
+							'size' => 250,
+						],
+						'selectors' => [
+							'{{WRAPPER}} .wps_testimonials .wps_quote-box  ' => 'top: {{SIZE}}{{UNIT}};',
+					
+						]
+					]
+				);		
+		
+		
+
+		
+        $this->add_control(
+            'testi_quote_thumbnail_padding',
+            array(
+                'label'     => __('Padding', 'wpsection'),
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+
+                'size_units' =>  ['px', '%', 'em'],
+
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_testimonials .wps_testi_thum' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+        $this->add_control(
+            'testi_quote_thumbnail_x_margin',
+            array(
+                'label'     => __('Margin', 'wpsection'),
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em'],
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_testimonials .wps_quote-box' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            array(
+                'name' => 'quote_thumbnail_border',
+                'selector' => '{{WRAPPER}} .wps_testimonials .wps_quote-box',
+            )
+        );
+
+        $this->add_control(
+            'test_quote_thumbnail_border_radius',
+            array(
+                'label'     => __('Border Radius', 'wpsection'),
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em'],
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_testimonials .wps_quote-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+		
+
+		
+		
+$this->add_control(
+    'testi_quote_order_six',
+    [
+        'label' => esc_html__('Vertical Order', 'wpsection'),
+        'type' => Controls_Manager::TEXT,
+        'default' => 6,
+    
+    ]
+);	
+		
+		
+		
+        $this->end_controls_section();		
 		
 		
 //Testi Text Settings		
@@ -1213,7 +1440,7 @@ $this->add_control(
                     'size' => 0,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wps_testimonials .owl-nav button.owl-next' => 'right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .wps_testimonials .owl-nav button.owl-next' => 'left: {{SIZE}}{{UNIT}};',
                 ],
 
             ]
@@ -1242,7 +1469,7 @@ $this->add_control(
                     'size' => 0,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wps_testimonials .owl-nav button ' => 'top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .wps_testimonials .owl-nav ' => 'top: {{SIZE}}{{UNIT}};',
                 ]
             ]
         );
@@ -1565,9 +1792,9 @@ $this->add_control(
 
         ?>
 
-<section class="wps_testimonials testimonial-section">
+<section class="wps_testimonials testimonial-section ">
     <div class="auto-container">
-        <div class="three-item-carousel owl-carousel slider_path owl-theme nav-style-one">
+        <div class="wps_testi_slide_width three-item-carousel owl-carousel slider_path owl-theme nav-style-one">
             <?php foreach ($settings['repeater'] as $item) : ?>
                 <div class="testimonial-block-one mr_product_block">
                     <div class="inner-box">
@@ -1615,6 +1842,19 @@ $this->add_control(
                             <div class="wps_order order-<?php echo wp_kses($settings['testi_order_five'], $allowed_tags); ?>">
                                 <h6 class="wps_testi_designation"><?php echo wp_kses($item['block_designation'], $allowed_tags); ?></h6>
                             </div>
+							
+<?php if (!empty($item['block_quoter_image']['id']) && wp_get_attachment_url($item['block_quoter_image']['id'])) : ?>
+    <!-- Testimonial Thumbnail -->
+    <div class="wps_order order-<?php echo esc_attr($settings['testi_order_six']); ?> quote-alignment">
+        <figure class="wps_quote-box">
+            <img class="wps_testi_quote" src="<?php echo esc_url(wp_get_attachment_url($item['block_quoter_image']['id'])); ?>" alt="<?php echo esc_attr($item['alt_text']); ?>">
+        </figure>
+    </div>
+<?php endif; ?>
+
+		
+							
+							
 
                         </div>
                     </div>

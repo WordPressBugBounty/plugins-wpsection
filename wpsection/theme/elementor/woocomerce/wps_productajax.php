@@ -12,7 +12,7 @@ use Elementor\Utils;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Plugin;
 
-
+if (class_exists('MrwooMart')) {
 if (class_exists('woocommerce')) {
 
     class wpsection_wps_productajax_Widget extends \Elementor\Widget_Base {
@@ -89,4 +89,4 @@ if (class_exists('woocommerce')) {
 
     // Register widget
     Plugin::instance()->widgets_manager->register(new \wpsection_wps_productajax_Widget());
-}
+} }

@@ -3,9 +3,15 @@
         global $product;
         global $wp_query;
         $settings = $this->get_settings_for_display();
-        $allowed_tags = wp_kses_allowed_html('post');       
-        $paged = get_query_var('paged');
-        //$paged = wpsection_set($_REQUEST, 'paged') ? esc_attr($_REQUEST['paged']) : $paged;
+        $allowed_tags = wp_kses_allowed_html('post');
+
+
+
+
+
+ 
+
+
         $this->add_render_attribute( 'wrapper', 'class', 'templatepath-wpsection' );
     
     //Column Settings Area   
@@ -79,42 +85,52 @@
 
 $columns_markup_print = $columns_markup . ' ' . $columns_markup_tab;
 
-// Call the setting and make variable 
-$product_per_page = $settings['query_number'];
-$product_order_by = $settings['query_orderby'];
-$product_order    = $settings['query_order'];
-$product_grid_type = $settings['product_grid_type'];
-$query_category = $settings['query_category'];
-$query_category_2 = $settings['query_category_2'];
 
-// Set up default arguments for recent products
-$args = array(
-    'posts_per_page' => $product_per_page,
-    'post_type'      => 'product',
-    'orderby'        => $product_order_by,
-    'order'          => $product_order,
-);
 
-// Check if a category is selected
-if ($settings['filter_category'] == 'multi_cat' && !empty($query_category)) {
-    $args['tax_query'] = array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field'    => 'term_id',
-            'terms'    => $query_category,
-            'operator' => 'IN',
-        ),
-    );
-} elseif ($settings['filter_category'] == 'single_cat' && !empty($query_category_2)) {
-    $args['tax_query'] = array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field'    => 'term_id',
-            'terms'    => array($query_category_2), // Wrap the term ID in an array
-            'operator' => 'IN',
-        ),
-    );
-}
+ // Get the current page number
+    //$paged = max(1, get_query_var('paged', 1));
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+
+// Get settings variables
+    $product_per_page   = $settings['query_number'];
+    $product_order_by   = $settings['query_orderby'];
+    $product_order      = $settings['query_order'];
+    $product_grid_type  = $settings['product_grid_type'];
+    $query_category     = $settings['query_category'];
+    $query_category_2   = $settings['query_category_2'];
+
+    // Set default arguments for recent products
+    $args = [
+        'posts_per_page' => $product_per_page,
+        'paged' => $paged,
+        'post_type'      => 'product',
+        'orderby'        => $product_order_by,
+        'order'          => $product_order,
+    ];
+
+    // Check if a category is selected
+    if ($settings['filter_category'] == 'multi_cat' && !empty($query_category)) {
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug', // Use slug instead of term_id
+                'terms'    => $query_category,
+                'operator' => 'IN',
+            ],
+        ];
+    } elseif ($settings['filter_category'] == 'single_cat' && !empty($query_category_2)) {
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug', // Use slug instead of term_id
+                'terms'    => $query_category_2,
+                'operator' => 'IN',
+            ],
+        ];
+    }
+
+
 
 
 // Check if in stock or out of stock filtering is selected
@@ -183,4 +199,4 @@ elseif ($product_grid_type == 'price_filter') {
 }
 
 
-
+$enable_pagination = $settings['wps_block_pagination'] === 'yes';

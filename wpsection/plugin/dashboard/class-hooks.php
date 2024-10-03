@@ -28,11 +28,10 @@ if ( ! class_exists( 'WPSECTION_Hooks' ) ) {
 		/**
 		 * Import element
 		 */
-	function import_element() {
-
+		function import_element() {
 			
-	
-$posted_data   = array_map('sanitize_text_field', $_POST );
+			$posted_data   = array_map('sanitize_text_field', $_POST );
+						
 $nonce       = wpsection()->get_settings_atts( 'wpsection_nonce', '', $posted_data );
 
 if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
@@ -42,55 +41,68 @@ if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
 	if ( is_array( $elements_active ) ) {
 		update_option( 'wpsection_elements_active', $elements_active );
 	}
-}	
-		
-		
-		
-		
-		
+}				
+			
+			
+			$page_id       = wpsection()->get_settings_atts( 'page_id', '91', $posted_data );
+			$local_page_id = wpsection()->get_settings_atts( 'local_page_id', '', $posted_data );
 
-    // Example usage of variables and functions
-    $page_id = wpsection()->get_settings_atts( 'page_id', '91', $posted_data );
+			if ( empty( $page_id ) || $page_id === 0 ) {
+				wp_send_json_error( esc_html__( 'Something went wrong with the data!', 'wpsection' ) );
+			}
 
-    if ( empty( $page_id ) || $page_id === 0 ) {
-        wp_send_json_error( esc_html__( 'Invalid page ID', 'wpsection' ) );
-    }
 
-    // Example remote request
-    $response = wp_remote_get( sprintf( '%s/wp-json/wpsection/page-data/%s', WPSECTION_API_URL, $page_id ) );
+			// Checking curl response
+			if ( is_wp_error( $response = wp_remote_get( sprintf( '%s/wp-json/wpsection/page-data/%s', WPSECTION_API_URL, $page_id ) ) ) ) {
+				wp_send_json_error( $response->get_error_message() );
+			}
 
-    if ( is_wp_error( $response ) ) {
-        wp_send_json_error( $response->get_error_message() );
-    }
+			// Parsing response data
+			$response_data = wp_remote_retrieve_body( $response );
+			$response_data = json_decode( $response_data, true );
 
-    $response_data = wp_remote_retrieve_body( $response );
-    $response_data = json_decode( $response_data, true );
+			// Checking page and creating new page
+			if ( empty( $local_page_id ) ) {
+				$local_page_id = wp_insert_post( array(
+					'post_type'    => 'page',
+					'post_status'  => 'publish',
+					'post_title'   => wpsection()->get_settings_atts( 'page_title', '', $response_data ),
+					'post_content' => wpsection()->get_settings_atts( 'post_content', '', $response_data ),
+				) );
+			}
 
-    // Example post creation and update
-    $local_page_id = wp_insert_post( array(
-        'post_type'    => 'page',
-        'post_status'  => 'publish',
-        'post_title'   => wp_kses_post( wpsection()->get_settings_atts( 'page_title', '', $response_data ) ),
-        'post_content' => wp_kses_post( wpsection()->get_settings_atts( 'post_content', '', $response_data ) ),
-    ) );
+			if ( is_wp_error( $local_page_id ) ) {
+				wp_send_json_error( esc_html__( 'Something went wrong creating new page!', 'wpsection' ) );
+			}
 
-    if ( is_wp_error( $local_page_id ) ) {
-        wp_send_json_error( esc_html__( 'Error creating new page', 'wpsection' ) );
-    }
+			// Updating response data to new page
+			update_post_meta( $local_page_id, '_elementor_data', wpsection()->get_settings_atts( '_elementor_data', '', $response_data ) );
+			update_post_meta( $local_page_id, '_elementor_page_settings', wpsection()->get_settings_atts( '_elementor_page_settings', '', $response_data ) );
+			update_post_meta( $local_page_id, '_elementor_template_type', wpsection()->get_settings_atts( '_elementor_template_type', '', $response_data ) );
+			update_post_meta( $local_page_id, '_elementor_edit_mode', wpsection()->get_settings_atts( '_elementor_edit_mode', '', $response_data ) );
+			update_post_meta( $local_page_id, '_elementor_css', wpsection()->get_settings_atts( '_elementor_css', '', $response_data ) );
+			update_post_meta( $local_page_id, '_elementor_controls_usage', wpsection()->get_settings_atts( '_elementor_controls_usage', '', $response_data ) );
+			update_post_meta( $local_page_id, '_wp_page_template', wpsection()->get_settings_atts( '_wp_page_template', '', $response_data ) );
+			update_post_meta( $local_page_id, '_elementor_edit_mode', 'builder' );
+			update_post_meta( $local_page_id, '_elementor_edit_mode', 'builder' );
+			update_post_meta( $local_page_id, '_elementor_template_type', 'wp-page' );
+			update_post_meta( $local_page_id, '_elementor_version', ELEMENTOR_VERSION );
 
-    // Example updating post meta
-    update_post_meta( $local_page_id, '_elementor_data', wp_kses_post( wpsection()->get_settings_atts( '_elementor_data', '', $response_data ) ) );
+			wp_update_post( array(
+				'ID'           => $local_page_id,
+				'post_content' => wpsection()->get_settings_atts( 'post_content', '', $response_data ),
+			) );
 
-    // Example success response
-    wp_send_json_success(
-        sprintf(
-            '%s. <a href="%s" target="_blank">%s</a>',
-            esc_html__( 'Successfully imported', 'wpsection' ),
-            get_permalink( $local_page_id ),
-            esc_html__( 'View Page', 'wpsection' )
-        )
-    );
-}
+			Plugin::$instance->files_manager->clear_cache();
+
+			wp_send_json_success(
+				sprintf( '%s. <a href="%s" target="_blank">%s</a>',
+					esc_html__( 'Successfully imported', 'wpsection' ),
+					get_the_permalink( $local_page_id ),
+					esc_html__( 'View Page', 'wpsection' )
+				)
+			);
+		}
 
 
 		/**

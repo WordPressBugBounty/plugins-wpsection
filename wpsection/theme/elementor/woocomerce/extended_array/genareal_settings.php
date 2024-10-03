@@ -4,51 +4,48 @@
 
 
 
-//Cat Settings
-$this->add_control(
-    'filter_category',
-    array(
-        'label'     => esc_html__( 'Category Filter', 'wpsection' ),
-        'type'      => \Elementor\Controls_Manager::SELECT,
-        'default'   => 'no_cat',
-        'options'   => array(
-            'single_cat' => esc_html__( 'Single Category', 'wpsection' ),
-            'multi_cat'  => esc_html__( 'Multiple Categories', 'wpsection' ),
-            'no_cat'  => esc_html__( 'Not from Categories', 'wpsection' ),
-        ),
-    )
-);
+  $this->add_control(
+        'filter_category',
+        [
+            'label'     => esc_html__( 'Category Filter', 'wpsection' ),
+            'type'      => \Elementor\Controls_Manager::SELECT,
+            'default'   => 'no_cat',
+            'options'   => [
+                'single_cat' => esc_html__( 'Single Category', 'wpsection' ),
+                'multi_cat'  => esc_html__( 'Multiple Categories', 'wpsection' ),
+                'no_cat'     => esc_html__( 'Not from Categories', 'wpsection' ),
+            ],
+        ]
+    );
 
-$this->add_control(
-    'query_category',
-    array(
-        'label'       => __( 'Multiple Categories', 'wpsection' ),
-        'condition'   => array(
-            //'product_grid_type' => 'product_category',
-            'filter_category'   => 'multi_cat'
-        ),
-        'type'        => \Elementor\Controls_Manager::SELECT2,
-        'multiple'    => true,
-        'options'     => mr_shop_product_cat_list(), 
-        'default'     => ' ', 
-        'description' => esc_html__( 'All Categories are Selected. Click Cross to Select Again', 'wpsection' ),
-    )
-);
+    $this->add_control(
+        'query_category',
+        [
+            'label'       => __( 'Multiple Categories', 'wpsection' ),
+            'condition'   => [
+                'filter_category' => 'multi_cat'
+            ],
+            'type'        => \Elementor\Controls_Manager::SELECT2,
+            'multiple'    => true,
+            'options'     => nest_get_product_x_categories(), // Use slugs
+            'default'     => [],
+            'description' => esc_html__( 'Select categories.', 'wpsection' ),
+        ]
+    );
 
-$this->add_control(
-    'query_category_2',
-    array(
-        'label'       => __( 'Single Category', 'wpsection' ),
-        'condition'   => array(
-            //'product_grid_type' => 'product_category',
-            'filter_category'   => 'single_cat'
-        ),
-        'type'        => \Elementor\Controls_Manager::SELECT,
-        'options'     => mr_shop_product_cat_list(), 
-        'default'     => ' ',
-        'description' => esc_html__( 'Select a Category', 'wpsection' ),
-    )
-);
+    $this->add_control(
+        'query_category_2',
+        [
+            'label'       => __( 'Single Category', 'wpsection' ),
+            'condition'   => [
+                'filter_category' => 'single_cat'
+            ],
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'options'     => nest_get_product_x_categories(), // Use slugs
+            'default'     => '',
+            'description' => esc_html__( 'Select a category.', 'wpsection' ),
+        ]
+    );
 
 
 
@@ -126,7 +123,6 @@ $this->add_control(
         'description' => esc_html__( 'Select a Tag', 'wpsection' ),
     )
 );
-
 
 
 
@@ -261,7 +257,7 @@ $this->add_control(
                     'label' => __( 'Features Text Expand', 'wpsection' ),
                     'type'     => \Elementor\Controls_Manager::SWITCHER,
                      'return_value' => '1',
-                     'default'      => '1',
+                     'default'      => '0',
                     'placeholder' => __( 'Show Features Text Expand', 'wpsection' ),
                 )
             );
@@ -281,39 +277,41 @@ $this->add_control(
             )
         );
 
-  $this->add_control(
-            'expand_top_height',
-            [
-                'label' => esc_html__( 'Expand Top Height ', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-				 'condition'    => array( 'wps_columns_expand' => 'top' ),
-                'size_units' => [ 'px', '%' ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 300,
-                        'step' => 1,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 80,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .mr_shop .product-block_hr_001:hover .wps_hide_two_block .hider_area_2' => 'height: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .mr_shop .product-block_hr_001:hover .wps_hide_two_block .wps_product_details.product_bottom.mr_bottom' => 'margin-top: -{{SIZE}}{{UNIT}};',
-					
-					
-                ],
-            ]
-        );  
+$this->add_control(
+    'expand_top_height',
+    [
+        'label' => esc_html__( 'Expand Top Height ', 'wpsection' ),
+        'type' => \Elementor\Controls_Manager::SLIDER,
+        'condition' => [
+            'wps_columns_expand' => 'top',  // First condition
+            'show_features_expand' => '1',   // Second condition
+        ],
+        'size_units' => [ 'px', '%' ],
+        'range' => [
+            'px' => [
+                'min' => 0,
+                'max' => 300,
+                'step' => 1,
+            ],
+            '%' => [
+                'min' => 0,
+                'max' => 100,
+            ],
+        ],
+        'default' => [
+            'unit' => 'px',
+            'size' => 80,
+        ],
+        'selectors' => [
+            '{{WRAPPER}} .mr_shop .product-block_hr_001:hover .wps_hide_two_block .hider_area_2' => 'height: {{SIZE}}{{UNIT}};',
+            '{{WRAPPER}} .mr_shop .product-block_hr_001:hover .wps_hide_two_block .wps_product_details.product_bottom.mr_bottom' => 'margin-top: -{{SIZE}}{{UNIT}};',
+        ],
+    ]
+);
+ 
 
 
-/*
+
     $this->add_control(
                 'wps_block_pagination',
                 [
@@ -322,7 +320,7 @@ $this->add_control(
                     'default' => 'no',
                 ]
             );
-*/			
+			
     //End of Genaral Settings
 
 $this->end_controls_section();

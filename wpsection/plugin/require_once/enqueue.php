@@ -37,19 +37,12 @@ add_action( 'wp_enqueue_scripts', 'wpsection_enqueue_plugin_assets' );
 
 
 function enqueue_custom_footer_script() {
-wp_enqueue_script(
-    'wpsection-wps-swiper-slider', // Script handle
-    WPSECTION_PLUGIN_URL . 'plugin/assets/frontend/wps-swiper-slider.js', // Script source
-    array('jquery'), // Dependencies (if any)
-    '1.0.0', // Version number (change this to your actual version number)
-    true // Load in the footer
-);
-	
-	
+    wp_enqueue_script('wpsection-wps-swiper-slider', WPSECTION_PLUGIN_URL . 'plugin/assets/frontend/wps-swiper-slider.js', array('jquery'), '1.0.0', true); 
+    wp_enqueue_script('hover-slider', WPSECTION_PLUGIN_URL . 'plugin/assets/frontend/hover-slider.min.js', array('jquery'), '1.0.0', true); 
+    wp_enqueue_script('hover-script', WPSECTION_PLUGIN_URL . 'plugin/assets/frontend/hover_script.js', array('jquery'), '1.0.0', true); 
+    wp_enqueue_style('thumbhover', WPSECTION_PLUGIN_URL . 'plugin/assets/frontend/thumbhover.css', array(), '1.0.0'); 
 }
-
 add_action('wp_enqueue_scripts', 'enqueue_custom_footer_script');
-
 
 
 

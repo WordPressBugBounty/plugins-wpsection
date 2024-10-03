@@ -1287,7 +1287,16 @@ foreach ( $args as $key => $val ) {
 			global $pagenow;
 
 			
- parse_str(sanitize_text_field($_SERVER['QUERY_STRING']), $nav_url_args);
+ //parse_str(sanitize_text_field($_SERVER['QUERY_STRING']), $nav_url_args);
+			
+// Check if the query string is set before using it
+if ( isset( $_SERVER['QUERY_STRING'] ) && !empty( $_SERVER['QUERY_STRING'] ) ) {
+    parse_str( sanitize_text_field( wp_unslash( $_SERVER['QUERY_STRING'] ) ), $nav_url_args );
+} else {
+    $nav_url_args = array();
+}
+			
+			
 			?>
   
 
@@ -1564,7 +1573,10 @@ function get_current_page() {
         return $default_tab; // or handle default behavior
     }
 
-    return isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : $default_tab;
+    //return isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : $default_tab;
+// Unslash and sanitize the 'tab' parameter from the query string
+return isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : $default_tab;
+
 }
 
 

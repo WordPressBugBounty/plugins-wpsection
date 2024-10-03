@@ -33,7 +33,7 @@ class wpsection_wps_button_Widget extends \Elementor\Widget_Base
 
 	public function get_icon()
 	{
-		return 'eicon-button';
+		return 'eicon-call-to-action';
 	}
 
 	public function get_keywords()

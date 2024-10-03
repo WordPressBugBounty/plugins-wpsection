@@ -6,7 +6,6 @@
                                     <h4><?php esc_html_e( 'Our Works Demo', 'wpsection' ); ?></h4>
                                     <div class="text"><?php esc_html_e( 'Visit Our Site to get All the Demo Wodget and Templates', 'wpsection' ); ?></div>
                                     <div class="link-btn"><a href="<?php echo esc_attr(WPSECTION_PLUGIN_DEMO) ; ?>" class="btn-style-one" target="_blank"><span> <?php esc_html_e( 'All Demo', 'wpsection' ); ?></span></a></div>
-                                    
                                 </div>
                             </div>
 
