@@ -43,7 +43,7 @@ class wpsection_wpsection_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_slider_content',
 			[
-				'label' => esc_html__( 'Content', 'element-path' ),
+				'label' => esc_html__( 'Content', 'wpsection' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -157,7 +157,7 @@ echo '
 
 		$repeater->add_control(
 			'slider_title', [
-				'label'       => esc_html__( 'Title', 'element-path' ),
+				'label'       => esc_html__( 'Title', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Slider Title',
@@ -176,12 +176,12 @@ echo '
 $repeater->add_control( 
 			'slider_type',
 			[
-				'label' => esc_html__( 'Content type', 'element-path' ),
+				'label' => esc_html__( 'Content type', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'content',
 				'options' => [
-					'content'  => esc_html__( 'Slider Path', 'element-path' ),
-					//'template' => esc_html__( 'Elmntor Template', 'element-path' ),
+					'content'  => esc_html__( 'Slider Path', 'wpsection' ),
+					//'template' => esc_html__( 'Elmntor Template', 'wpsection' ),
 				],
 			]
 		);
@@ -194,7 +194,7 @@ $repeater->add_control(
 	$repeater->add_control(
 			'slider_path_image',
 			[
-				'label'   => esc_html__( 'Select BG Image', 'element-path' ),
+				'label'   => esc_html__( 'Select BG Image', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'    => Controls_Manager::MEDIA,
 				'dynamic' => [ 'active' => true ],
@@ -208,11 +208,11 @@ $repeater->add_control(
 
 	   $repeater->add_control(
 			'slider_path_title', [
-				'label'       => esc_html__( 'Slides Title', 'element-path' ),
+				'label'       => esc_html__( 'Slides Title', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => esc_html__( 'Slides Title is the Best way to get the Title in Slider', 'element-path' ),
+				'default' => esc_html__( 'Slides Title is the Best way to get the Title in Slider', 'wpsection' ),
 				'dynamic'     => [
 					'active' => true,
 				],
@@ -224,11 +224,11 @@ $repeater->add_control(
 
 	    $repeater->add_control(
 			'slider_path_subtitle', [
-				'label'       => esc_html__( 'Slides Sub Title', 'element-path' ),
+				'label'       => esc_html__( 'Slides Sub Title', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => esc_html__( 'We are Since 2005', 'element-path' ),
+				'default' => esc_html__( 'We are Since 2005', 'wpsection' ),
 				'dynamic'     => [
 					'active' => true,
 				],
@@ -239,11 +239,11 @@ $repeater->add_control(
 //Text Area		
 		 $repeater->add_control(
 			'slider_path_text', [
-				'label'       => esc_html__( 'Slides Text', 'element-path' ),
+				'label'       => esc_html__( 'Slides Text', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => esc_html__( 'Get all the Quality Service and Support form us anytime ', 'element-path' ),
+				'default' => esc_html__( 'Get all the Quality Service and Support form us anytime ', 'wpsection' ),
 				'dynamic'     => [
 					'active' => true,
 				],
@@ -255,11 +255,11 @@ $repeater->add_control(
 		
 		$repeater->add_control(
 			'slider_path_button', [
-				'label'       => esc_html__( 'Button', 'element-path' ),
+				'label'       => esc_html__( 'Button', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
-				'default' => esc_html__( 'Read More', 'element-path' ),
+				'default' => esc_html__( 'Read More', 'wpsection' ),
 				'dynamic'     => [
 					'active' => true,
 				],
@@ -268,7 +268,7 @@ $repeater->add_control(
 
 		$repeater->add_control(
 			'slider_path_link', [
-				'label'       => esc_html__( 'Link', 'element-path' ),
+				'label'       => esc_html__( 'Link', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::URL,
 			]
@@ -279,7 +279,7 @@ $repeater->add_control(
 		
 		$repeater->add_control(
 			'slider_path_button_2', [
-				'label'       => esc_html__( 'Button Two', 'element-path' ),
+				'label'       => esc_html__( 'Button Two', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
@@ -291,7 +291,7 @@ $repeater->add_control(
 
 		$repeater->add_control(
 			'slider_path_link_2', [
-				'label'       => esc_html__( 'Link ', 'element-path' ),
+				'label'       => esc_html__( 'Link ', 'wpsection' ),
 				'condition'    => array( 'slider_type' => 'content' ),
 				'type'        => Controls_Manager::URL,
 			]
@@ -981,7 +981,7 @@ $repeater->add_control(
 		$this->add_control(
 			'repeat',
 			[
-				'label'       => esc_html__( 'Sliders', 'element-path' ),
+				'label'       => esc_html__( 'Sliders', 'wpsection' ),
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'show_label'  => false,
 				'type'        => Controls_Manager::REPEATER,
@@ -992,7 +992,7 @@ $repeater->add_control(
 				],
 				'default'     => [
 					[
-						'title' => esc_html__( 'Slider Path Slide', 'element-path' ),
+						'title' => esc_html__( 'Slider Path Slide', 'wpsection' ),
 					],
 				],
 				'fields'      => $repeater->get_controls(),
@@ -1012,7 +1012,7 @@ $this->start_controls_section(
 			'slider_path_basic_control',
 			
 			array(
-				'label' => __( 'Slider Basic Settings', 'ecolab' ),
+				'label' => __( 'Slider Basic Settings', 'wpsection' ),
 				
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
@@ -1025,16 +1025,16 @@ $this->start_controls_section(
 $this->add_control(
 			'slider_path_basic_show',
 			array(
-				'label' => esc_html__( 'Show Slider', 'ecolab' ),
+				'label' => esc_html__( 'Show Slider', 'wpsection' ),
 					//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1048,19 +1048,19 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_alingment',
 			array(
-				'label' => esc_html__( 'Alignment', 'ecolab' ),
+				'label' => esc_html__( 'Alignment', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ecolab' ),
+						'title' => esc_html__( 'Left', 'wpsection' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ecolab' ),
+						'title' => esc_html__( 'Center', 'wpsection' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ecolab' ),
+						'title' => esc_html__( 'Right', 'wpsection' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -1078,19 +1078,19 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_xx_alingment',
 			array(
-				'label' => esc_html__( 'Button Alignment', 'ecolab' ),
+				'label' => esc_html__( 'Button Alignment', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'flex-start' => [
-						'title' => esc_html__( 'Left', 'ecolab' ),
+						'title' => esc_html__( 'Left', 'wpsection' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ecolab' ),
+						'title' => esc_html__( 'Center', 'wpsection' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'end' => [
-						'title' => esc_html__( 'Right', 'ecolab' ),
+						'title' => esc_html__( 'Right', 'wpsection' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -1107,7 +1107,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_slider_width',
 			[
-				'label' => esc_html__( 'Block Width', 'ecolab' ),
+				'label' => esc_html__( 'Block Width', 'wpsection' ),
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
@@ -1134,7 +1134,7 @@ $this->add_control(
 		$this->add_control(
 			'slider_path_slider_height',
 			[
-				'label' => esc_html__( 'Block Height', 'ecolab' ),
+				'label' => esc_html__( 'Block Height', 'wpsection' ),
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
@@ -1162,7 +1162,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_container_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1179,7 +1179,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_container_margin',
 			array(
-				'label'     => __( 'Margin', 'ecolab' ),
+				'label'     => __( 'Margin', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1197,7 +1197,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_container_bgcolor',
 			array(
-				'label'     => __( 'Slider Background Color', 'ecolab' ),
+				'label'     => __( 'Slider Background Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1208,7 +1208,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_slider_before_color',
 			array(
-				'label'     => __( 'Slider Before Color', 'ecolab' ),
+				'label'     => __( 'Slider Before Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1220,7 +1220,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_slider_after_color',
 			array(
-				'label'     => __( 'Slider After Color', 'ecolab' ),
+				'label'     => __( 'Slider After Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1234,7 +1234,7 @@ $this->add_group_control(
 			[
 				'name' => 'slider_path_slider_border',
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
-				'label' => esc_html__( 'Box Border', 'ecolab' ),
+				'label' => esc_html__( 'Box Border', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .slider_path_slide',
 			]
 		);
@@ -1242,7 +1242,7 @@ $this->add_group_control(
 		$this->add_control(
 			'slider_path_slider_border_radius',
 			array(
-				'label' => esc_html__( 'Border Radius', 'ecolab' ),
+				'label' => esc_html__( 'Border Radius', 'wpsection' ),
 				'condition'    => array( 'slider_path_basic_show' => 'show' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'condition'    => array( 'show_button' => 'show' ),
@@ -1271,33 +1271,33 @@ $this->add_group_control(
 
  $this->add_control( 'slider_path_background_size',
 		            [
-		                'label' => esc_html__( 'Background Size', 'rashid'),
+		                'label' => esc_html__( 'Background Size', 'wpsection'),
 		                'type' => \Elementor\Controls_Manager::SELECT,
 		                'default' => '',
 		                'options' => [
-		                	'' => esc_html__( 'Default', 'rashid' ),
-		                    'auto' => esc_html__( 'Auto', 'rashid' ),
-		                    'cover' => esc_html__( 'Cover', 'rashid' ),
-		                    'contain' => esc_html__( 'Contain', 'rashid' ),
+		                	'' => esc_html__( 'Default', 'wpsection' ),
+		                    'auto' => esc_html__( 'Auto', 'wpsection' ),
+		                    'cover' => esc_html__( 'Cover', 'wpsection' ),
+		                    'contain' => esc_html__( 'Contain', 'wpsection' ),
 		                ],
 		            ]
 		        );
 $this->add_control( 'slider_path_background_position',
 		            [
-		                'label' => esc_html__( 'Background Position', 'rashid' ),
+		                'label' => esc_html__( 'Background Position', 'wpsection' ),
 		                'type' => \Elementor\Controls_Manager::SELECT,
 		                'default' => '',
 		                'options' => [
-		                	'' => esc_html__( 'Default', 'rashid' ),
-		                	'center center' => esc_html__( 'Center Center', 'rashid' ),
-		                	'center left' => esc_html__( 'Center Left', 'rashid' ),
-		                	'center right' => esc_html__( 'Center Right', 'rashid' ),
-		                	'top center' => esc_html__( 'Top Center', 'rashid'),
-		                	'top left' => esc_html__( 'Top Left', 'rashid' ),
-		                	'top right' => esc_html__( 'Top Right', 'rashid' ),
-		                	'bottom center' => esc_html__( 'Bottom Center', 'rashid' ),
-		                	'bottom left' => esc_html__( 'Bottom Left', 'rashid' ),
-		                	'bottom right' => esc_html__( 'Bottom Right', 'rashid' ),
+		                	'' => esc_html__( 'Default', 'wpsection' ),
+		                	'center center' => esc_html__( 'Center Center', 'wpsection' ),
+		                	'center left' => esc_html__( 'Center Left', 'wpsection' ),
+		                	'center right' => esc_html__( 'Center Right', 'wpsection' ),
+		                	'top center' => esc_html__( 'Top Center', 'wpsection'),
+		                	'top left' => esc_html__( 'Top Left', 'wpsection' ),
+		                	'top right' => esc_html__( 'Top Right', 'wpsection' ),
+		                	'bottom center' => esc_html__( 'Bottom Center', 'wpsection' ),
+		                	'bottom left' => esc_html__( 'Bottom Left', 'wpsection' ),
+		                	'bottom right' => esc_html__( 'Bottom Right', 'wpsection' ),
 		                ],
 		            ]
 		        );
@@ -1307,14 +1307,14 @@ $this->add_control( 'slider_path_background_position',
 $this->add_control(
 		'slider_path_slider_animation',
 		[
-			'label'   => esc_html__( 'Slider Image Animation ', 'rashid' ),
+			'label'   => esc_html__( 'Slider Image Animation ', 'wpsection' ),
 			'condition'    => array( 'slider_path_basic_show' => 'show' ),
 			'type'    => Controls_Manager::SELECT,
 			'default' => '1',
 			'options' => array(
-				'slider_path_animation_slider_style_1'   => esc_html__( 'Animations Style 01', 'rashid' ),
-				'slider_path_animation_slider_style_2'   => esc_html__( 'Animations Style 02', 'rashid' ),
-				'slider_path_animation_slider_style_3'   => esc_html__( 'Animations Style 03', 'rashid' ),
+				'slider_path_animation_slider_style_1'   => esc_html__( 'Animations Style 01', 'wpsection' ),
+				'slider_path_animation_slider_style_2'   => esc_html__( 'Animations Style 02', 'wpsection' ),
+				'slider_path_animation_slider_style_3'   => esc_html__( 'Animations Style 03', 'wpsection' ),
 			
 			),
 		]
@@ -1323,15 +1323,15 @@ $this->add_control(
 $this->add_control(
 			'slider_path_zoom_show',
 			array(
-				'label' => esc_html__( 'Show Slider Zoom Animation', 'ecolab' ),
+				'label' => esc_html__( 'Show Slider Zoom Animation', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1352,7 +1352,7 @@ $this->add_control(
 		$this->start_controls_section(
 			'slider_path_title_settings',
 			array(
-				'label' => __( 'Title Setting', 'ecolab' ),
+				'label' => __( 'Title Setting', 'wpsection' ),
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			)
@@ -1362,15 +1362,15 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_show_title',
 			array(
-				'label' => esc_html__( 'Show Title', 'ecolabe' ),
+				'label' => esc_html__( 'Show Title', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1387,7 +1387,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_title_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_title' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1404,14 +1404,14 @@ $this->add_control(
 			array(
 				'name'     => 'slider_path_title_typography',
 				'condition'    => array( 'slider_path_show_title' => 'show' ),
-				'label'    => __( 'Typography', 'ecolab' ),
+				'label'    => __( 'Typography', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .slider_path_title ',
 			)
 		);
 		$this->add_control(
 			'slider_path_title_color',
 			array(
-				'label'     => __( 'Color', 'ecolab' ),
+				'label'     => __( 'Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_title' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default' => '#fff',
@@ -1425,14 +1425,14 @@ $this->add_control(
 	$this->add_control(
 		'slider_path_animation_title',
 		[
-			'label'   => esc_html__( 'Slider Title Animatin Style ', 'rashid' ),
+			'label'   => esc_html__( 'Slider Title Animatin Style ', 'wpsection' ),
 			'condition'    => array( 'slider_path_show_title' => 'show' ),
 			'type'    => Controls_Manager::SELECT,
 			'default' => '1',
 			'options' => array(
-				'slider_path_animation_title_style_1'   => esc_html__( 'Animations Style 01', 'rashid' ),
-				'slider_path_animation_title_style_2'   => esc_html__( 'Animations Style 02', 'rashid' ),
-				'slider_path_animation_title_style_3'   => esc_html__( 'Animations Style 03', 'rashid' ),
+				'slider_path_animation_title_style_1'   => esc_html__( 'Animations Style 01', 'wpsection' ),
+				'slider_path_animation_title_style_2'   => esc_html__( 'Animations Style 02', 'wpsection' ),
+				'slider_path_animation_title_style_3'   => esc_html__( 'Animations Style 03', 'wpsection' ),
 			
 			),
 		]
@@ -1450,7 +1450,7 @@ $this->add_control(
 		$this->start_controls_section(
 			'slider_path_subtitle_settings',
 			array(
-				'label' => __( 'Sub Title Setting', 'ecolab' ),
+				'label' => __( 'Sub Title Setting', 'wpsection' ),
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			)
@@ -1460,15 +1460,15 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_show_subtitle',
 			array(
-				'label' => esc_html__( 'Show Sub Title', 'ecolabe' ),
+				'label' => esc_html__( 'Show Sub Title', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1484,7 +1484,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_subtitle_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1501,14 +1501,14 @@ $this->add_control(
 			array(
 				'name'     => 'slider_path_subtitle_typography',
 				'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
-				'label'    => __( 'Typography', 'ecolab' ),
+				'label'    => __( 'Typography', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .slider_path_subtitle ',
 			)
 		);
 		$this->add_control(
 			'slider_path_subtitle_color',
 			array(
-				'label'     => __( 'Color', 'ecolab' ),
+				'label'     => __( 'Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default' => '#fff',
@@ -1522,14 +1522,14 @@ $this->add_control(
 	$this->add_control(
 		'slider_path_animation_subtitle',
 		[
-			'label'   => esc_html__( 'Slider Animatin Subtitle ', 'rashid' ),
+			'label'   => esc_html__( 'Slider Animatin Subtitle ', 'wpsection' ),
 			'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
 			'type'    => Controls_Manager::SELECT,
 			'default' => '1',
 			'options' => array(
-				'slider_path_animation_subtitle_style_1'   => esc_html__( 'Animations Style 01', 'rashid' ),
-				'slider_path_animation_subtitle_style_2'   => esc_html__( 'Animations Style 02', 'rashid' ),
-				'slider_path_animation_subtitle_style_3'   => esc_html__( 'Animations Style 03', 'rashid' ),
+				'slider_path_animation_subtitle_style_1'   => esc_html__( 'Animations Style 01', 'wpsection' ),
+				'slider_path_animation_subtitle_style_2'   => esc_html__( 'Animations Style 02', 'wpsection' ),
+				'slider_path_animation_subtitle_style_3'   => esc_html__( 'Animations Style 03', 'wpsection' ),
 			
 			),
 		]
@@ -1543,7 +1543,7 @@ $this->add_control(
 		$this->start_controls_section(
 			'slider_path_text_settings',
 			array(
-				'label' => __( 'Text Setting', 'ecolab' ),
+				'label' => __( 'Text Setting', 'wpsection' ),
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			)
@@ -1553,15 +1553,15 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_show_text',
 			array(
-				'label' => esc_html__( 'Show Text', 'ecolabe' ),
+				'label' => esc_html__( 'Show Text', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1577,7 +1577,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_text_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_text' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1594,14 +1594,14 @@ $this->add_control(
 			array(
 				'name'     => 'slider_path_text_typography',
 				'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
-				'label'    => __( 'Typography', 'ecolab' ),
+				'label'    => __( 'Typography', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .slider_path_text ',
 			)
 		);
 		$this->add_control(
 			'slider_path_text_color',
 			array(
-				'label'     => __( 'Color', 'ecolab' ),
+				'label'     => __( 'Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default' => '#fff',
@@ -1615,14 +1615,14 @@ $this->add_control(
 	$this->add_control(
 		'slider_path_animation_text',
 		[
-			'label'   => esc_html__( 'Slider Animatin Text ', 'rashid' ),
+			'label'   => esc_html__( 'Slider Animatin Text ', 'wpsection' ),
 			'condition'    => array( 'slider_path_show_subtitle' => 'show' ),
 			'type'    => Controls_Manager::SELECT,
 			'default' => '1',
 			'options' => array(
-				'slider_path_animation_text_style_1'   => esc_html__( 'Animations Style 01', 'rashid' ),
-				'slider_path_animation_text_style_2'   => esc_html__( 'Animations Style 02', 'rashid' ),
-				'slider_path_animation_text_style_3'   => esc_html__( 'Animations Style 03', 'rashid' ),
+				'slider_path_animation_text_style_1'   => esc_html__( 'Animations Style 01', 'wpsection' ),
+				'slider_path_animation_text_style_2'   => esc_html__( 'Animations Style 02', 'wpsection' ),
+				'slider_path_animation_text_style_3'   => esc_html__( 'Animations Style 03', 'wpsection' ),
 			
 			),
 		]
@@ -1635,7 +1635,7 @@ $this->add_control(
 $this->start_controls_section(
 			'slider_path_button_control',
 			array(
-				'label' => __( 'Button Settings', 'ecolab' ),
+				'label' => __( 'Button Settings', 'wpsection' ),
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			)
@@ -1644,15 +1644,15 @@ $this->start_controls_section(
 $this->add_control(
 			'slider_path_show_button',
 			array(
-				'label' => esc_html__( 'Show Button', 'ecolab' ),
+				'label' => esc_html__( 'Show Button', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1669,7 +1669,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_color',
 			array(
-				'label'     => __( 'Button Color', 'ecolab' ),
+				'label'     => __( 'Button Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1682,7 +1682,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_color_hover',
 			array(
-				'label'     => __( 'Button Color Hover', 'ecolab' ),
+				'label'     => __( 'Button Color Hover', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1694,7 +1694,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_bg_color',
 			array(
-				'label'     => __( 'Background Color', 'ecolab' ),
+				'label'     => __( 'Background Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1705,7 +1705,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_hover_color',
 			array(
-				'label'     => __( 'Background Hover Color', 'ecolab' ),
+				'label'     => __( 'Background Hover Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1717,7 +1717,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_button_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1731,7 +1731,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_button_margin',
 			array(
-				'label'     => __( 'Margin', 'ecolab' ),
+				'label'     => __( 'Margin', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1746,7 +1746,7 @@ $this->add_control(
 			array(
 				'name'     => 'slider_path_button_typography',
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
-				'label'    => __( 'Typography', 'ecolab' ),
+				'label'    => __( 'Typography', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .slider_path_button',
 			)
 		);
@@ -1763,7 +1763,7 @@ $this->add_control(
 		$this->add_control(
 			'slider_path_border_radius',
 			array(
-				'label'     => __( 'Border Radius', 'ecolab' ),
+				'label'     => __( 'Border Radius', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1783,7 +1783,7 @@ $this->add_control(
 $this->start_controls_section(
 			'slider_path_button_2_control',
 			array(
-				'label' => __( 'Button 2 Settings', 'ecolab' ),
+				'label' => __( 'Button 2 Settings', 'wpsection' ),
 				//'condition'    => array( 'slider_style' => 'plugin_slides' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			)
@@ -1792,15 +1792,15 @@ $this->start_controls_section(
 $this->add_control(
 			'slider_path_show_button_2',
 			array(
-				'label' => esc_html__( 'Show Button', 'ecolab' ),
+				'label' => esc_html__( 'Show Button', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__( 'Show', 'ecolab' ),	
+						'show' => esc_html__( 'Show', 'wpsection' ),	
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__( 'Hide', 'ecolab' ),
+						'none' => esc_html__( 'Hide', 'wpsection' ),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -1816,7 +1816,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_2_color',
 			array(
-				'label'     => __( 'Button Color', 'ecolab' ),
+				'label'     => __( 'Button Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1829,7 +1829,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_2_color_hover',
 			array(
-				'label'     => __( 'Button Color Hover', 'ecolab' ),
+				'label'     => __( 'Button Color Hover', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1843,7 +1843,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_2_bg_color',
 			array(
-				'label'     => __( 'Background Color', 'ecolab' ),
+				'label'     => __( 'Background Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1854,7 +1854,7 @@ $this->add_control(
 $this->add_control(
 			'slider_path_button_2_hover_color',
 			array(
-				'label'     => __( 'Hover Color', 'ecolab' ),
+				'label'     => __( 'Hover Color', 'wpsection' ),
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1866,7 +1866,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_button_2_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1880,7 +1880,7 @@ $this->add_control(
 	$this->add_control(
 			'slider_path_button_2_margin',
 			array(
-				'label'     => __( 'Margin', 'ecolab' ),
+				'label'     => __( 'Margin', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -1895,7 +1895,7 @@ $this->add_control(
 			array(
 				'name'     => 'slider_path_button_2_typography',
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
-				'label'    => __( 'Typography', 'ecolab' ),
+				'label'    => __( 'Typography', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .slider_path_button_2',
 			)
 		);
@@ -1912,7 +1912,7 @@ $this->add_control(
 		$this->add_control(
 			'slider_path_border_2_radius',
 			array(
-				'label'     => __( 'Border Radius', 'ecolab' ),
+				'label'     => __( 'Border Radius', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'slider_path_show_button_2' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],

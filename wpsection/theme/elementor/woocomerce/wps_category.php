@@ -90,12 +90,12 @@ public function get_name() {
 	$this->add_control(
 			'item_title',
 			[
-				'label'       => __('Items', 'rashid'),
+				'label'       => __('Items', 'wpsection'),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __('Items', 'rashid'),
+				'placeholder' => __('Items', 'wpsection'),
 			]
 		);
 

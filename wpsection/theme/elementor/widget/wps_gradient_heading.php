@@ -54,12 +54,12 @@ public function get_name() {
 		$this->add_control(
 			'title',
 			[
-				'label'       => __( 'Title', 'rashid' ),
+				'label'       => __( 'Title', 'wpsection' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter your title', 'rashid' ),
+				'placeholder' => __( 'Enter your title', 'wpsection' ),
 				'default' => 'Unique Business Ideas. ',
 			]
 		);

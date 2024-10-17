@@ -1769,12 +1769,7 @@ section:hover {
 .wps_shop_view .wrapper.list .shop-list-content{
   display: block;
 }
-.wps_shop_view .wrapper.list .shop-grid-content{
-  display: none
-}
-.wps_shop_view .wrapper.grid .shop-list-content{
-  display: none;
-}
+
 .wps_shop_view .wrapper.grid .shop-grid-content{
   display: block
 }
@@ -2272,4 +2267,14 @@ header.woocommerce-Address-title.title {
 }
  .woocommerce .woocommerce-form-login .woocommerce-form-login__rememberme .woocommerce-form__input-checkbox{
     margin-right: 5px;
+}
+
+
+
+
+.list .wps_grid{
+  display: none;
+}
+.grid .wps_list{
+  display: none;
 }

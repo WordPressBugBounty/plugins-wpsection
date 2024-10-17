@@ -94,7 +94,7 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'image',
 			[
-				'label' => __('Image', 'rashid'),
+				'label' => __('Image', 'wpsection'),
 				'conditions' => array(
 					'relation' => 'or',
 					'terms'    => array(
@@ -127,24 +127,24 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'title',
 			[
-				'label'       => __('Name', 'rashid'),
+				'label'       => __('Name', 'wpsection'),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __('Enter your title', 'rashid'),
+				'placeholder' => __('Enter your title', 'wpsection'),
 				'default' => 'Esther Howard',
 			]
 		);
 		$this->add_control(
 			'subtitle',
 			[
-				'label'       => __('Designation', 'rashid'),
+				'label'       => __('Designation', 'wpsection'),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __('Enter your Sub title', 'rashid'),
+				'placeholder' => __('Enter your Sub title', 'wpsection'),
 				'default' => 'Manager',
 			]
 		);
@@ -340,7 +340,7 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 					'block_icons' =>
 					[
 						'name' => 'block_icons',
-						'label' => esc_html__('Enter The icons', 'rashid'),
+						'label' => esc_html__('Enter The icons', 'wpsection'),
 						'type' => Controls_Manager::ICONS,
 						'default' => [
                             'value' => 'fas fa-facebook-f',
@@ -350,9 +350,9 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 					'block_btnlink' =>
 					[
 						'name' => 'block_btnlink',
-						'label' => __('Button Url', 'rashid'),
+						'label' => __('Button Url', 'wpsection'),
 						'type' => Controls_Manager::URL,
-						'placeholder' => __('https://your-link.com', 'rashid'),
+						'placeholder' => __('https://your-link.com', 'wpsection'),
 						'show_external' => true,
 						'default' => [
 							'url' => '',
@@ -378,7 +378,7 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __('primary_color', 'rashid'),
+				'label' => __('primary_color', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .wpsection-team-5 .wpsection-team-img:after, {{WRAPPER}} .wpsection-team-5 .wpsection-team-social > li > a,
@@ -399,7 +399,7 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'secondary_color',
 			[
-				'label' => __('Color', 'rashid'),
+				'label' => __('Color', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .title' => 'color: {{VALUE}}',
@@ -409,7 +409,7 @@ class wpsection_wps_team_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'divider_color',
 			[
-				'label' => __('Color', 'rashid'),
+				'label' => __('Color', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 
 				'selectors' => [

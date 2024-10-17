@@ -75,7 +75,7 @@ class wpsection_wps_lightbox_Widget extends \Elementor\Widget_Base {
   $this->add_control(
     'wps_lightbox_icon',
     [
-        'label' => esc_html__('Link Icon', 'rashid'),
+        'label' => esc_html__('Link Icon', 'wpsection'),
         'type' => Controls_Manager::ICONS,
         'default' => [
             'value' => 'eicon-editor-external-link', // Set your default icon class here
@@ -112,7 +112,7 @@ $this->start_controls_section(
     $this->add_control(
             'wps_thumbnail_bg',
             [
-                'label' => esc_html__('Background Color', 'your-text-domain'),
+                'label' => esc_html__('Background Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_video_popup .video-popup-box' => 'background-color: {{VALUE}} !important;',
@@ -124,7 +124,7 @@ $this->start_controls_section(
 	    $this->add_control(
             'wps_thumbnail_hover_bg',
             [
-                'label' => esc_html__('Background Hover Color', 'your-text-domain'),
+                'label' => esc_html__('Background Hover Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_video_popup .video-popup-box:before' => 'background: {{VALUE}} !important;',
@@ -231,7 +231,7 @@ $this->start_controls_section(
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__('Icon Color', 'your-text-domain'),
+                'label' => esc_html__('Icon Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_video_popup .icon-box i' => 'color: {{VALUE}} !important;',
@@ -242,7 +242,7 @@ $this->start_controls_section(
         $this->add_control(
             'icon_color_hover',
             [
-                'label' => esc_html__('Icon Color Hover', 'your-text-domain'),
+                'label' => esc_html__('Icon Color Hover', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_video_popup .icon-box i:hover' => 'color: {{VALUE}} !important;',
@@ -253,7 +253,7 @@ $this->start_controls_section(
         $this->add_control(
             'button_background_color',
             [
-                'label' => esc_html__(' Background Color', 'your-text-domain'),
+                'label' => esc_html__(' Background Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_video_popup .icon-box' => 'background-color: {{VALUE}} !important;',
@@ -264,7 +264,7 @@ $this->start_controls_section(
         $this->add_control(
             'wps_project_icon_bg_hover',
             [
-                'label' => esc_html__('Background Hover Color', 'your-text-domain'),
+                'label' => esc_html__('Background Hover Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_video_popup .icon-box:hover' => 'background-color: {{VALUE}} !important;',

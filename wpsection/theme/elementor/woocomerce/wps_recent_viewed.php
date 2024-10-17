@@ -33,7 +33,7 @@ class Wpsection_Wps_Recent_Viewed extends Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __( 'Content', 'elementor' ),
+                'label' => __( 'Content', 'wpsection' ),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -41,9 +41,9 @@ class Wpsection_Wps_Recent_Viewed extends Widget_Base {
         $this->add_control(
             'recent_title',
             [
-                'label' => __( 'Title', 'elementor' ),
+                'label' => __( 'Title', 'wpsection' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Recently Viewed Products', 'elementor' ),
+                'default' => __( 'Recently Viewed Products', 'wpsection' ),
             ]
         );
 

@@ -50,12 +50,12 @@ public function get_name() {
 		$this->add_control(
 			'sec_class',
 			[
-				'label'       => __( 'Section Class', 'rashid' ),
+				'label'       => __( 'Section Class', 'wpsection' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter Section Class', 'rashid' ),
+				'placeholder' => __( 'Enter Section Class', 'wpsection' ),
 			]
 		);
 	
@@ -63,7 +63,7 @@ public function get_name() {
 		
 	$this->add_control(
 			'popup_title', [
-				'label'       => esc_html__( 'Popup Buton', 'element-path' ),
+				'label'       => esc_html__( 'Popup Buton', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Popup Button',
@@ -75,7 +75,7 @@ public function get_name() {
 		
 	$this->add_control(
 			'popup_shortocde', [
-				'label'       => esc_html__( 'Popup Shortcode', 'element-path' ),
+				'label'       => esc_html__( 'Popup Shortcode', 'wpsection' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => 'Popup Shortcode',
@@ -283,7 +283,7 @@ $this->add_control( 'popup_button_width',
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'popup_shadow',
-				'label' => esc_html__( 'Button Shadow', 'ecolab' ),
+				'label' => esc_html__( 'Button Shadow', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .defult_popup .popup_button',
 			]
 		);

@@ -59,7 +59,7 @@ class wpsection_wps_button_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'wps_button',
 			[
-				'label'       => esc_html__('Buton Text', 'element-path'),
+				'label'       => esc_html__('Buton Text', 'wpsection'),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Button Text',
@@ -72,7 +72,7 @@ class wpsection_wps_button_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'wps_button_link',
 			[
-				'label'       => esc_html__('Buton Link', 'element-path'),
+				'label'       => esc_html__('Buton Link', 'wpsection'),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => ' Button Link',

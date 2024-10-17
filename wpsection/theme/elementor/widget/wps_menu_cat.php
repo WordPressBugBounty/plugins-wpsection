@@ -44,7 +44,7 @@ class wpsection_wps_menu_cat_Widget extends \Elementor\Widget_Base {
 
 	$this->add_control(
 			'cat_menu_title', [
-				'label'       => esc_html__( 'Title', 'element-path' ),
+				'label'       => esc_html__( 'Title', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'All Categories',
@@ -102,9 +102,9 @@ class wpsection_wps_menu_cat_Widget extends \Elementor\Widget_Base {
  $repeater->add_control(
             'cat_link',
             [
-              'label' => __( 'Button Url', 'rashid' ),
+              'label' => __( 'Button Url', 'wpsection' ),
               'type' => Controls_Manager::URL,
-              'placeholder' => __( 'https://your-link.com', 'rashid' ),
+              'placeholder' => __( 'https://your-link.com', 'wpsection' ),
               'show_external' => true,
               'default' => [
                 'url' => '',
@@ -223,7 +223,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_cat_menu_block_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 		
@@ -471,7 +471,7 @@ $this->start_controls_section(
     $this->add_control(
             'ul_wps_cat_menu_second_block_padding',
             array(
-                'label'     => __( 'Padding', 'ecolab' ),
+                'label'     => __( 'Padding', 'wpsection' ),
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
         
@@ -613,7 +613,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_cat_menu_second_block_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 		

@@ -69,6 +69,8 @@ if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_vi
 
         <?php if ($thumbnail_style === 'style-2') : ?>
          
+<?php if ( !empty( esc_url( wp_get_attachment_url( $meta_image['id'] ) ) ) ) : ?>	
+		
             <div class="mr_product_thumb product_image">
                 <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
                     <a href="<?php echo esc_url(get_permalink(get_the_ID())); ?>">
@@ -76,8 +78,25 @@ if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_vi
                     </a>
                 </figure>
             </div>
+		
+		
+		
+		   <?php else : ?>
+                    <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                        <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                            <?php echo get_the_post_thumbnail(); ?>
+                        </figure>
+                    </div>
+		
+            <?php endif; ?>
 
-        <?php elseif ($thumbnail_style === 'style-3') : ?>
+<?php elseif ($thumbnail_style === 'style-3') : ?>
+		
+		
+		
+<?php if ( !empty( esc_url( wp_get_attachment_url( $meta_image_two['id'] ) ) ) ) : ?>
+	
+		
             <!-- Style 3: Flip Box -->
             <div class="flip-box mr_product_thumb product_image">
                 <div class="flip-box-inner" style="<?php echo esc_attr($inlineStyle); ?>">
@@ -89,33 +108,86 @@ if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_vi
                     </div>
                 </div>
             </div>
-
-        <?php elseif ($thumbnail_style === 'style-4') : ?>
-            <!-- Style 4: Slider (Swiper) -->
-            <div class="mr_product_thumb product_image">
-                <div class="swiper mySwiper" style="<?php echo esc_attr($inlineStyle); ?>">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($repeater_images['select_image_media'] as $image_set) : ?>
-                            <?php
-                            $image_id = isset($image_set['id']) ? $image_set['id'] : '';
-                            $image_url = isset($image_set['url']) ? $image_set['url'] : '';
-                            if (!empty($image_id) && !empty($image_url)) :
-                            ?>
-                                <div class="swiper-slide">
-                                    <img src="<?php echo esc_url($image_url); ?>" alt="">
-                                </div>
-                        <?php endif;
-                        endforeach; ?>
+		
+		
+		
+   <?php else : ?>
+                    <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                        <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                            <?php echo get_the_post_thumbnail(); ?>
+                        </figure>
                     </div>
-                    <?php if (esc_attr($settings['show_block_column_slide_nav'], true)) : ?>
-                        <div class="swiper-pagination"></div>
-                    <?php endif; ?>
-                </div>
-            </div>
+		
+            <?php endif; ?>
+		
+		
+		
+		
+	 <!-- Slide Number Style -->
+		  <?php elseif ($thumbnail_style === 'style-4') : ?>
+
+		
+           <!-- Slide Number Style -->
+            <?php if (!empty($repeater_images['select_image_media']) && is_array($repeater_images['select_image_media'])) : ?>
+               
+		       <?php
+                $has_images = false;
+
+                foreach ($repeater_images['select_image_media'] as $image_set) {
+                    $image_id = isset($image_set['id']) ? $image_set['id'] : '';
+                    $image_url = isset($image_set['url']) ? $image_set['url'] : '';
+
+                    if (!empty($image_id) && !empty($image_url)) {
+                        $has_images = true;
+                        break; // Found at least one valid image, no need to continue checking
+                    }
+                }
+                ?>
+
+                <?php if ($has_images) : ?>
+                    <div class="mr_product_thumb product_image">
+                        <div class="swiper mySwiper" style="<?php echo esc_attr($inlineStyle); ?>">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($repeater_images['select_image_media'] as $image_set) : ?>
+                                    <?php
+                                    $image_id = isset($image_set['id']) ? $image_set['id'] : '';
+                                    $image_url = isset($image_set['url']) ? $image_set['url'] : '';
+
+                                    if (!empty($image_id) && !empty($image_url)) :
+                                    ?>
+                                        <div class="swiper-slide">
+                                            <?php echo wp_get_attachment_image($image_id, 'full', false, array('alt' => '')); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                            <?php if (esc_attr($settings['show_block_column_slide_nav'], true)) : ?>
+                                <div class="swiper-pagination"></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>  
+		
+		
+                <?php endif; ?>
+
+        
+		
+		    <?php else : ?>
+                    <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                        <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                            <?php echo get_the_post_thumbnail(); ?>
+                        </figure>
+                    </div>
+		
+		
+		 <?php endif; ?>		
 
 
 		
         <?php elseif ($thumbnail_style === 'style-5') : ?>
+		
+  <?php if (!empty($repeater_images['select_image_media']) && is_array($repeater_images['select_image_media'])) : ?>
+		
             <!-- Style 5: Hover Slide -->
             <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
                 <div class="product-inner">
@@ -151,6 +223,18 @@ if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_vi
                     </div>
                 </div>
             </div>
+		
+		   <?php else : ?>
+                    <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
+                        <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
+                            <?php echo get_the_post_thumbnail(); ?>
+                        </figure>
+                    </div>
+		
+            <?php endif; ?>
+		
+		
+		
 
         <?php else : ?>
             <!-- Default Thumbnail -->
@@ -249,6 +333,7 @@ if ('thumbnai_elementor_optins' === sanitize_text_field($settings['show_thumbnai
 		
 		// This is Elemnt Thumb Slide
 		if ('slide_number' === sanitize_text_field($settings['wps_thumbnial_select'])) : ?>
+		
             <!-- Slide Number Style -->
             <?php if (!empty($repeater_images['select_image_media']) && is_array($repeater_images['select_image_media'])) : ?>
                
@@ -288,6 +373,8 @@ if ('thumbnai_elementor_optins' === sanitize_text_field($settings['show_thumbnai
                             <?php endif; ?>
                         </div>
                     </div>  
+		
+		
                 <?php endif; ?>
 
         

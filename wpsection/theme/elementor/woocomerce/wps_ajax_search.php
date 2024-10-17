@@ -51,7 +51,7 @@ class wpsection_wps_ajax_search_Widget extends \Elementor\Widget_Base {
 	
 	$this->add_control(
 			'wps_ajax_shortcode_title', [
-				'label'       => esc_html__( 'Title', 'element-path' ),
+				'label'       => esc_html__( 'Title', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Search',
@@ -321,7 +321,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_ajax_area_x_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -631,7 +631,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_ajax_result_block_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 		

@@ -21,7 +21,7 @@ class wpsection_wps_blog_grid_Widget extends \Elementor\Widget_Base
 
 	public function get_title()
 	{
-		return __('Blog Grid', 'wpsectionsupport');
+		return __('Blog Grid', 'wpsection');
 	}
 
 	public function get_icon()
@@ -54,13 +54,13 @@ class wpsection_wps_blog_grid_Widget extends \Elementor\Widget_Base
 		$this->add_control(
 			'thumb',
 			[
-				'label'   => esc_html__('Choose Post Image', 'constech'),
+				'label'   => esc_html__('Choose Post Image', 'wpsection'),
 				'label_block' => true,
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'style1',
 				'options' => array(
-					'style1' => esc_html__('Thumbnail Image', 'constech'),
-					'style2' => esc_html__('Metabox Thumbnail', 'constech'),
+					'style1' => esc_html__('Thumbnail Image', 'wpsection'),
+					'style2' => esc_html__('Metabox Thumbnail', 'wpsection'),
 				),
 			]
 		);
@@ -202,7 +202,7 @@ $this->add_control(
 		$this->add_control(
 			'comment_icons',
 			[
-				'label' => esc_html__('Enter The icons', 'rashid'),
+				'label' => esc_html__('Enter The icons', 'wpsection'),
                 'type' => Controls_Manager::ICONS,
 
 			]
@@ -373,7 +373,7 @@ $this->add_control(
 			array(
 				'name'     => 'title_typography',
 				'condition'    => array('show_title' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}} .mr_block_title',
 			)
 		);
@@ -392,7 +392,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_title_hover_color',
 			array(
-				'label'     => __('Color Hover', 'ecolab'),
+				'label'     => __('Color Hover', 'wpsection'),
 				'condition'    => array('show_title' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -415,15 +415,15 @@ $this->add_control(
 		$this->add_control(
 			'show_subtitle',
 			array(
-				'label' => esc_html__('Catagories', 'ecolabe'),
+				'label' => esc_html__('Catagories', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__('Show', 'ecolab'),
+						'show' => esc_html__('Show', 'wpsection'),
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__('Hide', 'ecolab'),
+						'none' => esc_html__('Hide', 'wpsection'),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -436,19 +436,19 @@ $this->add_control(
 		$this->add_control(
 			'blog_subtitle_alingment',
 			array(
-				'label' => esc_html__('Alignment', 'ecolab'),
+				'label' => esc_html__('Alignment', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'ecolab'),
+						'title' => esc_html__('Left', 'wpsection'),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__('Center', 'ecolab'),
+						'title' => esc_html__('Center', 'wpsection'),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -466,7 +466,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_subtitle_padding',
 			array(
-				'label'     => __('Padding', 'ecolab'),
+				'label'     => __('Padding', 'wpsection'),
 				'condition'    => array('show_subtitle' => 'show'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em'],
@@ -481,14 +481,14 @@ $this->add_control(
 			array(
 				'name'     => 'subtitle_typography',
 				'condition'    => array('show_subtitle' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}} .mr_block_subtitle',
 			)
 		);
 		$this->add_control(
 			'blog_subtitle_color',
 			array(
-				'label'     => __('Color', 'ecolab'),
+				'label'     => __('Color', 'wpsection'),
 				'condition'    => array('show_subtitle' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -504,7 +504,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_subtitle_hover_color',
 			array(
-				'label'     => __('Color Hover', 'ecolab'),
+				'label'     => __('Color Hover', 'wpsection'),
 				'condition'    => array('show_subtitle' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -519,7 +519,7 @@ $this->add_control(
 		$this->start_controls_section(
 			'content_section_date',
 			[
-				'label' => __('Date Setting', 'rashid'),
+				'label' => __('Date Setting', 'wpsection'),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -527,15 +527,15 @@ $this->add_control(
 		$this->add_control(
 			'show_date',
 			array(
-				'label' => esc_html__('Show Text', 'ecolab'),
+				'label' => esc_html__('Show Text', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__('Show', 'ecolab'),
+						'show' => esc_html__('Show', 'wpsection'),
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__('Hide', 'ecolab'),
+						'none' => esc_html__('Hide', 'wpsection'),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -548,19 +548,19 @@ $this->add_control(
 		$this->add_control(
 			'blog_date_alingment',
 			array(
-				'label' => esc_html__('Alignment', 'ecolab'),
+				'label' => esc_html__('Alignment', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'ecolab'),
+						'title' => esc_html__('Left', 'wpsection'),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__('Center', 'ecolab'),
+						'title' => esc_html__('Center', 'wpsection'),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -575,7 +575,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_date_padding',
 			array(
-				'label'     => __('Padding', 'ecolab'),
+				'label'     => __('Padding', 'wpsection'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em'],
 				'condition'    => array('show_date' => 'show'),
@@ -595,7 +595,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_button_border_radius',
 			array(
-				'label' => esc_html__('Border Radius', 'ecolab'),
+				'label' => esc_html__('Border Radius', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_date' => 'show'),
 				'size_units' => ['px', '%'],
@@ -614,14 +614,14 @@ $this->add_control(
 			array(
 				'name'     => 'date_typography',
 				'condition'    => array('show_date' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}} .mr_post_date',
 			)
 		);
 		$this->add_control(
 			'blog_date_color',
 			array(
-				'label'     => __('Color', 'ecolab'),
+				'label'     => __('Color', 'wpsection'),
 				'condition'    => array('show_date' => 'show'),
 				'separator' => 'after',
 				'type'      => \Elementor\Controls_Manager::COLOR,
@@ -633,7 +633,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_date_hover_color',
 			array(
-				'label'     => __('Hover Color', 'ecolab'),
+				'label'     => __('Hover Color', 'wpsection'),
 				'condition'    => array('show_date' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -644,7 +644,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_date_background_color',
 			array(
-				'label'     => __('Background Color', 'ecolab'),
+				'label'     => __('Background Color', 'wpsection'),
 				'condition'    => array('show_date' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -707,7 +707,7 @@ $this->add_control(
 		$this->start_controls_section(
 			'content_section_three',
 			[
-				'label' => __('Text Setting', 'rashid'),
+				'label' => __('Text Setting', 'wpsection'),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -715,15 +715,15 @@ $this->add_control(
 		$this->add_control(
 			'show_text',
 			array(
-				'label' => esc_html__('Show Text', 'ecolab'),
+				'label' => esc_html__('Show Text', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__('Show', 'ecolab'),
+						'show' => esc_html__('Show', 'wpsection'),
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__('Hide', 'ecolab'),
+						'none' => esc_html__('Hide', 'wpsection'),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -736,19 +736,19 @@ $this->add_control(
 		$this->add_control(
 			'blog_text_alingment',
 			array(
-				'label' => esc_html__('Alignment', 'ecolab'),
+				'label' => esc_html__('Alignment', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'ecolab'),
+						'title' => esc_html__('Left', 'wpsection'),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__('Center', 'ecolab'),
+						'title' => esc_html__('Center', 'wpsection'),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -763,7 +763,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_text_padding',
 			array(
-				'label'     => __('Padding', 'ecolab'),
+				'label'     => __('Padding', 'wpsection'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em'],
 				'condition'    => array('show_text' => 'show'),
@@ -777,14 +777,14 @@ $this->add_control(
 			array(
 				'name'     => 'text_typography',
 				'condition'    => array('show_text' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}} .mr_f_block_text',
 			)
 		);
 		$this->add_control(
 			'blog_text_color',
 			array(
-				'label'     => __('Color', 'ecolab'),
+				'label'     => __('Color', 'wpsection'),
 				'condition'    => array('show_text' => 'show'),
 				'separator' => 'after',
 				'type'      => \Elementor\Controls_Manager::COLOR,
@@ -796,7 +796,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_text_hover_color',
 			array(
-				'label'     => __('Hover Color', 'ecolab'),
+				'label'     => __('Hover Color', 'wpsection'),
 				'condition'    => array('show_text' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -809,22 +809,22 @@ $this->add_control(
 		$this->start_controls_section(
 			'author-setting',
 			[
-				'label' => __('Author Setting', 'rashid'),
+				'label' => __('Author Setting', 'wpsection'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
 		$this->add_control(
 			'show_author',
 			array(
-				'label' => esc_html__('Show Author', 'ecolabe'),
+				'label' => esc_html__('Show Author', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__('Show', 'ecolab'),
+						'show' => esc_html__('Show', 'wpsection'),
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__('Hide', 'ecolab'),
+						'none' => esc_html__('Hide', 'wpsection'),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -837,7 +837,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_image_padding',
 			array(
-				'label'     => __('Image Padding', 'ecolab'),
+				'label'     => __('Image Padding', 'wpsection'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_author' => 'show'),
 				'size_units' =>  ['px', '%', 'em'],
@@ -851,7 +851,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_image_margin',
 			array(
-				'label'     => __('Image Margin', 'ecolab'),
+				'label'     => __('Image Margin', 'wpsection'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_author' => 'show'),
 				'size_units' =>  ['px', '%', 'em'],
@@ -871,7 +871,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_image_border_radius',
 			array(
-				'label' => esc_html__('Image Border Radius', 'ecolab'),
+				'label' => esc_html__('Image Border Radius', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_author' => 'show'),
 				'size_units' => ['px', '%'],
@@ -890,7 +890,7 @@ $this->add_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'label' => esc_html__('Image Box Shadow', 'ecolab'),
+				'label' => esc_html__('Image Box Shadow', 'wpsection'),
 				'condition'    => array('show_author' => 'show'),
 				'selector' => '{{WRAPPER}} .author-thumb img',
 			]
@@ -901,7 +901,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_author_padding',
 			array(
-				'label'     => __('Padding', 'ecolab'),
+				'label'     => __('Padding', 'wpsection'),
 				'condition'    => array('show_author' => 'show'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em'],
@@ -916,14 +916,14 @@ $this->add_control(
 			array(
 				'name'     => 'author_typography',
 				'condition'    => array('show_author' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}} .mr_block_author a',
 			)
 		);
 		$this->add_control(
 			'blog_author_color',
 			array(
-				'label'     => __('Color', 'ecolab'),
+				'label'     => __('Color', 'wpsection'),
 				'condition'    => array('show_author' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -935,7 +935,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_author_hover_color',
 			array(
-				'label'     => __('Color Hover', 'ecolab'),
+				'label'     => __('Color Hover', 'wpsection'),
 				'condition'    => array('show_author' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -949,7 +949,7 @@ $this->add_control(
 		$this->start_controls_section(
 			'blog_comment_icon',
 			[
-				'label' => __('Comment Setting', 'rashid'),
+				'label' => __('Comment Setting', 'wpsection'),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -958,15 +958,15 @@ $this->add_control(
 		$this->add_control(
 			'show_icon',
 			array(
-				'label' => esc_html__('Show Icon Area', 'ecolab'),
+				'label' => esc_html__('Show Icon Area', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'show' => [
-						'show' => esc_html__('Show', 'ecolab'),
+						'show' => esc_html__('Show', 'wpsection'),
 						'icon' => 'eicon-check-circle',
 					],
 					'none' => [
-						'none' => esc_html__('Hide', 'ecolab'),
+						'none' => esc_html__('Hide', 'wpsection'),
 						'icon' => 'eicon-close-circle',
 					],
 				],
@@ -979,7 +979,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_icon_color',
 			array(
-				'label'     => __(' Icon Color', 'ecolab'),
+				'label'     => __(' Icon Color', 'wpsection'),
 				'condition'    => array('show_icon' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -991,7 +991,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_icon_hover_color',
 			array(
-				'label'     => __(' Icon Hover Color', 'ecolab'),
+				'label'     => __(' Icon Hover Color', 'wpsection'),
 				'condition'    => array('show_icon' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1006,7 +1006,7 @@ $this->add_control(
 			array(
 				'name'     => 'icon_typography',
 				'condition'    => array('show_icon' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}}  .mr_block_comment i',
 			)
 		);
@@ -1014,7 +1014,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_icon_bg_padding',
 			array(
-				'label'     => __('Background Padding', 'ecolab'),
+				'label'     => __('Background Padding', 'wpsection'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_icon' => 'show'),
 				'size_units' =>  ['px', '%', 'em'],
@@ -1028,7 +1028,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_icon_bg_margin',
 			array(
-				'label'     => __('Background Margin', 'ecolab'),
+				'label'     => __('Background Margin', 'wpsection'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_icon' => 'show'),
 				'size_units' =>  ['px', '%', 'em'],
@@ -1040,7 +1040,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_icon_bg_color',
 			array(
-				'label'     => __('Background Color', 'ecolab'),
+				'label'     => __('Background Color', 'wpsection'),
 				'condition'    => array('show_icon' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1062,7 +1062,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_icon_border_radius',
 			array(
-				'label' => esc_html__('Icon Border Radius', 'ecolab'),
+				'label' => esc_html__('Icon Border Radius', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array('show_icon' => 'show'),
 				'size_units' => ['px', '%'],
@@ -1080,7 +1080,7 @@ $this->add_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'icon_box_shadow',
-				'label' => esc_html__('Icon Bg Box Shadow', 'ecolab'),
+				'label' => esc_html__('Icon Bg Box Shadow', 'wpsection'),
 				'condition'    => array('show_icon' => 'show'),
 				'selector' => '{{WRAPPER}} .mr_block_comment i',
 			]
@@ -1089,7 +1089,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_comment_title_padding',
 			array(
-				'label'     => __('Padding', 'ecolab'),
+				'label'     => __('Padding', 'wpsection'),
 				'condition'    => array('show_title' => 'show'),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em'],
@@ -1104,7 +1104,7 @@ $this->add_control(
 			array(
 				'name'      => 'comment_title_typography',
 				'condition' => array('show_title' => 'show'),
-				'label'     => __('Typography', 'ecolab'),
+				'label'     => __('Typography', 'wpsection'),
 				'selector'  => '{{WRAPPER}} .mr_block_comment',
 			)
 		);
@@ -1123,7 +1123,7 @@ $this->add_control(
 		$this->add_control(
 			'blog_comment_title_hover_color',
 			array(
-				'label'     => __('Comment Color Hover', 'ecolab'),
+				'label'     => __('Comment Color Hover', 'wpsection'),
 				'condition'    => array('show_title' => 'show'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -1169,19 +1169,19 @@ $this->add_control(
 	$this->add_control(
 			'readmore_alingment',
 			array(
-				'label' => esc_html__('Alignment', 'ecolab'),
+				'label' => esc_html__('Alignment', 'wpsection'),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'ecolab'),
+						'title' => esc_html__('Left', 'wpsection'),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__('Center', 'ecolab'),
+						'title' => esc_html__('Center', 'wpsection'),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -1199,7 +1199,7 @@ $this->add_control(
 			array(
 				'name'     => 'readmore_typography',
 				'condition'    => array('show_author' => 'show'),
-				'label'    => __('Typography', 'ecolab'),
+				'label'    => __('Typography', 'wpsection'),
 				'selector' => '{{WRAPPER}} .wps_read_button a',
 			)
 		);

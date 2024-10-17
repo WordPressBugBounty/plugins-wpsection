@@ -48,12 +48,12 @@ public function get_name() {
 		$this->add_control(
 			'modal_sec_class',
 			[
-				'label'       => __( 'Section Class', 'rashid' ),
+				'label'       => __( 'Section Class', 'wpsection' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter Section Class', 'rashid' ),
+				'placeholder' => __( 'Enter Section Class', 'wpsection' ),
 			]
 		);
 	
@@ -63,7 +63,7 @@ public function get_name() {
 	$this->add_control(
     'modal_shortcode', // Make sure this key matches the one used in render()
     [
-        'label'       => esc_html__('Modal Shortcode', 'element-path'),
+        'label'       => esc_html__('Modal Shortcode', 'wpsection'),
         'type'        => \Elementor\Controls_Manager::TEXTAREA,
         'label_block' => true,
         'placeholder'     => '[MODAL_SHORTCODE id="12771"]', // Corrected key name
@@ -187,7 +187,7 @@ $this->add_control( 'modal_x_width',
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'modal_x_shadow',
-				'label' => esc_html__( 'Button Shadow', 'ecolab' ),
+				'label' => esc_html__( 'Button Shadow', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .modal-contet-wrap',
 			]
 		);
@@ -322,7 +322,7 @@ $this->add_control( 'modal_y_width',
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'modal_y_shadow',
-				'label' => esc_html__( 'Button Shadow', 'ecolab' ),
+				'label' => esc_html__( 'Button Shadow', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .wps_modal .close-modal',
 			]
 		);

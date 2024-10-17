@@ -41,7 +41,7 @@ protected function get_available_menus() {
             $options[$menu->slug] = $menu->name;
         }
     } else {
-        $options['none'] = esc_html__('No menus found', 'nexmart');
+        $options['none'] = esc_html__('No menus found', 'wpsection');
     }
 
     return $options;
@@ -60,7 +60,7 @@ protected function get_available_menus() {
 $this->add_control(
     'selected_menu',
     [
-        'label' => esc_html__('Select Menu', 'nexmart'),
+        'label' => esc_html__('Select Menu', 'wpsection'),
         'type' => \Elementor\Controls_Manager::SELECT,
         'options' => $this->get_available_menus(),  // Dynamically populate options from available menus
         'default' => 'main_menu',  // Set 'main_menu' as the default value
@@ -450,7 +450,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_menu_text_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'condition'    => array( 'wps_menu_show_text' => 'show' ),
@@ -569,7 +569,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_menu_logo_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -633,7 +633,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_menu_sticky_logo_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -696,7 +696,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_menu_mobile_logo_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -785,7 +785,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_menu_one_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -897,7 +897,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_slicky_menu_text_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'condition'    => array( 'wps_menu_show_text' => 'show' ),
@@ -1032,7 +1032,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_menu_sticky_one_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -1169,7 +1169,7 @@ $this->start_controls_section(
 $this->add_control(
 			'wps_menu_submenu_two_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -1297,7 +1297,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_menu_two_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -1437,7 +1437,7 @@ $this->start_controls_section(
 $this->add_control(
 			'wps_menu_submenu_three_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -1566,7 +1566,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_menu_three_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -2005,7 +2005,7 @@ $this->add_control(
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecwpsectionolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -2134,7 +2134,7 @@ $this->add_control(
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecwpsectionolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -2286,7 +2286,7 @@ $this->start_controls_section(
 $this->add_control(
 			'wps_mobile_menu_x_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -2415,7 +2415,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_mobile_menu_x_li_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -2574,7 +2574,7 @@ $this->add_control(
 		$this->add_control(
 			'wps_mobile_burger_icon_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(

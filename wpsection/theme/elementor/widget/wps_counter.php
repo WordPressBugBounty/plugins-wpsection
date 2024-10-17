@@ -122,12 +122,12 @@ class wpsection_wps_counter_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'subtitle',
             [
-                'label'       => __('Number', 'rashid'),
+                'label'       => __('Number', 'wpsection'),
                 'type'        => Controls_Manager::NUMBER,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter your Number', 'rashid'),
+                'placeholder' => __('Enter your Number', 'wpsection'),
                 'default' => '90',
             ]
         );
@@ -135,12 +135,12 @@ class wpsection_wps_counter_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'title',
             [
-                'label'       => __('Title', 'rashid'),
+                'label'       => __('Title', 'wpsection'),
                 'type'        => Controls_Manager::TEXT,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter your title', 'rashid'),
+                'placeholder' => __('Enter your title', 'wpsection'),
                 'default' => 'Successful projects',
             ]
         );

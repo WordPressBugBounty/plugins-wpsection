@@ -94,7 +94,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'image',
             [
-                'label' => __('Image', 'rashid'),
+                'label' => __('Image', 'wpsection'),
                 'conditions' => array(
                     'relation' => 'or',
                     'terms'    => array(
@@ -126,7 +126,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'subtitle',
             [
-                'label'       => __('Name', 'rashid'),
+                'label'       => __('Name', 'wpsection'),
                 'conditions' => array(
                     'relation' => 'or',
                     'terms'    => array(
@@ -151,7 +151,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter your Name', 'rashid'),
+                'placeholder' => __('Enter your Name', 'wpsection'),
                 'default' => 'Esther Howard',
             ]
         );
@@ -159,7 +159,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'text',
             [
-                'label'       => __('Designation', 'rashid'),
+                'label'       => __('Designation', 'wpsection'),
                 'conditions' => array(
                     'relation' => 'or',
                     'terms'    => array(
@@ -184,7 +184,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter your Designation', 'rashid'),
+                'placeholder' => __('Enter your Designation', 'wpsection'),
                 'default' => 'Manager',
             ]
         );
@@ -200,7 +200,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'review_text',
             [
-                'label'       => __('Review Text', 'rashid'),
+                'label'       => __('Review Text', 'wpsection'),
                 'conditions' => array(
                     'relation' => 'or',
                     'terms'    => array(
@@ -317,7 +317,7 @@ class wpsection_wps_testimonial_Widget extends \Elementor\Widget_Base
         //             'block_icons' =>
         //             [
         //                 'name' => 'block_icons',
-        //                 'label' => esc_html__('Enter The icons', 'rashid'),
+        //                 'label' => esc_html__('Enter The icons', 'wpsection'),
         //                 'type' => Controls_Manager::ICONS,
         //             ],
 

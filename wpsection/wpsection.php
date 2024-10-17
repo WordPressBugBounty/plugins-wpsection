@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: wpsection
- * Plugin URI: https://wordpress.org/plugins/wpsection/
+ * Plugin URI: https://wpsection.com/demo/
  * Description: This Plugin is customize with any Elementor Based Theme.
- * Version: 1.4.0
+ * Version: 1.4.2
  * Author: Rashid87
  * Text Domain: wpsection
  * Domain Path: /languages/
@@ -16,7 +16,7 @@
 
 // Links and Values
 
-$plugin_version = '1.4.0';
+$plugin_version = '1.4.2';
 $plugin_name = esc_html('wpsection');
 $plugin_path = plugin_dir_path(__FILE__);
 $plugin_url = plugins_url('wpsection') . '/';
@@ -102,7 +102,7 @@ final class WPSection {
             }
         }
         wpsection_templates_files();
-		
+        
 
         // Glob all the shop related functions and Classes
         function wpsection_shop_files() {
@@ -168,9 +168,4 @@ final class WPSection {
 
 // Instantiate the WPSection class
 $wpsection = new WPSection();
-
-
-
-
-
 

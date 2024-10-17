@@ -80,9 +80,9 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'btnlink',
             [
-                'label' => __('Set a Link', 'rashid'),
+                'label' => __('Set a Link', 'wpsection'),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __('https://your-link.com', 'rashid'),
+                'placeholder' => __('https://your-link.com', 'wpsection'),
                 'show_external' => true,
                 'default' => [
                     'url' => '',
@@ -100,7 +100,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __('Features Icon', 'rashid'),
+                'label' => __('Features Icon', 'wpsection'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -144,13 +144,13 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'icon_postions',
             [
-                'label' => esc_html__('Icons Postions Style', 'plugin-name'),
+                'label' => esc_html__('Icons Postions Style', 'wpsection'),
                 'condition'    => array('show_icon' => 'show'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => 'left',
                 'options' => [
-                    'relative'  => esc_html__('Top', 'plugin-name'),
-                    'absolute' => esc_html__('Left', 'plugin-name'),
+                    'relative'  => esc_html__('Top', 'wpsection'),
+                    'absolute' => esc_html__('Left', 'wpsection'),
                 ],
             ]
         );
@@ -394,7 +394,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section_two',
             [
-                'label' => __('Features Title', 'rashid'),
+                'label' => __('Features Title', 'wpsection'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -416,7 +416,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'show_title',
             array(
-                'label' => esc_html__('Show Title', 'wpsectione'),
+                'label' => esc_html__('Show Title', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
@@ -521,7 +521,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section_three',
             [
-                'label' => __('Features Text', 'rashid'),
+                'label' => __('Features Text', 'wpsection'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -640,7 +640,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_button',
             [
-                'label' => __('Button Settings', 'rashid'),
+                'label' => __('Button Settings', 'wpsection'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -840,7 +840,7 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content_section_four',
             [
-                'label' => __('Block Setting', 'rashid'),
+                'label' => __('Block Setting', 'wpsection'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -1031,12 +1031,12 @@ class wpsection_wps_services_block_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'sec_class',
             [
-                'label'       => __('Custom Class', 'rashid'),
+                'label'       => __('Custom Class', 'wpsection'),
                 'type'        => Controls_Manager::TEXTAREA,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Set a personal CSS class', 'rashid'),
+                'placeholder' => __('Set a personal CSS class', 'wpsection'),
             ]
         );
 

@@ -46,7 +46,7 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
 	
 	$this->add_control(
 			'wps_language_header_title', [
-				'label'       => esc_html__( 'Title', 'element-path' ),
+				'label'       => esc_html__( 'Title', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Lang',
@@ -77,10 +77,10 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
  $this->add_control(
             'language_enable',
             [
-                'label' => __('Language List show / hide', 'risehand-addons'),
+                'label' => __('Language List show / hide', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => __('Yes', 'risehand-addons'),
-                'label_off' => __('No', 'risehand-addons'),
+                'label_on' => __('Yes', 'wpsection'),
+                'label_off' => __('No', 'wpsection'),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -89,11 +89,11 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'language_type',
             [
-                'label' => __('Language Type', 'risehand-addons'),
+                'label' => __('Language Type', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'options' => [
-                    'custom_language'   => esc_html__( 'Custom Language', 'risehand-addons' ),
-                    'using_short_code'   => esc_html__( 'Using Shortcode', 'risehand-addons' ), 
+                    'custom_language'   => esc_html__( 'Custom Language', 'wpsection' ),
+                    'using_short_code'   => esc_html__( 'Using Shortcode', 'wpsection' ), 
                 ],
                 'default' => 'custom_language',
                 'condition' => [
@@ -105,9 +105,9 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'lang_def_title',
             [
-                'label' => __( 'Default Language Text', 'risehand-addons' ),
+                'label' => __( 'Default Language Text', 'wpsection' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'English', 'risehand-addons' ),
+                'default' => __( 'English', 'wpsection' ),
                 'condition' => [
                     'language_type' => 'custom_language'
                 ],
@@ -122,7 +122,7 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
              
         'language_def_image',
         [
-            'label' => __( 'Image', 'risehand-addons' ),
+            'label' => __( 'Image', 'wpsection' ),
             'type' => \Elementor\Controls_Manager::MEDIA,
             'default' => [
                 'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -138,7 +138,7 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
         $repeater_three->add_control(
         'language_icon_image',
         [
-            'label' => __( 'Image', 'risehand-addons' ),
+            'label' => __( 'Image', 'wpsection' ),
             'type' => \Elementor\Controls_Manager::MEDIA,
             'default' => [
                 'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -148,18 +148,18 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
         $repeater_three->add_control(
             'language_text',
             [
-                'label' => __( 'Language Text', 'risehand-addons' ),
+                'label' => __( 'Language Text', 'wpsection' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'English', 'risehand-addons' ),
+                'default' => __( 'English', 'wpsection' ),
             ]
         );
   
         $repeater_three->add_control(
             'language_link',
             [
-                'label' => __( 'Link', 'risehand-addons' ),
+                'label' => __( 'Link', 'wpsection' ),
                 'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => __( 'https://your-link.com', 'risehand-addons' ),
+                'placeholder' => __( 'https://your-link.com', 'wpsection' ),
                 'show_external' => true,
                 'default' => [
                     'url' => '',
@@ -171,17 +171,17 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'language_repeater',
             [
-                'label' => __('Language Content', 'risehand-addons'),
+                'label' => __('Language Content', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater_three->get_controls(),
                 'default' => [
                     [
-                       'language_text' =>  __('Français', 'risehand-addons'),
-                       'language_link' =>  __('#', 'risehand-addons'),
+                       'language_text' =>  __('Français', 'wpsection'),
+                       'language_link' =>  __('#', 'wpsection'),
                     ],
                     [
-                        'language_text' =>  __('Deutsch', 'risehand-addons'),
-                        'language_link' =>  __('#', 'risehand-addons'),
+                        'language_text' =>  __('Deutsch', 'wpsection'),
+                        'language_link' =>  __('#', 'wpsection'),
                     ],
                     [
                         'language_text' =>  __('Pусский ', 'wpsection'),
@@ -197,9 +197,9 @@ class wpsection_wps_language_Widget extends \Elementor\Widget_Base {
         $this->add_control(
             'language_shortcode',
             [
-                'label' => __( 'Language Shortcode', 'risehand-addons' ),
+                'label' => __( 'Language Shortcode', 'wpsection' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( '[trp_language language="en_US"]', 'risehand-addons' ),
+                'default' => __( '[trp_language language="en_US"]', 'wpsection' ),
                 'condition' => [
                     'language_type' => 'using_short_code'
                 ],
@@ -250,7 +250,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_lang_area_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'condition'    => array( 'wps_menu_show_text' => 'show' ),
@@ -550,7 +550,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_lang_one_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -660,7 +660,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_lang_logo_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -795,7 +795,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_lang_ex_area_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'condition'    => array( 'wps_menu_show_text' => 'show' ),
@@ -925,7 +925,7 @@ $this->start_controls_section(
 	$this->add_control(
 			'wps_lang_one_ex_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(
@@ -1035,7 +1035,7 @@ $this->add_control(
 	$this->add_control(
 			'wps_lang_ex_logo_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
 				'selectors' => array(

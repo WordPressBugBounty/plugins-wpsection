@@ -60,12 +60,12 @@ class wpsection_wps_info_box_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'sec_class',
             [
-                'label'       => __('Section Class', 'rashid'),
+                'label'       => __('Section Class', 'wpsection'),
                 'type'        => Controls_Manager::TEXTAREA,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter Section Class', 'rashid'),
+                'placeholder' => __('Enter Section Class', 'wpsection'),
             ]
         );
         $this->add_control(
@@ -135,12 +135,12 @@ class wpsection_wps_info_box_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'title',
             [
-                'label'       => __('Title', 'rashid'),
+                'label'       => __('Title', 'wpsection'),
                 'type'        => Controls_Manager::TEXTAREA,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter your title', 'rashid'),
+                'placeholder' => __('Enter your title', 'wpsection'),
                 'default' => 'Jack Nicholson',
             ]
         );
@@ -158,12 +158,12 @@ class wpsection_wps_info_box_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'text',
             [
-                'label'       => __('Description', 'rashid'),
+                'label'       => __('Description', 'wpsection'),
                 'type'        => Controls_Manager::TEXTAREA,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter your Description', 'rashid'),
+                'placeholder' => __('Enter your Description', 'wpsection'),
                 'default' => 'Lorem ipsum dolor sit elit consectur sed eius mod tempor labore set aliquat enim minim veniam quis nostrud.',
             ]
         );

@@ -64,7 +64,7 @@ if (class_exists('woocommerce')) {
                     while ($loop->have_posts()) {
                         $loop->the_post();
 						
-                        wc_get_template_part('content', 'productloadmore');
+                        wc_get_template_part('content', 'product');
 						
                     }
                 } else {

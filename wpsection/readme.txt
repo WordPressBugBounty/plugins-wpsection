@@ -1,11 +1,11 @@
-=== WPSection ===
+=== wpsection ===
 Contributors: rashid87
 Donate link: http://mahfuzrashid.com/
 Tags: wpsection, envato theme
 Requires at least: 4.6
 Tested up to: 6.6.2
 Tested up to WooCommerce: 9.1.4
-Stable tag: 1.4.0
+Stable tag: 1.4.2
 Requires PHP: 5.6
 Requires WooCommerce: 3.0
 Text Domain: wpsection

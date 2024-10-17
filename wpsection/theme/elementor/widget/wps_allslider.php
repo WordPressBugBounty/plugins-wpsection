@@ -74,7 +74,7 @@ class wpsection_wps_allslider_Widget extends \Elementor\Widget_Base {
 
 		$repeater->add_control(
 			'slider_title', [
-				'label'       => esc_html__( 'Name', 'element-path' ),
+				'label'       => esc_html__( 'Name', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Slider Name',
@@ -87,7 +87,7 @@ class wpsection_wps_allslider_Widget extends \Elementor\Widget_Base {
 
 		$repeater->add_control(
 			'slider_shortcode', [
-				'label'       => esc_html__( 'Shortcode', 'element-path' ),
+				'label'       => esc_html__( 'Shortcode', 'wpsection' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => 'Put Shortcode Here',
@@ -101,7 +101,7 @@ class wpsection_wps_allslider_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'repeat',
 			[
-				'label'       => esc_html__( 'Sliders', 'element-path' ),
+				'label'       => esc_html__( 'Sliders', 'wpsection' ),
 				'show_label'  => false,
 				'type'        => Controls_Manager::REPEATER,
 				'separator'   => 'before',
@@ -111,7 +111,7 @@ class wpsection_wps_allslider_Widget extends \Elementor\Widget_Base {
 				],
 				'default'     => [
 					[
-						'title' => esc_html__( 'Slider Path Slide', 'element-path' ),
+						'title' => esc_html__( 'Slider Path Slide', 'wpsection' ),
 					],
 				],
 				'fields'      => $repeater->get_controls(),

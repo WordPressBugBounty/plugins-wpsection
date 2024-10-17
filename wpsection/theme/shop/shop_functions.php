@@ -69,7 +69,7 @@ $quantity = isset($_POST['quantity']) ? wc_stock_amount(absint(wp_unslash($_POST
     } else {
         $response = array(
             'success' => false,
-            'message' => __('Failed to add item to the cart', 'nexmart'),
+            'message' => __('Failed to add item to the cart', 'wpsection'),
         );
     }
 

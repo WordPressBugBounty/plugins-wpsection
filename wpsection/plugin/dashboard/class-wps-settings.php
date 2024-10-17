@@ -478,9 +478,9 @@ if ( isset( $setting_section['description'] ) ) {
 				<?php echo esc_html( $html ); ?>
             </div>
             <div class='button' <?php echo esc_attr( $disabled ); ?>
-                 id="media_upload_<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Select Images' ); ?></div>
+                 id="media_upload_<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Select Images', 'wpsection' ); ?></div>
 
-            ?>
+    
       
    <script>
                 jQuery(document).ready(function ($) {
@@ -592,11 +592,11 @@ if ( isset( $setting_section['description'] ) ) {
             <input type="hidden" name="<?php echo esc_attr( $id ); ?>"
                    id="media_input_<?php echo esc_attr( $field_id ); ?>" value="<?php echo esc_attr( $value ); ?>"/>
             <div class="button" <?php echo esc_attr( $disabled ); ?>
-                 id="media_upload_<?php echo esc_attr( $field_id ); ?>"><?php esc_html_e( 'Upload' ); ?></div>
+                 id="media_upload_<?php echo esc_attr( $field_id ); ?>"><?php esc_html_e( 'Uplaod', 'wpsection' ); ?> </div>
 
 			<?php if ( ! empty( $value ) ) : ?>
                 <div class="button button-primary"
-                     id="media_upload_<?php echo esc_attr( $field_id ); ?>_remove"><?php esc_html_e( 'Remove' ); ?></div>
+                     id="media_upload_<?php echo esc_attr( $field_id ); ?>_remove"><?php esc_html_e( 'Remove', 'wpsection' ); ?> </div>
 			<?php endif; ?>
 
             <script>
@@ -731,7 +731,9 @@ if ( isset( $setting_section['description'] ) ) {
 
         <?php
         if ( ! $multiple ) {
-            printf( '<option value="">%s</option>', esc_html__( 'Select your choice' ) );
+    
+			printf( '<option value="">%s</option>', esc_html__( 'Select your choice', 'wpsection' ) );
+
         }
 
         foreach ( $args as $key => $name ) {
@@ -1017,7 +1019,8 @@ function generate_timepicker( $option ) {
 
 				<?php
 
-				printf( '<option value="">%s</option>', esc_html__( 'Select your choice' ) );
+			    printf( '<option value="">%s</option>', esc_html__( 'Select your choice', 'wpsection' ) );
+
 
 				foreach ( $args as $key => $name ) {
 					//printf( '<option %s value="%s">%s</option>', $value == $key ? "selected" : "", $key, $name );

@@ -41,15 +41,15 @@ class wpsection_wps_cart_summary_Widget extends Widget_Base {
 $this->add_control(
     'show_icon',
     [
-        'label'       => esc_html__( 'Show Icon', 'ecolab' ),
+        'label'       => esc_html__( 'Show Icon', 'wpsection' ),
         'type'        => \Elementor\Controls_Manager::CHOOSE,
         'options'     => [
             'show' => [
-                'title' => esc_html__( 'Show', 'ecolab' ),
+                'title' => esc_html__( 'Show', 'wpsection' ),
                 'icon'  => 'eicon-check-circle',
             ],
             'none' => [
-                'title' => esc_html__( 'Hide', 'ecolab' ),
+                'title' => esc_html__( 'Hide', 'wpsection' ),
                 'icon'  => 'eicon-close-circle',
             ],
         ],
@@ -65,11 +65,8 @@ $this->add_control(
     [
         'label'       => __( 'Cart Icon', 'wpsection' ),
         'type'        => \Elementor\Controls_Manager::ICONS,
-        'condition'   => [
-            'show_icon' => 'show',
-        ],
         'default'     => [
-            'value'   => 'eicon-cart-light',
+            'value'   => 'flaticon-check-out',
             'library' => 'solid',
         ],
     ]
@@ -79,20 +76,20 @@ $this->add_control(
 $this->add_control(
 			'icon_alingment',
 			array(
-				'label' => esc_html__( 'Alignment', 'ecolab' ),
+				'label' => esc_html__( 'Alignment', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'condition'    => array( 'show_icon' => 'show' ),
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'ecolab' ),
+						'title' => esc_html__( 'Left', 'wpsection' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'ecolab' ),
+						'title' => esc_html__( 'Center', 'wpsection' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'ecolab' ),
+						'title' => esc_html__( 'Right', 'wpsection' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -106,7 +103,7 @@ $this->add_control(
 $this->add_control(
 			'icon_color',
 			array(
-				'label'     => __( ' Color', 'ecolab' ),
+				'label'     => __( ' Color', 'wpsection' ),
 				'condition'    => array( 'show_icon' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -119,7 +116,7 @@ $this->add_control(
 $this->add_control(
 			'icon_bgcolor',
 			array(
-				'label'     => __( 'Background Color', 'ecolab' ),
+				'label'     => __( 'Background Color', 'wpsection' ),
 				'condition'    => array( 'show_icon' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -131,7 +128,7 @@ $this->add_control(
 	$this->add_control(
 			'icon_padding',
 			array(
-				'label'     => __( 'Padding', 'ecolab' ),
+				'label'     => __( 'Padding', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'show_icon' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -145,7 +142,7 @@ $this->add_control(
 	$this->add_control(
 			'icon_margin',
 			array(
-				'label'     => __( 'Margin', 'ecolab' ),
+				'label'     => __( 'Margin', 'wpsection' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'condition'    => array( 'show_icon' => 'show' ),
 				'size_units' =>  ['px', '%', 'em' ],
@@ -160,7 +157,7 @@ $this->add_control(
 			array(
 				'name'     => 'icon_typography',
 				'condition'    => array( 'show_icon' => 'show' ),
-				'label'    => __( 'Typography', 'ecolab' ),
+				'label'    => __( 'Typography', 'wpsection' ),
 				'selector' => '{{WRAPPER}}  .service-section .icon-box i',
 			)
 		);
@@ -175,7 +172,7 @@ $this->add_control(
 		$this->add_control(
 			'icon_border_radius',
 			array(
-				'label' => esc_html__( 'Border Radius', 'ecolab' ),
+				'label' => esc_html__( 'Border Radius', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'condition'    => array( 'show_icon' => 'show' ),
 				'size_units' => [ 'px', '%' ],
@@ -211,7 +208,7 @@ $this->add_control(
 		$this->start_controls_section(
 					'cart_summer_block',
 					[
-						'label' => __( 'Block Setting', 'rashid' ),
+						'label' => __( 'Block Setting', 'wpsection' ),
 						'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 					]
 				);
@@ -219,7 +216,7 @@ $this->add_control(
 $this->add_control(
 			'cart_summer_block_width',
 			[
-				'label' => esc_html__( 'Block Width', 'ecolab' ),
+				'label' => esc_html__( 'Block Width', 'wpsection' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%' ],
 				'range' => [
@@ -250,7 +247,7 @@ $this->add_control(
 		$this->add_control(
 			'cart_summer_block_color',
 			array(
-				'label'     => __( 'Background Color', 'ecolab' ),
+				'label'     => __( 'Background Color', 'wpsection' ),
 				//'condition'    => array( 'show_block' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
@@ -267,7 +264,7 @@ $this->add_control(
 		$this->add_control(
 			'cart_summer_block_margin',
 			array(
-				'label'     => __( 'Block Margin', 'ecolab' ),
+				'label'     => __( 'Block Margin', 'wpsection' ),
 			//'condition'    => array( 'show_block' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
@@ -281,7 +278,7 @@ $this->add_control(
 		$this->add_control(
 			'cart_summer_block_padding',
 			array(
-				'label'     => __( 'Block Padding', 'ecolab' ),
+				'label'     => __( 'Block Padding', 'wpsection' ),
 				//'condition'    => array( 'show_block' => 'show' ),
 				'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' =>  ['px', '%', 'em' ],
@@ -297,7 +294,7 @@ $this->add_control(
 			[
 				'name' => 'cart_summer_block_shadow',
 				//'condition'    => array( 'show_block' => 'show' ),
-				'label' => esc_html__( 'Box Shadow', 'ecolab' ),
+				'label' => esc_html__( 'Box Shadow', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .woocommerce-cart-summary',
 			]
 		);
@@ -307,14 +304,14 @@ $this->add_control(
 			[
 				'name' => 'cart_summer_block_border',
 				//'condition'    => array( 'show_block' => 'show' ),
-				'label' => esc_html__( 'Box Border', 'ecolab' ),
+				'label' => esc_html__( 'Box Border', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .woocommerce-cart-summary',
 			]
 		);
 		$this->add_control(
 			'cart_summer_block_border_radius',
 			array(
-				'label' => esc_html__( 'Border Radius', 'ecolab' ),
+				'label' => esc_html__( 'Border Radius', 'wpsection' ),
 				//'condition'    => array( 'show_block' => 'show' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'condition'    => array( 'show_button' => 'show' ),
@@ -354,8 +351,8 @@ $this->add_control(
 	
 protected function render() {
 	 $settings = $this->get_settings_for_display();
-            $allowed_tags = wp_kses_allowed_html('post');
-    $unique_id = 'wps_cart_summary_' . $this->get_id(); // Generate unique ID for this widget instance
+     $allowed_tags = wp_kses_allowed_html('post');
+     $unique_id = 'wps_cart_summary_' . $this->get_id(); // Generate unique ID for this widget instance
 
     // Check if WooCommerce is activated and the cart object is initialized
     if (class_exists('WooCommerce') && is_object(WC()->cart)) {
@@ -368,9 +365,9 @@ protected function render() {
     ?>
 
  <div class="woocommerce-cart-summary-toggle service-section">
-    <span id="cart-summary-icon-<?php echo esc_attr($unique_id); ?>" class="icon-box">
-        <i class="<?php echo esc_attr(str_replace('icon ', '', $settings['cartsumery_cart_icon']['value'])); ?>"></i>
-    </span>
+    <div id="cart-summary-icon-<?php echo esc_attr($unique_id); ?>" class="icon-box">
+        <i class=" <?php echo esc_attr($settings['cartsumery_cart_icon']['value']); ?>"></i>
+    </div>
     <p class="wps_cart_summery_number"><?php echo esc_html($cart_count); ?></p>
 </div>
 
@@ -441,7 +438,7 @@ protected function render() {
                 <tr>
                     <td colspan="5">
                         <div class="cart_summary_total_area">
-                            <p><?php esc_html_e('Total', 'woocommerce'); ?>:</p>
+                            <p><?php esc_html_e('Total', 'wpsection'); ?>:</p>
                             <p class="cart-summary-total">
                                 <?php wc_cart_totals_order_total_html(); ?>
                             </p>

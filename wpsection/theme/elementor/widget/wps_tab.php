@@ -54,11 +54,11 @@ class wps_tab extends \Elementor\Widget_Base
  $this->add_control(
         'style',
         [
-            'label'   => esc_html__( 'Choose Style', 'rashid' ),
+            'label'   => esc_html__( 'Choose Style', 'wpsection' ),
             'type'    => Controls_Manager::SELECT,
             'default' => 'style-1',
             'options' => array(
-                'style-1'   => esc_html__( 'Classic Style', 'rashid' ),
+                'style-1'   => esc_html__( 'Classic Style', 'wpsection' ),
             
             
             ),
@@ -145,12 +145,12 @@ class wps_tab extends \Elementor\Widget_Base
 	    $this->add_control(
         'text_box_style',
         [
-            'label'   => esc_html__( 'Text Box Style', 'rashid' ),
+            'label'   => esc_html__( 'Text Box Style', 'wpsection' ),
             'type'    => Controls_Manager::SELECT,
             'default' => 'style-1',
             'options' => array(
-                'style-1'   => esc_html__( 'InSide Image', 'rashid' ),
-                'style-2'   => esc_html__( 'OutSide Image', 'rashid' ),
+                'style-1'   => esc_html__( 'InSide Image', 'wpsection' ),
+                'style-2'   => esc_html__( 'OutSide Image', 'wpsection' ),
             
             ),
         ]
@@ -158,12 +158,12 @@ class wps_tab extends \Elementor\Widget_Base
   $this->add_control(
         'text_title_style',
         [
-            'label'   => esc_html__( 'Title Order Style', 'rashid' ),
+            'label'   => esc_html__( 'Title Order Style', 'wpsection' ),
             'type'    => Controls_Manager::SELECT,
             'default' => 'style-1',
             'options' => array(
-                'style-1'   => esc_html__( 'Title Top ', 'rashid' ),
-                'style-2'   => esc_html__( 'Title Bottom', 'rashid' ),
+                'style-1'   => esc_html__( 'Title Top ', 'wpsection' ),
+                'style-2'   => esc_html__( 'Title Bottom', 'wpsection' ),
             
             ),
         ]
@@ -175,7 +175,7 @@ class wps_tab extends \Elementor\Widget_Base
   $this->add_control(
     'block_link_icon',
     [
-        'label' => esc_html__('Link Icon', 'rashid'),
+        'label' => esc_html__('Link Icon', 'wpsection'),
         'type' => Controls_Manager::ICONS,
         'default' => [
             'value' => 'eicon-editor-external-link', // Set your default icon class here
@@ -188,7 +188,7 @@ class wps_tab extends \Elementor\Widget_Base
   $this->add_control(
     'block_plus_icon',
     [
-        'label' => esc_html__('Light Box Icon', 'rashid'),
+        'label' => esc_html__('Light Box Icon', 'wpsection'),
         'type' => Controls_Manager::ICONS,
         'default' => [
             'value' => 'eicon-lightbox-expand', // Set your default icon class here
@@ -200,7 +200,7 @@ class wps_tab extends \Elementor\Widget_Base
     $this->add_control(
         'enable_slide',
         [
-            'label' => esc_html__('Enable Slide', 'your-text-domain'),
+            'label' => esc_html__('Enable Slide', 'wpsection'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'default' => 'yes', // Set the default value
             'label_on' => esc_html__('Yes', 'wpsection'),
@@ -890,15 +890,15 @@ $this->start_controls_section(
         $this->add_control(
             'show_tab_area',
             array(
-                'label' => esc_html__('Hide Tab Area ', 'ecolabe'),
+                'label' => esc_html__('Hide Tab Area ', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
-                        'show' => esc_html__('Show', 'ecolab'),
+                        'show' => esc_html__('Show', 'wpsection'),
                         'icon' => 'eicon-check-circle',
                     ],
                     'none' => [
-                        'none' => esc_html__('Hide', 'ecolab'),
+                        'none' => esc_html__('Hide', 'wpsection'),
                         'icon' => 'eicon-close-circle',
                     ],
                 ],
@@ -1280,15 +1280,15 @@ $this->add_control(
         $this->add_control(
             'show_title',
             array(
-                'label' => esc_html__('Show Title', 'ecolabe'),
+                'label' => esc_html__('Show Title', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
-                        'show' => esc_html__('Show', 'ecolab'),
+                        'show' => esc_html__('Show', 'wpsection'),
                         'icon' => 'eicon-check-circle',
                     ],
                     'none' => [
-                        'none' => esc_html__('Hide', 'ecolab'),
+                        'none' => esc_html__('Hide', 'wpsection'),
                         'icon' => 'eicon-close-circle',
                     ],
                 ],
@@ -1301,19 +1301,19 @@ $this->add_control(
         $this->add_control(
             'title_alingment',
             array(
-                'label' => esc_html__('Alignment', 'ecolab'),
+                'label' => esc_html__('Alignment', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'ecolab'),
+                        'title' => esc_html__('Left', 'wpsection'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'ecolab'),
+                        'title' => esc_html__('Center', 'wpsection'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'ecolab'),
+                        'title' => esc_html__('Right', 'wpsection'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -1331,7 +1331,7 @@ $this->add_control(
         $this->add_control(
             'title_padding',
             array(
-                'label'     => __('Padding', 'ecolab'),
+                'label'     => __('Padding', 'wpsection'),
                 'condition'    => array('show_title' => 'show'),
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em'],
@@ -1346,14 +1346,14 @@ $this->add_control(
             array(
                 'name'     => 'title_typography',
                 'condition'    => array('show_title' => 'show'),
-                'label'    => __('Typography', 'ecolab'),
+                'label'    => __('Typography', 'wpsection'),
                 'selector' => '{{WRAPPER}} .mr_block_title a',
             )
         );
         $this->add_control(
             'title_color',
             array(
-                'label'     => __('Color', 'ecolab'),
+                'label'     => __('Color', 'wpsection'),
                 'condition'    => array('show_title' => 'show'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
@@ -1365,7 +1365,7 @@ $this->add_control(
         $this->add_control(
             'title_hover_color',
             array(
-                'label'     => __('Color Hover', 'ecolab'),
+                'label'     => __('Color Hover', 'wpsection'),
                 'condition'    => array('show_title' => 'show'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
@@ -1387,15 +1387,15 @@ $this->add_control(
         $this->add_control(
             'show_subtitle',
             array(
-                'label' => esc_html__('Show Sub Title', 'ecolabe'),
+                'label' => esc_html__('Show Sub Title', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
-                        'show' => esc_html__('Show', 'ecolab'),
+                        'show' => esc_html__('Show', 'wpsection'),
                         'icon' => 'eicon-check-circle',
                     ],
                     'none' => [
-                        'none' => esc_html__('Hide', 'ecolab'),
+                        'none' => esc_html__('Hide', 'wpsection'),
                         'icon' => 'eicon-close-circle',
                     ],
                 ],
@@ -1408,19 +1408,19 @@ $this->add_control(
         $this->add_control(
             'subtitle_alingment',
             array(
-                'label' => esc_html__('Alignment', 'ecolab'),
+                'label' => esc_html__('Alignment', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'ecolab'),
+                        'title' => esc_html__('Left', 'wpsection'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'ecolab'),
+                        'title' => esc_html__('Center', 'wpsection'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'ecolab'),
+                        'title' => esc_html__('Right', 'wpsection'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -1438,7 +1438,7 @@ $this->add_control(
         $this->add_control(
             'subtitle_padding',
             array(
-                'label'     => __('Padding', 'ecolab'),
+                'label'     => __('Padding', 'wpsection'),
                 'condition'    => array('show_title' => 'show'),
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em'],
@@ -1453,14 +1453,14 @@ $this->add_control(
             array(
                 'name'     => 'subtitle_typography',
                 'condition'    => array('show_subtitle' => 'show'),
-                'label'    => __('Typography', 'ecolab'),
+                'label'    => __('Typography', 'wpsection'),
                 'selector' => '{{WRAPPER}} .mr_block_subtitle',
             )
         );
         $this->add_control(
             'subtitle_color',
             array(
-                'label'     => __('Color', 'ecolab'),
+                'label'     => __('Color', 'wpsection'),
                 'condition'    => array('show_subtitle' => 'show'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
@@ -1472,7 +1472,7 @@ $this->add_control(
         $this->add_control(
             'subtitle_hover_color',
             array(
-                'label'     => __('Color Hover', 'ecolab'),
+                'label'     => __('Color Hover', 'wpsection'),
                 'condition'    => array('show_subtitle' => 'show'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
@@ -1522,7 +1522,7 @@ $this->add_control(
     $this->add_control(
             'wps_thumbnail_bg',
             [
-                'label' => esc_html__('Background Color', 'your-text-domain'),
+                'label' => esc_html__('Background Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .mr_product_thumb' => 'background-color: {{VALUE}} !important;',
@@ -1534,7 +1534,7 @@ $this->add_control(
 	    $this->add_control(
             'wps_thumbnail_hover_bg',
             [
-                'label' => esc_html__('Background Hover Color', 'your-text-domain'),
+                'label' => esc_html__('Background Hover Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_overlay_style_1 .image-box:before' => 'background: {{VALUE}} !important;',
@@ -1646,7 +1646,7 @@ $this->add_control(
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__('Icon Color', 'your-text-domain'),
+                'label' => esc_html__('Icon Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_project_icon a' => 'color: {{VALUE}} !important;',
@@ -1657,7 +1657,7 @@ $this->add_control(
         $this->add_control(
             'icon_color_hover',
             [
-                'label' => esc_html__('Icon Color Hover', 'your-text-domain'),
+                'label' => esc_html__('Icon Color Hover', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_project_icon a:hover' => 'color: {{VALUE}} !important;',
@@ -1668,7 +1668,7 @@ $this->add_control(
         $this->add_control(
             'button_background_color',
             [
-                'label' => esc_html__(' Background Color', 'your-text-domain'),
+                'label' => esc_html__(' Background Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_project_icon a' => 'background-color: {{VALUE}} !important;',
@@ -1679,7 +1679,7 @@ $this->add_control(
         $this->add_control(
             'wps_project_icon_bg_hover',
             [
-                'label' => esc_html__('Background Hover Color', 'your-text-domain'),
+                'label' => esc_html__('Background Hover Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .wps_project_icon a:hover' => 'background-color: {{VALUE}} !important;',
@@ -1976,7 +1976,7 @@ $this->add_control(
         $this->add_control(
             'button_background_bottom_area',
             [
-                'label' => esc_html__(' Background Color', 'your-text-domain'),
+                'label' => esc_html__(' Background Color', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .text_outside_box' => 'background-color: {{VALUE}} !important;',

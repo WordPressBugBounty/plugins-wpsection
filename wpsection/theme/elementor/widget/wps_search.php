@@ -55,7 +55,7 @@ class wpsection_wps_search_Widget extends \Elementor\Widget_Base {
         );
 		$this->add_control(
 			'search_title', [
-				'label'       => esc_html__( 'Search Title', 'element-path' ),
+				'label'       => esc_html__( 'Search Title', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Search',
@@ -68,7 +68,7 @@ class wpsection_wps_search_Widget extends \Elementor\Widget_Base {
   $this->add_control(
     'search_block_plus_icon',
     [
-        'label' => esc_html__(' Icon', 'rashid'),
+        'label' => esc_html__(' Icon', 'wpsection'),
         'type' => Controls_Manager::ICONS,
         'default' => [
             'value' => 'eicon-search', // Set your default icon class here
@@ -285,7 +285,7 @@ $this->start_controls_section(
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'ecwpsectionolab'),
+						'title' => esc_html__('Right', 'wpsection'),
 						'icon' => 'eicon-text-align-right',
 					],
 				],

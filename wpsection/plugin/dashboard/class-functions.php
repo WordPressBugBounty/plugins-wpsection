@@ -209,6 +209,60 @@ if ( ! function_exists( 'WPSECTION_Functions' ) ) {
 		 *
 		 * @return array|int[]|WP_Post[]
 		 */
+		
+	function get_post_ids($content_type = '') {
+    $post_ids = array();
+
+    if ($content_type == 'by_posts_category') {
+        foreach (wpsection()->get_settings_atts('_category') as $category_id) {
+            $query_string = array(
+                'fields'         => 'ids',
+                'posts_per_page' => -1,
+                'category'      => $category_id,
+            );
+            $post_ids = array_merge($post_ids, get_posts($query_string));
+        }
+    } elseif ($content_type == 'by_posts_tags') {
+        $tag_ids = wpsection()->get_settings_atts('tag_ids');
+        
+        if (!empty($tag_ids)) {
+            $post_ids = get_posts(array(
+                'post_type'      => 'post',
+                'posts_per_page' => -1,
+                'fields'         => 'ids',
+                'tax_query'      => array(
+                    array(
+                        'taxonomy' => 'post_tag',
+                        'field'    => 'term_id',
+                        'terms'    => $tag_ids,
+                    ),
+                ),
+            ));
+        }
+    } elseif ($content_type == 'by_latest_posts') {
+        $post_ids = get_posts(array(
+            'posts_per_page' => -1,
+            'offset'         => 0,
+            'orderby'        => 'post_date',
+            'fields'         => 'ids',
+            'order'          => 'DESC',
+            'post_type'      => 'post',
+            'post_status'    => 'publish',
+        ));
+    } elseif ($content_type == 'by_custom') {
+        $custom_post_ids = wpsection()->get_settings_atts('custom_post_ids');
+        $post_ids = explode(',', $custom_post_ids);
+    } else {
+        $post_ids = wpsection()->get_settings_atts('post_ids');
+    }
+
+    return $post_ids;
+}
+	
+		
+		
+	/*	
+		
 		function get_post_ids( $content_type = '' ) {
 
 			$post_ids = array();
@@ -257,7 +311,7 @@ if ( ! function_exists( 'WPSECTION_Functions' ) ) {
 			return $post_ids;
 
 		}
-
+*/
 
 		/**
 		 * Return advanced addons as array
@@ -266,8 +320,8 @@ if ( ! function_exists( 'WPSECTION_Functions' ) ) {
 		 */
 		function get_advanced_addons() {
 			return apply_filters( 'wpsection_filters_advanced_addons', array(
-				'sales_notification' => esc_html__( 'Sales Notification', 'element-plus' ),
-				'post_duplicator'    => esc_html__( 'Post Duplicator', 'element-plus' ),
+				'sales_notification' => esc_html__( 'Sales Notification', 'wpsection' ),
+				'post_duplicator'    => esc_html__( 'Post Duplicator', 'wpsection' ),
 			) );
 		}
 

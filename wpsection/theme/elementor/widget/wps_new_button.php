@@ -51,18 +51,18 @@ public function get_name() {
 		$this->add_control(
 			'sec_class',
 			[
-				'label'       => __( 'Section Class', 'rashid' ),
+				'label'       => __( 'Section Class', 'wpsection' ),
 				'type'        => Controls_Manager::TEXTAREA,
 				'dynamic'     => [
 					'active' => true,
 				],
-				'placeholder' => __( 'Enter Section Class', 'rashid' ),
+				'placeholder' => __( 'Enter Section Class', 'wpsection' ),
 			]
 		);
 		
 	$this->add_control(
 			'wps_button', [
-				'label'       => esc_html__( 'Buton Text', 'element-path' ),
+				'label'       => esc_html__( 'Buton Text', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => 'Button Text',
@@ -74,7 +74,7 @@ public function get_name() {
 
 		$this->add_control(
 			'wps_button_link', [
-				'label'       => esc_html__( 'Buton Link', 'element-path' ),
+				'label'       => esc_html__( 'Buton Link', 'wpsection' ),
 				'type'        => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => ' Button Link',
@@ -288,7 +288,7 @@ $this->add_control( 'wps_button_width',
 			[
 				'name' => 'wps_button_shadow',
 				
-				'label' => esc_html__( 'Box Shadow', 'ecolab' ),
+				'label' => esc_html__( 'Box Shadow', 'wpsection' ),
 				'selector' => '{{WRAPPER}} .defult_wps .wps_button',
 			]
 		);

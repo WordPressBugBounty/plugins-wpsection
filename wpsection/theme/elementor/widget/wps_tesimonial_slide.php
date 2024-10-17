@@ -22,7 +22,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Testimonial Slide', 'wpssupport');
+        return __('Testimonial Slide', 'wpsection');
     }
 
     public function get_icon()
@@ -47,18 +47,18 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'testimonial',
             [
-                'label' => esc_html__('Testimonial', 'Testimonial'),
+                'label' => esc_html__('Testimonial', 'wpsection'),
             ]
         );
         $this->add_control(
             'sec_class',
             [
-                'label'       => __('Section Class', 'Testimonial'),
+                'label'       => __('Section Class', 'wpsection'),
                 'type'        => Controls_Manager::TEXTAREA,
                 'dynamic'     => [
                     'active' => true,
                 ],
-                'placeholder' => __('Enter Section Class', 'Testimonial'),
+                'placeholder' => __('Enter Section Class', 'wpsection'),
             ]
         );
 		
@@ -140,7 +140,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $repeater->add_control(
             'block_image',
             [
-                'label' => __('Image', 'rashid'),
+                'label' => __('Image', 'wpsection'),
                 'type' => Controls_Manager::MEDIA,
                 'default' => ['url' => Utils::get_placeholder_image_src(),],
             ]
@@ -149,7 +149,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
   $repeater->add_control(
             'block_quoter_image',
             [
-                'label' => __('Quote Image', 'rashid'),
+                'label' => __('Quote Image', 'wpsection'),
                 'type' => Controls_Manager::MEDIA,
                 'default' => ['url' => Utils::get_placeholder_image_src(),],
             ]
@@ -163,9 +163,9 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $repeater->add_control(
             'block_title',
             [
-                'label' => esc_html__('Name', 'rashid'),
+                'label' => esc_html__('Name', 'wpsection'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Rashid Mahfuz', 'rashid'),
+                'default' => esc_html__('Rashid Mahfuz', 'wpsection'),
             ]
         );
 		
@@ -175,9 +175,9 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $repeater->add_control(
             'block_designation',
             [
-                'label' => esc_html__('Designation', 'rashid'),
+                'label' => esc_html__('Designation', 'wpsection'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('CTO', 'rashid'),
+                'default' => esc_html__('CTO', 'wpsection'),
             ]
         );
 		
@@ -188,9 +188,9 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $repeater->add_control(
             'block_text',
             [
-                'label' => esc_html__('Text', 'rashid'),
+                'label' => esc_html__('Text', 'wpsection'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Very Good Theme', 'rashid'),
+                'default' => esc_html__('Very Good Theme', 'wpsection'),
             ]
         );
 		
@@ -200,7 +200,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
 	$repeater->add_control(
             'number_of_stars',
             [
-                'label'     => esc_html__('Number of Stars', 'greengia'),
+                'label'     => esc_html__('Number of Stars', 'wpsection'),
                 'type'      => Controls_Manager::SELECT,
                 'default'   => '5', 
                 'options'   => [
@@ -217,9 +217,9 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
 	   $repeater->add_control(
             'alt_text',
             [
-                'label' => esc_html__('Thumbnial ALT Text', 'rashid'),
+                'label' => esc_html__('Thumbnial ALT Text', 'wpsection'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Image', 'rashid'),
+                'default' => esc_html__('Image', 'wpsection'),
             ]
         );	
 		
@@ -364,7 +364,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $this->start_controls_section(
             'wps_testi_text_settings',
             [
-                'label' => __('Text Setting', 'rashid'),
+                'label' => __('Text Setting', 'wpsection'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -373,15 +373,15 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'wps_testi_show_text',
             array(
-                'label' => esc_html__('Show Text', 'ecolab'),
+                'label' => esc_html__('Show Text', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
-                        'show' => esc_html__('Show', 'ecolab'),
+                        'show' => esc_html__('Show', 'wpsection'),
                         'icon' => 'eicon-check-circle',
                     ],
                     'none' => [
-                        'none' => esc_html__('Hide', 'ecolab'),
+                        'none' => esc_html__('Hide', 'wpsection'),
                         'icon' => 'eicon-close-circle',
                     ],
                 ],
@@ -395,19 +395,19 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'testi_text_alingment',
             array(
-                'label' => esc_html__('Alignment', 'ecolab'),
+                'label' => esc_html__('Alignment', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'ecolab'),
+                        'title' => esc_html__('Left', 'wpsection'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'ecolab'),
+                        'title' => esc_html__('Center', 'wpsection'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'ecolab'),
+                        'title' => esc_html__('Right', 'wpsection'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -432,7 +432,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'testi_text_padding',
             array(
-                'label'     => __('Padding', 'ecolab'),
+                'label'     => __('Padding', 'wpsection'),
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em'],
                 'selectors' => array(
@@ -445,14 +445,14 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'testi_text_typography',
-                'label'    => __('Typography', 'ecolab'),
+                'label'    => __('Typography', 'wpsection'),
                 'selector' => '{{WRAPPER}} .wps_testimonials .wps_testi_text',
             )
         );
         $this->add_control(
             'testi_text_color',
             array(
-                'label'     => __('Color', 'ecolab'),
+                'label'     => __('Color', 'wpsection'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_testimonials .wps_testi_text' => 'color: {{VALUE}} !important',
@@ -462,7 +462,7 @@ class wps_tesimonial_slide_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'testi_text_hover_color',
             array(
-                'label'     => __('Hover Color', 'ecolab'),
+                'label'     => __('Hover Color', 'wpsection'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_testimonials .wps_testi_text:hover ' => 'color: {{VALUE}} !important',
@@ -548,19 +548,19 @@ $this->add_control(
         $this->add_control(
             'testi_thumb_alingment',
             array(
-                'label' => esc_html__('Alignment', 'ecolab'),
+                'label' => esc_html__('Alignment', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'ecolab'),
+                        'title' => esc_html__('Left', 'wpsection'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'ecolab'),
+                        'title' => esc_html__('Center', 'wpsection'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'ecolab'),
+                        'title' => esc_html__('Right', 'wpsection'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -955,15 +955,15 @@ $this->add_control(
         $this->add_control(
             'testi_how_designation',
             array(
-                'label' => esc_html__('Show Designation', 'ecolabe'),
+                'label' => esc_html__('Show Designation', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
-                        'show' => esc_html__('Show', 'ecolab'),
+                        'show' => esc_html__('Show', 'wpsection'),
                         'icon' => 'eicon-check-circle',
                     ],
                     'none' => [
-                        'none' => esc_html__('Hide', 'ecolab'),
+                        'none' => esc_html__('Hide', 'wpsection'),
                         'icon' => 'eicon-close-circle',
                     ],
                 ],
@@ -976,19 +976,19 @@ $this->add_control(
         $this->add_control(
             'subtitle_alingment',
             array(
-                'label' => esc_html__('Alignment', 'ecolab'),
+                'label' => esc_html__('Alignment', 'wpsection'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => esc_html__('Left', 'ecolab'),
+                        'title' => esc_html__('Left', 'wpsection'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'ecolab'),
+                        'title' => esc_html__('Center', 'wpsection'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'right' => [
-                        'title' => esc_html__('Right', 'ecolab'),
+                        'title' => esc_html__('Right', 'wpsection'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -1005,7 +1005,7 @@ $this->add_control(
         $this->add_control(
             'subtitle_padding',
             array(
-                'label'     => __('Padding', 'ecolab'),
+                'label'     => __('Padding', 'wpsection'),
  
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em'],
@@ -1019,14 +1019,14 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'subtitle_typography',
-                'label'    => __('Typography', 'ecolab'),
+                'label'    => __('Typography', 'wpsection'),
                 'selector' => '{{WRAPPER}} .wps_testimonials .wps_testi_designation',
             )
         );
         $this->add_control(
             'subtitle_color',
             array(
-                'label'     => __('Color', 'ecolab'),
+                'label'     => __('Color', 'wpsection'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_testimonials .wps_testi_designation' => 'color: {{VALUE}} !important',
@@ -1845,7 +1845,7 @@ $this->add_control(
 							
 <?php if (!empty($item['block_quoter_image']['id']) && wp_get_attachment_url($item['block_quoter_image']['id'])) : ?>
     <!-- Testimonial Thumbnail -->
-    <div class="wps_order order-<?php echo esc_attr($settings['testi_order_six']); ?> quote-alignment">
+    <div class="wps_order quote-alignment">
         <figure class="wps_quote-box">
             <img class="wps_testi_quote" src="<?php echo esc_url(wp_get_attachment_url($item['block_quoter_image']['id'])); ?>" alt="<?php echo esc_attr($item['alt_text']); ?>">
         </figure>

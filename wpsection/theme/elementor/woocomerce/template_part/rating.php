@@ -1,12 +1,9 @@
-
 <?php if (isset($settings['show_product_x_rating']) && $settings['show_product_x_rating']) { ?>
     <?php if (!get_post_meta(get_the_id(), 'meta_show_rating', true)) : ?>
         <div class="wps_order order-<?php echo esc_attr($settings['position_order_two']); ?>">
             <div class="mr_rating">
        
-
-
-<?php if (isset($settings['show_rating'], $settings['product_avarage_rating_location']) && $settings['show_rating']) { ?>
+<?php if (isset($settings['show_product_x_rating']) && $settings['show_product_x_rating']) { ?>
     <div class="mr_rating_number <?php echo esc_attr($settings['product_avarage_rating_location']); ?>">
         <?php echo esc_html( mr_product_rating() ); ?>
 
