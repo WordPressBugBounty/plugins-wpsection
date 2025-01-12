@@ -260,51 +260,51 @@ $this->add_control(
         protected function render()
         {
 
-
-echo <<<EOT
+echo '
 <script>
     window["hoverSliderOptions"] = { preloadImages: true };
 
     jQuery(document).ready(function($) { 
         //put the js code under this line 
-        document.addEventListener('DOMContentLoaded', function () {
-            var addToCartButtons = document.querySelectorAll('.wps_add_to_cart');
-            var selectProductCheckboxes = document.querySelectorAll('.wps_select_product');
-            var addAllToCartButton = document.getElementById('wps_add_all_to_cart');
+        document.addEventListener("DOMContentLoaded", function () {
+            var addToCartButtons = document.querySelectorAll(".wps_add_to_cart");
+            var selectProductCheckboxes = document.querySelectorAll(".wps_select_product");
+            var addAllToCartButton = document.getElementById("wps_add_all_to_cart");
 
             addToCartButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    var productId = button.getAttribute('data-product-id');
+                button.addEventListener("click", function () {
+                    var productId = button.getAttribute("data-product-id");
                     // Call a function to add the product to the cart
                     addToCart(productId);
                 });
             });
 
             selectProductCheckboxes.forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
+                checkbox.addEventListener("change", function () {
                     // You can implement logic to track selected products here
                 });
             });
 
-            addAllToCartButton.addEventListener('click', function () {
+            addAllToCartButton.addEventListener("click", function () {
                 // Call a function to add all selected products to the cart
                 addAllToCart();
             });
 
             function addToCart(productId) {
                 // Implement logic to add the product with the given ID to the cart using AJAX or other methods
-                console.log('Adding product to cart:', productId);
+                console.log("Adding product to cart:", productId);
             }
 
             function addAllToCart() {
                 // Implement logic to add all selected products to the cart using AJAX or other methods
-                console.log('Adding all selected products to cart');
+                console.log("Adding all selected products to cart");
             }
         });
         //put the code above the line 
     });
 </script>
-EOT;
+';
+
 
 
 

@@ -46,6 +46,29 @@ use Elementor\Plugin;
         );  
 
 
+
+$this->add_control(
+    'wps_overflow_hidden',
+    [
+        'label' => esc_html__( 'Show Overflow Hidden', 'wpsection' ),
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'visible' => [
+                'title' => esc_html__( 'Show', 'wpsection' ),
+                'icon' => 'eicon-check-circle',
+            ],
+            'hidden' => [
+                'title' => esc_html__( 'Hide', 'wpsection' ),
+                'icon' => 'eicon-close-circle',
+            ],
+        ],
+        'default' => 'visible',
+        'selectors' => [
+            '{{WRAPPER}} .mr_shop.mr_products_one' => 'overflow: {{VALUE}} !important;',
+        ],
+    ]
+);
+
         
 
 $this->add_control(

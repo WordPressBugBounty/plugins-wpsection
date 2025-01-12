@@ -6,7 +6,7 @@ function wpsection_enqueue_assets() {
   $plugin_path = WPSECTION_PLUGIN_PATH ;
   // Enqueue all CSS files in the theme/assets/css directory
   foreach ( glob( $plugin_path . 'theme/assets/css/*.css' ) as $css_file ) {
-    wp_enqueue_style( basename( $css_file, '.css' ), WPSECTION_PLUGIN_URL . 'theme/assets/css/' . basename( $css_file ), array(), WPSECTION_VERSION );
+    wp_enqueue_style( basename( $css_file, '.css' ), WPSECTION_PLUGIN_URL . 'theme/assets/css/' . basename( $css_file ), array('elementor-frontend'), WPSECTION_VERSION );
   }
   // Enqueue all JavaScript files in the theme/assets/js directory
   foreach ( glob( $plugin_path . 'theme/assets/js/*.js' ) as $js_file ) {

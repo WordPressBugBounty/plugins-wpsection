@@ -733,25 +733,7 @@ $this->start_controls_section(
             );
 
 
-
-
-    $this->add_control(
-            'wps_quick_view_button', [
-                'label'       => esc_html__( 'Buton Text', 'wpsection' ),
-                 'condition'    => array( 'show_prduct_x_button' => '1' ),
-                'type'        => Controls_Manager::TEXT,
-                'label_block' => true,
-                'default' => 'Add to Cart',
-                'dynamic'     => [
-                    'active' => true,
-                ],
-            ]
-        );
-        
-
-
-        
-      $this->add_control(
+     $this->add_control(
             'position_order_eight',
             array(
                 'label' => __( 'Position Order Settings', 'wpsection' ),
@@ -773,15 +755,47 @@ $this->start_controls_section(
             )
         );
     
+//Add to cart Style
 
 
+  $this->add_control(
+            'wps_addtocart_select',
+            array(
+                'label' => __( 'Thumbnail Style Settings', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+				'condition'    => array( 'show_prduct_x_button' => '1' ),
+                'default' => 'default',
+                'options' => [
+                    'default'  => __( 'Default', 'wpsection' ),
+                    'advance' => __( 'Advance', 'wpsection' ),
+                    'cusotm_link' => __( 'Cusotm Link', 'wpsection' ),
+           
+               
+                ],
+            )
+        );
+
+//Advance
+    $this->add_control(
+            'wps_quick_view_button', [
+                'label'       => esc_html__( 'Buton Text', 'wpsection' ),
+                 'condition'    => array( 'wps_addtocart_select' => 'advance' ),
+                'type'        => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default' => 'Add to Cart',
+                'dynamic'     => [
+                    'active' => true,
+                ],
+            ]
+        );
+        
 
 $this->add_control(
                 'show_prduct_addtocart_icon',
                 array(
                     'label' => __( 'Show Add to Cart Icons', 'wpsection' ),
                     'type'     => \Elementor\Controls_Manager::SWITCHER,
-                     'condition'    => array( 'show_prduct_x_button' => '1' ),
+                    'condition'    => array( 'wps_addtocart_select' => 'advance' ),
                     'return_value' => '1',
                     'default'      => '1',
 
@@ -792,8 +806,7 @@ $this->add_control(
     'wps_product_adcart_icon',
     [
         'label' => __( 'Add to Cart Icon', 'wpsection' ),
-        'condition'    => array( 'show_prduct_addtocart_icon' => '1' ),
-
+       'condition'    => array( 'wps_addtocart_select' => 'advance' ),
         'type' => \Elementor\Controls_Manager::ICONS,
         'default' => [
             'value' => 'eicon-cart-light',
@@ -805,23 +818,12 @@ $this->add_control(
  
 
 
- $this->add_control(
-                'show_prduct_custom_link',
-                array(
-                    'label' => __( 'Show Custom Link', 'wpsection' ),
-                    'type'     => \Elementor\Controls_Manager::SWITCHER,
-                     'condition'    => array( 'show_prduct_x_button' => '1' ),
-                    'return_value' => '1',
-                    'default'      => '0',
-                    'placeholder' => __( 'Show Custom Link', 'wpsection' ),
-
-                )
-            );
+//Custom Linik
 
         $this->add_control(
-            'wps_quick_view_button_link', [
+            'wps_addtocart_custom_button_link', [
                 'label'       => esc_html__( 'Set Link - Default Cart Page', 'wpsection' ),
-                 'condition'    => array( 'show_prduct_custom_link' => '1' ),
+                 'condition'    => array( 'wps_addtocart_select' => 'cusotm_link' ),
                 'type'        => Controls_Manager::TEXT,
                 'label_block' => true,
                 'default' => ' ',
@@ -831,7 +833,32 @@ $this->add_control(
             ]
         );
 
+        $this->add_control(
+            'wps_addtocart_custom_button_text',
+            array(
+                'label'       => __( 'Add to Cart', 'wpsection' ),
+                'condition'    => array( 'wps_addtocart_select' => 'cusotm_link' ),
+                 'description'       => __( 'Add to Cart Text', 'wpsection' ),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'dynamic'     => [
+                    'active' => true,
+                ],
 
+            )
+        );
+
+
+ $this->add_control(
+                'wps_product_buynow_hide',
+                array(
+                    'label' => __( 'Hide Buy Now ', 'wpsection' ),
+                    'type'     => \Elementor\Controls_Manager::SWITCHER,
+                    'return_value' => '1',
+                     'default'      => '1',
+                    'placeholder' => __( 'Hide Buy Now', 'wpsection' ),
+            
+                )
+            );
         $this->end_controls_section(); 
 
 //Product product plusin minus 
@@ -868,6 +895,9 @@ $this->start_controls_section(
                 ],
             )
         );
+
+
+
 
  $this->add_control(
                 'wps_product_qun_hide',

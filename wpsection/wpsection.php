@@ -3,7 +3,7 @@
  * Plugin Name: wpsection
  * Plugin URI: https://wpsection.com/demo/
  * Description: This Plugin is customize with any Elementor Based Theme.
- * Version: 1.4.2
+ * Version: 1.5.0
  * Author: Rashid87
  * Text Domain: wpsection
  * Domain Path: /languages/
@@ -16,7 +16,7 @@
 
 // Links and Values
 
-$plugin_version = '1.4.2';
+$plugin_version = '1.5.0';
 $plugin_name = esc_html('wpsection');
 $plugin_path = plugin_dir_path(__FILE__);
 $plugin_url = plugins_url('wpsection') . '/';

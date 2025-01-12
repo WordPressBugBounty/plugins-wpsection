@@ -213,7 +213,7 @@ $repeater->add_control(
 $repeater->add_control(
     'block_column',
     [
-        'label'   => esc_html__( 'Column', 'wpsection' ),
+        'label'   => esc_html__( 'Column Desktop', 'wpsection' ),
         'type'    => \Elementor\Controls_Manager::SELECT,
         'default' => '3',
         'options' => [
@@ -247,6 +247,25 @@ $repeater->add_control(
     ]
 );		
 
+$repeater->add_control(
+    'block_column_mobile',
+    [
+        'label'   => esc_html__( 'Column Mobile', 'wpsection' ),
+        'type'    => \Elementor\Controls_Manager::SELECT,
+        'default' => '2',
+        'options' => [
+            '1'  => __( '1 Column', 'wpsection' ),
+            '2'  => __( '2 Columns', 'wpsection' ),
+            '3'  => __( '3 Columns', 'wpsection' ),
+            '4'  => __( '4 Columns', 'wpsection' ),
+            '6'  => __( '6 Columns', 'wpsection' ),
+        ],
+    ]
+);		
+
+		
+		
+		
 $repeater->add_control(
     'product_grid_type',
     [

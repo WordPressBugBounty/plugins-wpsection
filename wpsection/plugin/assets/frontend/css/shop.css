@@ -138,7 +138,8 @@
     pointer-events: none;
     width: max-content;
     top: 15px;
-    margin-right: 9px;
+    margin-right: 14px;
+	margin-top: 5px;
 }
 .mr_shop .product-block_hr_001 .overlay li:hover .tool_tip {
     opacity: 1;
@@ -1117,7 +1118,7 @@ svg.wps_svg_23 path[fill="#ec2e18"] {
 
 
 .wps_meta_text li {
-    font-size: 14px;
+    font-size: 16px;
     padding-bottom: 6px;
     padding-left: 0px;
     list-style-type: square;
@@ -1125,7 +1126,7 @@ svg.wps_svg_23 path[fill="#ec2e18"] {
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 6px;
     padding-left: 3px;
-    color: #646464;
+    color: #5f5f5f;
     text-align: left;
 }
 .wps_offer_text p {
@@ -1374,17 +1375,17 @@ svg.wps_svg_23 path[fill="#ec2e18"] {
 }
 
 .mr_shop .product-block_hr_001 .overlay ul li:nth-child(2) {
-    transition-delay: .2s;
+    transition-delay: 0;
 }
 
 .mr_shop .product-block_hr_001 .overlay ul li:nth-child(3) {
-    transition-delay: .4s;
+    transition-delay: 0;
 }
 .mr_shop .product-block_hr_001 .overlay ul li:nth-child(4) {
-    transition-delay: .6s;
+    transition-delay: 0;
 }
 .mr_shop .product-block_hr_001 .overlay ul li:nth-child(5) {
-    transition-delay: .8s;
+    transition-delay: 0;
 }
 
 .jesan_underline_color_03{
@@ -1428,26 +1429,97 @@ svg.wps_svg_23 path[fill="#ec2e18"] {
 .wps_shop_mainpage{
 	padding-top:100px;
 }
-.mr_shop.wps_shop_mainpage .inner-box .image{
-	padding:25px;
-}
 
 .mr_shop.wps_shop_mainpage .quantity{
-    border: 1px solid #c3c3c3;
-    height: 40px;
-    line-height: 38px;
-    border-radius: 4px;
-    width: 150px;
-    margin: 0 auto;
-    margin-bottom: 10px;
+ width: 80%;
+ margin-bottom: 10px;
+ display: inline-block;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ !importan;!importa;!import;!impor;!impo;!imp;!im;!i;!;
 }
 
-/*
-section:hover {
-    z-index: 99;
-    position: relative;
-}
-*/
 
 
 .mr_shop .product-block_hr_001 .overlay ul li {
@@ -1625,7 +1697,7 @@ section:hover {
 }
 
 .wps_singleproduct_variation .quantity {
-    height: 42px;
+    /* height: 42px; */
 }
 
 .wps_singleproduct_variation .quantity  input.input-text {
@@ -1677,18 +1749,8 @@ section:hover {
 .wps_shop_view .wps_product_list_view .product-block-two .overlay{
 	border-radius: 10px 0px 0px 10px;
 }
-.wps_shop_view .shop-grid-content .inner-box .quantity input.input-text,
-.wps_shop_view .wps_product_list_view .inner-box .quantity input.input-text{
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    float: none;
-	height: 40px;
-	line-height: 38px;
-    padding: 0px 40px;
-    margin-right: 0px !important;
-    border-radius: 0px;
-}
+
+
 .wps_shop_view .mr_shop_sorting {
     position: relative;
     display: flex;
@@ -1704,13 +1766,13 @@ section:hover {
     display: block;
     height: 40px;
     line-height: 40px;
-    background: transparent;
+    background: #def9ec;
     border: 1px solid #e5e5e5 !important;
     border-radius: 30px;
-    color: var(--thm-black);
+    color: #292929;
     font-size: 15px;
     font-weight: 400;
-    padding: 5px 20px;
+    padding: 5px 12px;
 }
 .wps_shop_view .menu-box {
     position: relative;
@@ -1722,24 +1784,20 @@ section:hover {
 .wps_shop_view .menu-box button {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     line-height: 24px;
     background: #fff;
     border: 1px solid #E3E7EB;
-    border-radius: 5px;
+    border-radius: 4px;
     text-align: center;
-    font-size: 24px;
+    font-size: 17px;
     color: #7C7C7C;
     cursor: pointer;
     transition: all 500ms ease;
 }
 
-.wps_shop_view .menu-box button.on {
-    color: #000000;
-    background: #3BB77E;
-    color: #ffffff;
-}
+
 .wps_shop_view .mr_shop_sorting .woocommerce-form{
 	position: relative;
 	right: inherit;
@@ -1755,7 +1813,7 @@ section:hover {
 .wps_shop_view .product-block-two table.variations {
     text-align: center;
     display: inline-block;
-	margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 .wps_shop_view .product-block-two a.reset_variations {
     display: none;
@@ -1808,7 +1866,8 @@ section:hover {
 	display:none;
 }
 .wps_content_defult .stock.in-stock{
-	display:none;
+	/* display:none; */
+	margin-bottom: 10px;
 }
 
 .product-block-spining.loading::before{
@@ -2243,10 +2302,7 @@ header.woocommerce-Address-title.title {
     margin-top: 0;
     box-shadow: none;
 }
- .woocommerce form .button {
-    padding: 8px 18px;
-    margin-top: 20px;
-}
+
  .woocommerce form button.button:hover{
     background-color: var(--theme-color);
 }
@@ -2278,3 +2334,169 @@ header.woocommerce-Address-title.title {
 .grid .wps_list{
   display: none;
 }
+
+.mr_shop .quantity .wps_qnt_minus {
+    width: 60px;
+    height: 45px;
+    border-left: 1px solid #c6c6c6;
+    border-bottom: 1px solid #c6c6c6;
+    border-top: 1px solid #c6c6c6;
+    border-radius: 4px 0px 0px 4px;
+    border-right: none;
+}
+.mr_shop .quantity .wps_qnt_plus {
+    width: 60px;
+    height: 45px;
+    border-right: 1px solid #c6c6c6;
+    border-bottom: 1px solid #c6c6c6;
+    border-top: 1px solid #c6c6c6;
+    border-radius: 0px 4px 4px 0px;
+}
+.mr_shop .quantity .input-text.qty{
+	    width: 110px;
+	    height: 45px;
+	    border: 1px solid #c6c6c6;
+	    margin-left: -4px;
+	    margin-right: -4px;
+}
+.mr_shop .quantity {
+	/* display: flex; */
+	/* text-align: right; */
+}
+.single_add_to_cart_button {
+    border: 1px solid #8d8d8d;
+    padding: 10px 35px;
+    border-radius: 4px;
+}
+
+
+
+
+
+.mr_shop_single .wps_qnt_minus {
+    width: 50px;
+    height: 50px;
+    border-left: 1px solid #c6c6c6;
+    border-bottom: 1px solid #c6c6c6;
+    border-top: 1px solid #c6c6c6;
+    border-radius: 4px 0px 0px 4px;
+}
+.mr_shop_single  .wps_qnt_plus {
+    width: 50px;
+    height: 50px;
+    border-right: 1px solid #c6c6c6;
+    border-bottom: 1px solid #c6c6c6;
+    border-top: 1px solid #c6c6c6;
+    border-radius: 0px 4px 4px 0px;
+}
+.mr_shop_single .input-text.qty{
+	    width: 130px;
+	    height: 50px;
+	    border: 1px solid #c6c6c6;
+}
+.mr_shop_single  .quantity {
+	display:flex;
+
+}
+.mr_shop_single .single_add_to_cart_button {
+    background: #259d54 !important;
+    width: 200px;
+    height: 49px;
+    border-radius: 4px;
+    color: #fff;
+    border: none !important;
+    margin-left: 10px !important;
+}
+
+
+
+
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+    .wps_shop_mainpage .col {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-bottom: 0px;
+    }
+}
+
+
+
+/* Each slide */
+.text-flip-slide {
+    opacity: 0;  /* Start all slides hidden */
+    transform: translateY(50px); /* Position all slides below the visible area */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smooth transition */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	position: absolute;
+}
+
+/* Ensure the first slide is visible immediately after load */
+.text-flip-slide:first-child {
+    opacity: 1;
+    transform: translateY(0); /* Move the first slide into view */
+}
+
+/* Styling for the container */
+.text-flip-container {
+    width: 100%;
+    min-height: 16px; /* Adjust height as needed */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Wrapper for all slides */
+.text-flip-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 1s ease-in-out;
+}
+
+/* Styling for text */
+.flip-text {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Content inside each slide */
+.flip-content {
+    display: flex;
+    justify-content: flex-start; /* Ensures left-aligned content */
+    align-items: center; /* Vertically aligns content */
+    width: 100%;
+    padding: 10px;
+}
+
+/* Image on the left side */
+.flip-image {
+    margin-right: 20px; /* Space between the image and text */
+}
+
+.flip-image img {
+    width: 100px; /* Adjust image size */
+    height: auto;
+    border-radius: 10px; /* Optional styling for rounded corners */
+}
+
+/* Text on the right side */
+.flip-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    font-family: 'Quicksand';
+}
+   

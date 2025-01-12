@@ -220,6 +220,22 @@ $this->add_control(
             )
         );
 
+ $this->add_control(
+            'wps_columns_mobile',
+            array(
+                'label' => __( 'Mobile Columns Settings', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => '2',
+                'options' => [
+                    '1'  => __( '1 Column', 'wpsection' ),
+                    '2' => __( '2 Columns', 'wpsection' ),
+                    '3' => __( '3 Columns', 'wpsection' ),
+                    '4' => __( '4 Columns', 'wpsection' ),
+					'5' => __( '5 Columns', 'wpsection' ),
+                    '6' => __( '6 Columns', 'wpsection' ),
+                ],
+            )
+        );
 
 
     $this->add_control(

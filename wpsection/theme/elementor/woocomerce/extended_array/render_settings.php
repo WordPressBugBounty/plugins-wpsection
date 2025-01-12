@@ -83,7 +83,26 @@
                     }
 
 
-$columns_markup_print = $columns_markup . ' ' . $columns_markup_tab;
+// Mobile Column 
+   if($settings['wps_columns_mobile'] == '6') {
+                        $columns_markup_mobile = ' col-2';
+                    }
+     
+        else if($settings['wps_columns_mobile'] == '4') {
+                        $columns_markup_mobile = ' col-3 ';
+                    }   
+         else if($settings['wps_columns_mobile'] == '3') {
+                        $columns_markup_mobile = ' col-4';
+                    }
+        else if($settings['wps_columns_mobile'] == '2') {
+                        $columns_markup_mobile = ' col-6';
+                    } 
+        else if($settings['wps_columns_mobile'] == '1') {
+                        $columns_markup_mobile = ' col-12';
+                    }
+
+
+$columns_markup_print = $columns_markup . ' ' . $columns_markup_tab . ' ' . $columns_markup_mobile ;
 
 
 

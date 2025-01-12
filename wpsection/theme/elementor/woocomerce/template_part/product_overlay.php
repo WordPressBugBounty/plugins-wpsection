@@ -51,14 +51,21 @@
                 
                 <?php if (isset($settings['show_addtocart']) && $settings['show_addtocart']) : ?>
                     <?php if (!get_post_meta(get_the_ID(), 'meta_show_addtocart', true)) : ?>   
-                        <li class="single_metas mr_addtocart mr_addtocar_li order-<?php echo esc_attr($settings['overlay_order_four']); ?>">
+                       
+				
+			<?php	
+	 if (!$product->is_type('variable')) { ?>
+        <li class="single_metas mr_addtocart mr_addtocar_li order-<?php echo esc_attr($settings['overlay_order_four']); ?>">
                             <div class="cart-btn wps_overlay_cart">
                                 <button class="wps_button_spin" type="submit" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>">
                                     <span class="tool_tip <?php echo esc_attr($settings['tooltip_alingment']); ?>"><?php echo esc_html($settings['addtocart_tooltip']); ?></span>
                                     <i class="mr_addtocart_i <?php echo esc_attr($settings['addtocart_icon']['value']); ?>"></i>
                                 </button>
                             </div>
-                        </li>   
+                        </li>  
+				<?php
+    }
+				?>
 
 
              

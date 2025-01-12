@@ -6,13 +6,14 @@
 
 
 
-
-
-
-
-// Enqueue the script for adding to cart via AJAX
 function enqueue_add_plugin_to_cart_ajax_script() {
-    wp_enqueue_script('ajax-add-to-cart', get_template_directory_uri() . '/assets/js/ajax-add-to-cart.js', array('jquery'), null, true);
+    wp_enqueue_script(
+        'ajax-add-to-cart',
+        plugins_url('assets/js/ajax-add-to-cart.js', __FILE__), // Use plugins_url() for plugin directory
+        array('jquery'),
+        null,
+        true
+    );
 
     // Localize the script with the necessary data
     $ajax_params = array(
@@ -23,6 +24,9 @@ function enqueue_add_plugin_to_cart_ajax_script() {
     wp_localize_script('ajax-add-to-cart', 'ajax_add_to_cart_params', $ajax_params);
 }
 add_action('wp_enqueue_scripts', 'enqueue_add_plugin_to_cart_ajax_script');
+
+
+
 
 
 // AJAX callback function to add item to cart

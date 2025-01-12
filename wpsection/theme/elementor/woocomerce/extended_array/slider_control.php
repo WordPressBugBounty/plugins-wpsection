@@ -50,6 +50,27 @@ $this->add_control(
 		);
 
 
+$this->add_control(
+    'wps_arrow_show_on_hover',
+    [
+        'label' => esc_html__( 'Show Button on Hover', 'wpsection' ),
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'show' => [
+                'title' => esc_html__( 'Show', 'wpsection' ),
+                'icon' => 'eicon-check-circle',
+            ],
+            'none' => [
+                'title' => esc_html__( 'Hide', 'wpsection' ),
+                'icon' => 'eicon-close-circle',
+            ],
+        ],
+        'default' => 'show',
+    ]
+);
+
+
+
 
 $this->add_control(
     'show_wps_awl_prev_next',

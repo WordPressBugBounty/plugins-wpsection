@@ -41,6 +41,45 @@ class wpsection_wps_menu_cat_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		
+$this->add_control(
+    'show_menu_cat',
+    array(
+        'label' => esc_html__( 'Show Expand', 'wpsection' ),
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'show' => [
+                'title' => esc_html__( 'Show', 'wpsection' ), 
+                'icon' => 'eicon-check-circle',
+            ],
+            'none' => [
+                'title' => esc_html__( 'Hide', 'wpsection' ),
+                'icon' => 'eicon-close-circle',
+            ],
+        ],
+        'default' => 'show',
+    )
+);
+
+$this->add_control(
+    'show_menu_cat_home',
+    array(
+        'label' => esc_html__( 'Show Expand Home Only', 'wpsection' ),
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'show' => [
+                'title' => esc_html__( 'Show', 'wpsection' ), 
+                'icon' => 'eicon-check-circle',
+            ],
+            'none' => [
+                'title' => esc_html__( 'Hide', 'wpsection' ),
+                'icon' => 'eicon-close-circle',
+            ],
+        ],
+        'default' => 'show',
+    )
+);
+	
 
 	$this->add_control(
 			'cat_menu_title', [
@@ -389,7 +428,7 @@ $this->add_control(
             array(
                 'name'     => 'wps_projce_icon_typo',
                 'label'    => __('Typography', 'wpsection'),
-                'selector' => '{{WRAPPER}} .wps_menu_cat_menu i',
+                'selector' => '{{WRAPPER}} .wps_menu_cat_menu .manucat_icon',
             )
         );
 		
@@ -861,16 +900,29 @@ $this->add_control(
         <div class="category-box">
 
             <div class="wps_menu_cat_menu">
-                <i class="<?php echo esc_attr($settings['wps_cat_menu_icon_one']['value']); ?>"></i>
+                <i class="manucat_icon <?php echo esc_attr($settings['wps_cat_menu_icon_one']['value']); ?>"></i>
                 <span class="wps_menu_cat_text"><?php echo esc_html($settings['cat_menu_title']); ?></span>
             </div>
+<!-- Part 2: HTML with Conditional Class -->
+			
 
-            <ul class="category-list clearfix wps_cat_ul">
+<ul class="category-list clearfix wps_cat_ul 
+    <?php 
+    // Add class based on the settings and current page conditions
+    if ( !empty($settings['show_menu_cat']) && $settings['show_menu_cat'] === 'show' ) {
+        echo 'wps_expanded_css';
+    } elseif ( !empty($settings['show_menu_cat_home']) && $settings['show_menu_cat_home'] === 'show' && (is_front_page() ) ) {
+        echo 'wps_expanded_css';
+    }
+    ?>">
+	
+	
+
                 <?php foreach($settings['repeat'] as $item): ?>
                     <li class="category-dropdown">
                         <h3 class="wps_category_list">
                             <a class="wps_category_list_a" href="<?php echo esc_url($item['cat_link']['url']); ?>">
-                                <i class="<?php echo esc_attr($item['cat_icon']['value']); ?>"></i>
+                                <i class=" <?php echo esc_attr($item['cat_icon']['value']); ?>"></i>
                                 <span class="wps_li_a_text"><?php echo esc_html($item['cat_title']); ?></span>
                             </a>
                         </h3>

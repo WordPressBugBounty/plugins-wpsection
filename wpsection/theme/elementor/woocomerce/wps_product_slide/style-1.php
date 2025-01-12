@@ -61,9 +61,15 @@ if ( 'none' === $settings['slider_path_hide_mobile'] ) {
         }
     </style>';
 }
+
+
+       
+   
+$wps_arrow_show_on_hover = $settings['wps_arrow_show_on_hover'];
+$hover_class = ($wps_arrow_show_on_hover === 'show') ? 'wps_arrow_show_on_hover' : '';
 ?>
 
-<section class="mr_shop mr_products_one produt_section slider_path wps_slider_path <?php echo esc_attr( $unique_id ); ?>">
+<section class="mr_shop mr_products_one produt_section slider_path wps_slider_path <?php echo esc_attr( $unique_id ); ?>  <?php echo esc_attr($hover_class); ?>">
     <div class="auto-container">
         <?php
         $sliderClass = esc_attr( $settings['show_slider'] ) ? 'mr_shop_slide wps_owls_slide owl-theme owl-carousel owl-nav-style-one owl-dot-style-one' : 'row row-5';

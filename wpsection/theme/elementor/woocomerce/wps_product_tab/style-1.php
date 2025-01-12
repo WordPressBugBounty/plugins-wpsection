@@ -145,9 +145,31 @@ foreach ($settings['repeat'] as $tab) {
          elseif ($tab['block_column_tab'] == '1') {
                         $columns_markup_tab = ' col-md-12';
                     }
+						
+						
+						
+//mobile column
+       if ($tab['block_column_mobile'] == '6') {
+                        $columns_markup_mobile = ' col-2';
+                    }
 
+         elseif ($tab['block_column_mobile'] == '4') {
+                        $columns_markup_mobile = ' col-3 ';
+                    }   
+        elseif ($tab['block_column_mobile'] == '3') {
+                        $columns_markup_mobile = ' col-4';
+                    }
+         elseif ($tab['block_column_mobile'] == '2') {
+                        $columns_markup_mobile = ' col-6';
+                    } 
+         elseif ($tab['block_column_mobile'] == '1') {
+                        $columns_markup_mobile = ' col-12';
+                    }
+						
+						
+						
 
-	$new_markup = $columns_markup . ' ' . $columns_markup_tab;				
+	$new_markup = $columns_markup . ' ' . $columns_markup_tab . ' ' . $columns_markup_mobile ;				
 						
 
                         $active_tab = '';
