@@ -577,61 +577,59 @@ $this->end_controls_section();
         return $options;
     }
 
-    protected function render() {
-        $settings = $this->get_settings_for_display();
-        $categories = $settings['categories'];
-        $number = $settings['number'];
-        $columns = $settings['columns'];
-		$columns_mobile = $settings['columns_mobile'];
-		$columns_tab = $settings['columns_tab'];
-        $unique_id = uniqid('categories-slider-');
+ protected function render() {
+    $settings = $this->get_settings_for_display();
+    $categories = $settings['categories'];
+    $number = $settings['number'];
+    $columns = !empty($settings['columns']) ? $settings['columns'] : 4;
+    $columns_mobile = !empty($settings['columns_mobile']) ? $settings['columns_mobile'] : 1;
+    $columns_tab = !empty($settings['columns_tab']) ? $settings['columns_tab'] : 2;
+    $unique_id = uniqid('categories-slider-');
 
-        ?>
+    ?>
 
-        <div id="<?php echo esc_attr( $unique_id ); ?>" class="wps_product_cat_slide categories-slider owl-carousel">
-            <?php
-            if ( ! empty( $categories ) ) {
-                $query_args = [
-                    'taxonomy'   => 'product_cat',
-                    'include'    => $categories,
-                    'number'     => $number,
-                    'hide_empty' => false,
-                ];
-                $categories = get_terms( $query_args );
+    <div id="<?php echo esc_attr( $unique_id ); ?>" class="wps_product_cat_slide categories-slider owl-carousel">
+        <?php
+        if ( ! empty( $categories ) ) {
+            $query_args = [
+                'taxonomy'   => 'product_cat',
+                'include'    => $categories,
+                'number'     => $number,
+                'hide_empty' => false,
+            ];
+            $categories = get_terms( $query_args );
 
-                foreach ( $categories as $category ) {
-                    $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
-                    $image_url = wp_get_attachment_url( $thumbnail_id );
-                    $link = get_term_link( $category );
-                    $product_count = $category->count;
+            foreach ( $categories as $category ) {
+                $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
+                $image_url = wp_get_attachment_url( $thumbnail_id );
+                $link = get_term_link( $category );
+                $product_count = $category->count;
 
-                    echo '<div class="category-item">';
-                    if ( $settings['show_thumbnails'] && $image_url ) {
-                        echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $category->name ) . '">';
-                    }
-                    if ( $settings['show_titles'] ) {
-                        echo '<h3><a href="' . esc_url( $link ) . '">' . esc_html( $category->name ) . '</a></h3>';
-                    }
-					
-if ( $settings['show_product_count'] ) {
+                echo '<div class="category-item">';
+                if ( $settings['show_thumbnails'] && $image_url ) {
+                    echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $category->name ) . '">';
+                }
+                if ( $settings['show_titles'] ) {
+                    echo '<h3><a href="' . esc_url( $link ) . '">' . esc_html( $category->name ) . '</a></h3>';
+                }
+
+            
+				
+				if ( $settings['show_product_count'] ) {
     $product_label = $product_count === 1 ? __( 'Product', 'wpsection' ) : __( 'Products', 'wpsection' );
-    
-    // Translators: %1$d is the product count, and %2$s is the product label (singular or plural).
+
+    // Translators: %1$d is the number of products, %2$s is "Product" or "Products".
     echo '<h3 class="product-count">' . esc_html( sprintf( __( '%1$d %2$s', 'wpsection' ), intval( $product_count ), esc_html( $product_label ) ) ) . '</h3>';
 }
 
 
-					
-					
-					
-
-                    echo '</div>';
-                }
+                echo '</div>';
             }
-            ?>
-        </div>
+        }
+        ?>
+    </div>
 
-<script>
+    <script>
     jQuery(document).ready(function($) {
         $('#<?php echo esc_js( $unique_id ); ?>').owlCarousel({
             loop: false,
@@ -641,21 +639,18 @@ if ( $settings['show_product_count'] ) {
             autoplay: <?php echo wp_json_encode( ! empty( $settings['slide_auto_loop'] ) && $settings['slide_auto_loop'] === '1' ); ?>,
             navText: [ '<i class="eicon-chevron-left"></i>', '<i class="eicon-chevron-right"></i>' ],
             responsive: {
-                0: { items: Math.min(2, <?php echo esc_js( $columns_mobile ); ?>) },
-                480: { items: Math.min(2, <?php echo esc_js( $columns_mobile ); ?>) },
-                768: { items: Math.min(3, <?php echo esc_js( $columns_tab ); ?>) },
+                0: { items: <?php echo esc_js( $columns_mobile ); ?> },
+                480: { items: <?php echo esc_js( $columns_mobile ); ?> },
+                768: { items: <?php echo esc_js( $columns_tab ); ?> },
                 1024: { items: <?php echo esc_js( $columns ); ?> }
             }
         });
     });
-</script>
+    </script>
 
+    <?php
+}
 
-
-
-
-        <?php
-    }
 }
 
 // Register the widget

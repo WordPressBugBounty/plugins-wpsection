@@ -15,19 +15,20 @@ use Elementor\Plugin;
 $templatePartDir = __DIR__ . '/cmmon_style/';
 ////============= Product Item  Title=======================
   
-require $templatePartDir . 'title.php';  
+ 
 require $templatePartDir . 'thumbnail.php';
-require $templatePartDir . 'rating.php';
+require $templatePartDir . 'title.php'; 
 require $templatePartDir . 'price.php';
-require $templatePartDir . 'progress.php';
+require $templatePartDir . 'rating.php';
 require $templatePartDir . 'instock.php';
-require $templatePartDir . 'countdown.php';
-require $templatePartDir . 'hot.php';
-require $templatePartDir . 'offer.php';
-require $templatePartDir . 'meta.php';
-require $templatePartDir . 'fretures.php';
 require $templatePartDir . 'catagory.php';
+require $templatePartDir . 'fretures.php';
+require $templatePartDir . 'progress.php';
+require $templatePartDir . 'countdown.php';
+require $templatePartDir . 'offer.php';
 require $templatePartDir . 'addtocart.php';
+require $templatePartDir . 'hot.php';
+require $templatePartDir . 'meta.php';
 require $templatePartDir . 'thumbnail_dot.php';
 require $templatePartDir . 'pagination.php';
 require $templatePartDir . 'bottomarea.php';

@@ -14,37 +14,57 @@ use Elementor\Plugin;
 
 
 ////============= Product Item  Title=======================
+
+
+
     $this->start_controls_section(
             'product_title_x_settings',
             array(
-                'label' => __( 'Title Setting', 'wpsection' ),
+                'label' => __( 'Product Title Setting', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
              
             )
         );
         
-        
+    
+        $this->add_control(
+                'show_product_title',
+               array(
+                    'label' => __( 'Hide Title Area', 'wpsection' ),
+                    'type'     => \Elementor\Controls_Manager::SWITCHER,
+                     'return_value' => '1',
+                     'default'      => '1',
+                    'placeholder' => __( 'Show', 'wpsection' ),
+                )
+            );
+
     $this->add_control(
-            'show_title',
+            'position_order_one',
             array(
-                'label' => esc_html__( 'Show Title', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'label' => __( 'Position Order Settings', 'wpsection' ),
+				      'condition' => [
+            'show_product_title' => '1',
+      
+        ],
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => '1',
                 'options' => [
-                    'show' => [
-                        'show' => esc_html__( 'Show', 'wpsection' ), 
-                        'icon' => 'eicon-check-circle',
-                    ],
-                    'none' => [
-                        'none' => esc_html__( 'Hide', 'wpsection' ),
-                        'icon' => 'eicon-close-circle',
-                    ],
+                    '1'  => __( '1st Position', 'wpsection' ),
+                    '2' => __( '2nd Position', 'wpsection' ),
+                    '3' => __( '3rd Position', 'wpsection' ),
+                    '4' => __( '4th Position', 'wpsection' ),
+                    '5' => __( '5th Position', 'wpsection' ),
+                    '6' => __( '6th Position', 'wpsection' ),
+                    '7' => __( '7th Position', 'wpsection' ),
+                    '8' => __( '8th Position', 'wpsection' ),
+                    '9' => __( '9th Position', 'wpsection' ),
+                    '10' => __( '10th Position', 'wpsection' ),
                 ],
-                'default' => 'show',
-                'selectors' => array(
-                    '{{WRAPPER}} .mr_product_title' => 'display: {{VALUE}} !important',
-                ),
             )
-        );  
+        );
+
+
+
     $this->add_control(
             'title_alingment',
             array(
@@ -65,7 +85,10 @@ use Elementor\Plugin;
                     ],
                 ],
                 'default' => 'center',
-                'condition'    => array( 'show_title' => 'show' ),
+                'condition' => [
+            'show_product_title' => '1',
+      
+        ],
                 'toggle' => true,
                 'selectors' => array(
                 
@@ -79,7 +102,10 @@ use Elementor\Plugin;
             'title_padding',
             array(
                 'label'     => __( 'Padding', 'wpsection' ),
-                'condition'    => array( 'show_title' => 'show' ),
+                       'condition' => [
+            'show_product_title' => '1',
+       
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -93,7 +119,10 @@ use Elementor\Plugin;
             'title_margin',
             array(
                 'label'     => __( 'Margin', 'wpsection' ),
-                'condition'    => array( 'show_title' => 'show' ),
+                      'condition' => [
+            'show_product_title' => '1',
+       
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -106,7 +135,10 @@ use Elementor\Plugin;
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'title_typography',
-                'condition'    => array( 'show_title' => 'show' ),
+                     'condition' => [
+            'show_product_title' => '1',
+       
+        ],
                 'label'    => __( 'Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .mr_product_title h2',
             )
@@ -118,7 +150,10 @@ use Elementor\Plugin;
             'title_color',
             array(
                 'label'     => __( 'Color', 'wpsection' ),
-                'condition'    => array( 'show_title' => 'show' ),
+                   'condition' => [
+            'show_product_title' => '1',
+        
+        ],
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .mr_product_title h2' => 'color: {{VALUE}} !important',
@@ -126,6 +161,87 @@ use Elementor\Plugin;
                 ),
             )
         );
+
+
+        $this->add_control(
+            'title_bg_color',
+            array(
+                'label'     => __( 'Bg Color', 'wpsection' ),
+                      'condition' => [
+            'show_product_title' => '1',
+      
+        ],
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} .mr_product_title h2' => 'background: {{VALUE}} !important',
+        
+                ),
+            )
+        );
+
+    $this->add_control(
+            'title_hover_color',
+            array(
+                'label'     => __( 'Hover Color', 'wpsection' ),
+                     'condition' => [
+            'show_product_title' => '1',
+       
+        ],
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} .mr_product_title h2:hover' => 'background: {{VALUE}} !important',
+                ),
+            )
+        );
+
+        $this->add_control(
+            'title_color_hover',
+            array(
+                'label'     => __( 'Color Hover', 'wpsection' ),
+                       'condition' => [
+            'show_product_title' => '1',
+   
+        ],
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} .mr_product_title h2:hover' => 'color: {{VALUE}} !important',
+        
+                ),
+            )
+        );
+
+       $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'title_block_border',
+                         'condition' => [
+            'show_product_title' => '1',
+     
+        ],
+                'label' => esc_html__( 'Box Border', 'wpsection' ),
+                'selector' => '{{WRAPPER}} .mr_product_title h2',
+            ]
+        );
+                
+         $this->add_control(
+            'title_border_radius',
+            array(
+                'label'     => __( 'Border Radius', 'wpsection' ),
+                     'condition' => [
+            'show_product_title' => '1',
+         
+        ],
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em' ],
+                'selectors' => array(
+                    '{{WRAPPER}} .mr_product_title h2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+
+ 
+
 
         $this->end_controls_section();
     

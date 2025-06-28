@@ -21,8 +21,11 @@ $this->start_controls_section(
             array(
                 'label' => __( 'Tab Settings', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+
             )
         );
+
+
  //Tab Area 
 
      $this->add_control(
@@ -48,7 +51,7 @@ $this->start_controls_section(
                 'toggle' => true,
                 'selectors' => array(
                 
-                    '{{WRAPPER}}  .wps_tab_ul' => 'justify-content: {{VALUE}} !important',
+                    '{{WRAPPER}}  .wps_tab_ul' => 'justify-content: {{VALUE}}',
                 ),
             
             )
@@ -175,6 +178,7 @@ $this->start_controls_section(
             array(
                 'label' => __( 'Tab Single Settings', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+        
             )
         );      
 
@@ -368,4 +372,172 @@ $this->add_control(
         $this->end_controls_section();  
 
 
+
+
+//=======================Tab Section Title   ======================
+
+
+
+$this->start_controls_section(
+            'wps_tab_section_title_control',
+            array(
+                'label' => __( 'Section Title Settings', 'wpsection' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            )
+        );      
+
+     $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            array(
+                'name'     => 'wps_tab_section_title_typography',
+                'label'    => __( 'Typography', 'wpsection' ),
+                'selector' => '{{WRAPPER}}  .wps_tab_title ',
+            )
+        );
+
+$this->add_control(
+            'wps_tab_section_title_color',
+            array(
+                'label'     => __( 'Title Color', 'wpsection' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+    
+                'selectors' => array(
+                    '{{WRAPPER}}   .wps_tab_title ' => 'color: {{VALUE}} !important',
+
+                ),
+            )
+        );
+
+
+
+
+
+$this->add_control(
+            'wps_tab_section_title_bg_color',
+            array(
+                'label'     => __( 'Background Color', 'wpsection' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}}  .wps_tab_title' => 'background: {{VALUE}} !important',
+                ),
+            )
+        );  
+
+
+$this->add_control( 'wps_tab_section_title_width',
+                    [
+                        'label' => esc_html__( 'Tab Width',  'wpsection' ),
+                        'type' => \Elementor\Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                    
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 2000,
+                                'step' => 1,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        
+                        'selectors' => [
+                            '{{WRAPPER}} .wps_tab_section_title' => 'width: {{SIZE}}{{UNIT}};',
+                        ]
+                    
+                    ]
+                );
+
+      $this->add_control(
+            'wps_tab_section_title_alingment',
+            array(
+                'label' => esc_html__( 'Text Alignment', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__( 'Left', 'wpsection' ),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'wpsection' ),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__( 'Right', 'wpsection' ),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'left',
+                'toggle' => true,
+                'selectors' => array(
+                
+                    '{{WRAPPER}}  .wps_tab_section_title .wps_tab_title' => 'text-align: {{VALUE}} !important',
+                ),
+            )
+        );     
+
+    
+  
+    $this->add_control(
+            'wps_tab_section_title_padding',
+            array(
+                'label'     => __( 'Padding', 'wpsection' ),
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em' ],
+            
+                'selectors' => array(
+                    '{{WRAPPER}}  .wps_tab_title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+    $this->add_control(
+            'wps_tab_section_title_margin',
+            array(
+                'label'     => __( 'Margin', 'wpsection' ),
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em' ],
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_tab_title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+   
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            array(
+                'name' => 'wps_tab_section_title_border',
+                'selector' => '{{WRAPPER}} .wps_tab_title ',
+            )
+        );
+    
+
+        $this->add_control(
+            'wps_tab_section_title_radius',
+            array(
+                'label'     => __( 'Border Radius', 'wpsection' ),
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em' ],
+            
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_tab_title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+
+            $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'wps_tab_section_title_shadow',
+                'label' => esc_html__( 'Box Shadow', 'wpsection' ),
+                'selector' => '{{WRAPPER}} .wps_tab_title',
+            
+                
+            ]
+        );
+        
+        $this->end_controls_section();  
         

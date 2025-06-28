@@ -46,7 +46,34 @@ use Elementor\Plugin;
             )
         );  
 
-
+ //Product Full Area 		
+ $this->add_control(
+            'box_bottom_height_width',
+            [
+                'label' => esc_html__( 'Section Width ', 'wpsection' ),
+			 'condition'    => array( 'show_expand_block_bottom' => 'show' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 3000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 1320,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mr_style_one .hide_content' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );   
         
 
 $this->add_control(

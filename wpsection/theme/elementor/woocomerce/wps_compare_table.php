@@ -106,7 +106,7 @@ if (class_exists('MrwooMart')) {
  //Stock               
 
         $this->add_control(
-                'wps_compare_td_des',
+                'wps_compare_td_des_v',
                 array(
                     'label' => esc_html__('Show Stock', 'wpsection'),
                     'type' => \Elementor\Controls_Manager::CHOOSE,

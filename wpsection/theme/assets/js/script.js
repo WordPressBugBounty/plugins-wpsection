@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById('custom-modal');
     var closeModalBtn = document.getElementById('closeModalBtn');
@@ -30,6 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 	"use strict";
 
+
+
+	
+	
+	
 
 jQuery(document).ready(function($) {
 

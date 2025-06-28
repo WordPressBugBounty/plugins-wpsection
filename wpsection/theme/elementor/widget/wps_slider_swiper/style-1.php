@@ -442,18 +442,39 @@ z-index: 999;
                                             <?php if (!empty($item['slider_path_subtitle'])) : ?>
                                                 <h4 class="slider_path_subtitle"><?php echo wp_kses($item['slider_path_subtitle'], $allowed_tags); ?></h4>
                                             <?php endif; ?>
-                                            <?php if (!empty($item['slider_path_title'])) : ?>
-                                                <?php
-                                                if ($settings['slider_path_animation_title'] == 'anim-1') {
-                                                    $animation_class = ' swiper_title_anim ';
-                                                } else if ($settings['slider_path_animation_title'] == 'anim-2') {
-                                                    $animation_class = ' slider-text-anim ';
-                                                } else if ($settings['slider_path_animation_title'] == 'anim-3') {
-                                                    $animation_class = ' custom_animation_3 ';
-                                                }
-                                                ?>
-                                                <h1 class="slider_path_title <?php echo esc_attr($animation_class); ?>"> <?php echo wp_kses($item['slider_path_title'], $allowed_tags); ?></h1>
-                                            <?php endif; ?>
+											
+                                         <?php if (!empty($item['slider_path_title'])) : ?>
+    <?php
+    $animation_class = '';
+    if (!empty($settings['slider_path_animation_title'])) {
+        switch ($settings['slider_path_animation_title']) {
+            case 'anim-1':
+                $animation_class = 'swiper_title_anim';
+                break;
+            case 'anim-2':
+                $animation_class = 'slider-text-anim';
+                break;
+            case 'anim-3':
+                $animation_class = 'custom_animation_3';
+                break;
+        }
+    }
+
+    // Define allowed HTML tags
+    $allowed_tags = array(
+        'br' => array(),
+        'em' => array(),
+        'strong' => array(),
+        'span' => array('class' => array()),
+        'b' => array(),
+        'i' => array(),
+    );
+    ?>
+    <h1 class="slider_path_title <?php echo esc_attr($animation_class); ?>">
+        <?php echo wp_kses($item['slider_path_title'], $allowed_tags); ?>
+    </h1>
+<?php endif; ?>
+
 
                                             <?php if (!empty($item['slider_path_text'])) : ?>
                                                 <p class="slider_path_text"><?php echo wp_kses($item['slider_path_text'], $allowed_tags); ?></p>

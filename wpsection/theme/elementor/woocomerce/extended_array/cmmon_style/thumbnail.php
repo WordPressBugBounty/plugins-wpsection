@@ -47,8 +47,64 @@ $this->add_control(
             )
         );   
 
+ 
 
-   
+     // Adding control in Elementor
+    $this->add_control(
+        'show_block_column_slide_nav',
+        array(
+            'label' => __( 'Hide Dot/Color', 'wpsection' ),
+			 'condition'    => array( 'show_thumbnail' => 'show' ),
+            'type' => \Elementor\Controls_Manager::SWITCHER,
+            'condition' => array('show_product_x_thumbnail' => '1'),
+            'return_value' => '1',
+            'default' => '1',
+            'placeholder' => __( 'Hide Slide Dot/Nav', 'wpsection' ),
+            'description' => __( 'This will disable the dot or nav in the block', 'wpsection' ),
+        )
+    );
+
+ $this->add_control(
+            'wps_product_color_dot',
+            array(
+                'label' => __( 'Product Slide Nav ', 'wpsection' ),
+                 'condition'    => array( 'show_thumbnail' => 'show' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'product_dot',
+                'description' => __( 'Set Style of dot from Sytle ', 'wpsection' ),
+                'options' => [
+                    'product_dot'  => __( 'Dot Color Defult', 'wpsection' ),
+                    'product_color' => __( 'Color Form Meta', 'wpsection' ),
+               
+                ],
+            )
+        );
+
+
+$this->add_control(
+			'slider_prodcut_m_show_dot_x',
+			array(
+				'label' => esc_html__( 'Show Hove Slide Dot', 'wpsection' ),
+				 'condition'    => array( 'show_thumbnail' => 'show' ),
+				'type' => \Elementor\Controls_Manager::CHOOSE,
+				'options' => [
+					'show' => [
+						'show' => esc_html__( 'Show', 'wpsection' ),	
+						'icon' => 'eicon-check-circle',
+					],
+					'none' => [
+						'none' => esc_html__( 'Hide', 'wpsection' ),
+						'icon' => 'eicon-close-circle',
+					],
+				],
+				'default' => 'show',
+				'selectors' => array(
+					'{{WRAPPER}} .wps_thumbnail_area .product_block_one .hover-slider-indicator' => 'display: {{VALUE}} !important',
+				),
+			)
+		);		
+  
+//
  $this->add_control(
             'wps_thumbnial_bgcolor_select',
             array(
@@ -93,6 +149,68 @@ $this->add_control(
                 ),
             )
         );
+
+
+  $this->add_control(
+            'wps_thumbnail_width',
+            [
+                'label' => esc_html__( 'Image Width ', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'condition' => array('show_product_x_thumbnail' => '1'),
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mr_product_block img,.mr_product_block .flip-box-front' => 'max-width: {{SIZE}}{{UNIT}}!important;',
+                    
+                ],
+            ]
+        );  
+
+  $this->add_control(
+            'wps_thumbnail_height',
+            [
+                'label' => esc_html__( 'Max Image Height ', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'condition' => array('show_product_x_thumbnail' => '1'),
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => '%',
+                    'size' => 100,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mr_product_block img,.mr_product_block .flip-box-front' => 'max-height: {{SIZE}}{{UNIT}}!important;',
+                    
+                ],
+            ]
+        );  
+
+
+
 
     $this->add_control(
             'thumbnail_x_margin',

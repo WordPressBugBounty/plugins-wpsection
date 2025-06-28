@@ -12,22 +12,81 @@ use Elementor\Utils;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Plugin;
 
+
+ // ======================================= Product catargory =======================
+
+
+
 //Catgory text Settings 
    $this->start_controls_section(
             'product_cat_x_settings',
             array(
-                'label' => __( 'Catagory Title Setting', 'wpsection' ),
+                'label' => __( 'Catagory  Setting', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition'    => array( 'show_product_cat_features' => '1' ),
+      
             )
         );
         
-        
+          $this->add_control(
+                'show_product_cat_features',
+               array(
+                    'label' => __( 'Show Catagory', 'wpsection' ),
+                    'type'     => \Elementor\Controls_Manager::SWITCHER,
+                     'return_value' => '1',
+                     'default'      => '0',
+                    'placeholder' => __( 'Show Catagory', 'wpsection' ),
+                )
+            );
+     $this->add_control(
+            'position_order_nine',
+            array(
+                'label' => __( 'Position Order Settings', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+             
+			'condition' => [
+            'show_product_cat_features' => '1',
+       
+        ],
+                'default' => '9',
+                'options' => [
+                    '1'  => __( '1st Position', 'wpsection' ),
+                    '2' => __( '2nd Position', 'wpsection' ),
+                    '3' => __( '3rd Position', 'wpsection' ),
+                    '4' => __( '4th Position', 'wpsection' ),
+                    '5' => __( '5th Position', 'wpsection' ),
+                    '6' => __( '6th Position', 'wpsection' ),
+                    '7' => __( '7th Position', 'wpsection' ),
+                    '8' => __( '8th Position', 'wpsection' ),
+                    '9' => __( '9th Position', 'wpsection' ),
+                    '10' => __( '10th Position', 'wpsection' ),
+                ],
+            )
+        );
+
+  
+
+
+         
+
+ 	$this->add_control(
+			'hr_cat_titles',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+				'condition' => [
+            'show_product_cat_features' => '1',
+ 
+        ],
+			]
+		);
     $this->add_control(
             'show_cat_x_title',
             array(
-                'label' => esc_html__( 'Show Title', 'wpsection' ),
+                'label' => esc_html__( 'Hide Title', 'wpsection' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
+					'condition' => [
+            'show_product_cat_features' => '1',
+ 
+        ],
                 'options' => [
                     'show' => [
                         'show' => esc_html__( 'Show', 'wpsection' ), 
@@ -44,41 +103,19 @@ use Elementor\Plugin;
                 ),
             )
         );  
-    $this->add_control(
-            'title_catx_alingment',
-            array(
-                'label' => esc_html__( 'Alignment', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'flex-start' => [
-                        'title' => esc_html__( 'Left', 'wpsection' ),
-                        'icon' => 'eicon-text-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__( 'Center', 'wpsection' ),
-                        'icon' => 'eicon-text-align-center',
-                    ],
-                    'flex-end' => [
-                        'title' => esc_html__( 'Right', 'wpsection' ),
-                        'icon' => 'eicon-text-align-right',
-                    ],
-                ],
-                'default' => 'flex-start',
-                'condition'    => array( 'show_cat_x_title' => 'show' ),
-                'toggle' => true,
-                'selectors' => array(
-                
-                    '{{WRAPPER}} .wps_cat' => 'justify-content: {{VALUE}} !important',
-                ),
-            )
-        );          
+
+
 
 
     $this->add_control(
             'catx_title_padding',
             array(
                 'label'     => __( 'Padding', 'wpsection' ),
-                'condition'    => array( 'show_cat_x_title' => 'show' ),
+            
+					'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_x_title' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -92,7 +129,10 @@ use Elementor\Plugin;
             'catx_title_margin',
             array(
                 'label'     => __( 'Margin', 'wpsection' ),
-                'condition'    => array( 'show_cat_x_title' => 'show' ),
+            		'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_x_title' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -105,7 +145,10 @@ use Elementor\Plugin;
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'carx_itle_typography',
-                'condition'    => array( 'show_cat_x_title' => 'show' ),
+               		'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_x_title' => 'show'
+        ],
                 'label'    => __( 'Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_cat_title',
             )
@@ -115,7 +158,10 @@ use Elementor\Plugin;
             'catx_title_color',
             array(
                 'label'     => __( 'Color', 'wpsection' ),
-                'condition'    => array( 'show_cat_x_title' => 'show' ),
+               		'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_x_title' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_cat_title' => 'color: {{VALUE}} !important',
@@ -123,26 +169,75 @@ use Elementor\Plugin;
                 ),
             )
         );
-
-        $this->end_controls_section();
-    
-
-//Catagory Text Settings End
-//Catgry Number
-
-  $this->start_controls_section(
-            'product_cat_n_settings',
+    $this->add_control(
+            'catx_title_bg_color',
             array(
-                'label' => __( 'Catagory Number  Setting', 'wpsection' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                'label'     => __( 'Bg Color', 'wpsection' ),
+               		'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_x_title' => 'show'
+        ],
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_cat_title' => 'background: {{VALUE}} !important',
+        
+                ),
             )
         );
+ 
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            array(
+                'name' => 'cat_area_title_border',
+    
+							'condition' => [
+            'show_product_cat_features' => '1',
+         
+        ],
+                'selector' => '{{WRAPPER}} .wps_cat_title',
+            )
+        );
+                
+            $this->add_control(
+            'cat_area_title_border_radius',
+            array(
+                'label'     => __( 'Cat Area Border Radius', 'wpsection' ),
+       
+			'condition' => [
+            'show_product_cat_features' => '1',
+            'show_thumbnail' => 'show'
+        ],
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em' ],
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_cat_title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );  
+
+
+
+ 	$this->add_control(
+			'hr_cat',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+				     	'condition' => [
+            'show_product_cat_features' => '1',
+ 
+        ],
+			]
+		);
+
         
         
     $this->add_control(
             'show_cat_n_title',
             array(
-                'label' => esc_html__( 'Show Title', 'wpsection' ),
+                'label' => esc_html__( 'Show Number', 'wpsection' ),
+						'condition' => [
+            'show_product_cat_features' => '1',
+       
+        ],
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
@@ -164,7 +259,11 @@ use Elementor\Plugin;
       $this->add_control(
         'cat_postion_style',
         [
-            'label'   => esc_html__( 'Select Style', 'wpsection' ),
+            'label'   => esc_html__( 'Select Number Style', 'wpsection' ),
+					'condition' => [
+            'show_product_cat_features' => '1',
+      
+        ],
             'type'    => Controls_Manager::SELECT,
             'default' => 'style-1',
             'options' => array(
@@ -178,7 +277,7 @@ use Elementor\Plugin;
     $this->add_control(
             'title_catn_alingment',
             array(
-                'label' => esc_html__( 'Alignment', 'wpsection' ),
+                'label' => esc_html__( 'Number Alignment', 'wpsection' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -195,7 +294,11 @@ use Elementor\Plugin;
                     ],
                 ],
                 'default' => 'center',
-                'condition'    => array( 'cat_postion_style' => 'style-2' ),
+             
+						'condition' => [
+            'show_product_cat_features' => '1',
+            'cat_postion_style' => 'style-2'
+        ],
                 'toggle' => true,
                 'selectors' => array(
                 
@@ -209,7 +312,11 @@ use Elementor\Plugin;
             'catn_title_padding',
             array(
                 'label'     => __( 'Padding', 'wpsection' ),
-                'condition'    => array( 'show_cat_n_title' => 'show' ),
+    
+		'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_n_title' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -223,7 +330,12 @@ use Elementor\Plugin;
             'catn_title_margin',
             array(
                 'label'     => __( 'Margin', 'wpsection' ),
-                'condition'    => array( 'show_cat_n_title' => 'show' ),
+            
+				
+		'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_n_title' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -236,7 +348,11 @@ use Elementor\Plugin;
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'catn_itle_typography',
-                'condition'    => array( 'show_cat_n_title' => 'show' ),
+          
+				'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_n_title' => 'show'
+        ],
                 'label'    => __( 'Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_cat_number',
             )
@@ -246,7 +362,11 @@ use Elementor\Plugin;
             'catn_title_color',
             array(
                 'label'     => __( 'Color', 'wpsection' ),
-                'condition'    => array( 'show_cat_n_title' => 'show' ),
+           
+				'condition' => [
+            'show_product_cat_features' => '1',
+            'show_cat_n_title' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_cat_number' => 'color: {{VALUE}} !important',
@@ -254,24 +374,21 @@ use Elementor\Plugin;
                 ),
             )
         );
+ 	$this->add_control(
+			'hr_cat_2',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
 
-        $this->end_controls_section();
-    
-
-//Catagr thumbnail Settings
-
-$this->start_controls_section(
-            'thumbnail_catx_control',
-            array(
-                'label' => __( 'Catagory Thumbanil Settings', 'wpsection' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-            )
-        );
-        
 $this->add_control(
             'show_catx_thumbnail',
             array(
-                'label' => esc_html__( 'Show Button', 'wpsection' ),
+                'label' => esc_html__( 'Show Cat Image', 'wpsection' ),
+				'condition' => [
+            'show_product_cat_features' => '1',
+
+        ],
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'show' => [
@@ -292,6 +409,10 @@ $this->add_control(
     $this->add_control( 'thumb_cat_width',
                     [
                         'label' => esc_html__( 'Width',  'wpsection' ),
+						'condition' => [
+            'show_product_cat_features' => '1',
+
+        ],
                         'type' => \Elementor\Controls_Manager::SLIDER,
                         'size_units' => [ 'px', '%' ],
                         'range' => [
@@ -317,6 +438,10 @@ $this->add_control(
         'thumb_cat_postion_style',
         [
             'label'   => esc_html__( 'Select Style', 'wpsection' ),
+			'condition' => [
+            'show_product_cat_features' => '1',
+       
+        ],
             'type'    => Controls_Manager::SELECT,
             'default' => 'style-1',
             'options' => array(
@@ -332,6 +457,10 @@ $this->add_control(
             'thumb_cat_alingment',
             array(
                 'label' => esc_html__( 'Alignment', 'wpsection' ),
+				'condition' => [
+            'show_product_cat_features' => '1',
+            'thumb_cat_postion_style' => 'style-2'
+        ],
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -348,7 +477,7 @@ $this->add_control(
                     ],
                 ],
                 'default' => 'center',
-                'condition'    => array( 'thumb_cat_postion_style' => 'style-2' ),
+            
                 'toggle' => true,
                 'selectors' => array(
                 
@@ -361,6 +490,10 @@ $this->add_control(
             'thumbnail_catx_padding',
             array(
                 'label'     => __( 'Padding', 'wpsection' ),
+					'condition' => [
+            'show_product_cat_features' => '1',
+         
+        ],
             
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
         
@@ -376,7 +509,11 @@ $this->add_control(
             'thumbnail_catx_margin',
             array(
                 'label'     => __( 'Margin', 'wpsection' ),
-                    'condition'    => array( 'show_thumbnail' => 'show' ),
+              
+					'condition' => [
+            'show_product_cat_features' => '1',
+            'show_thumbnail' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
             
                 'size_units' =>  ['px', '%', 'em' ],
@@ -391,7 +528,11 @@ $this->add_control(
             \Elementor\Group_Control_Border::get_type(),
             array(
                 'name' => 'thumbnail_catx_border',
-                    'condition'    => array( 'show_thumbnail' => 'show' ),
+    
+							'condition' => [
+            'show_product_cat_features' => '1',
+            'show_thumbnail' => 'show'
+        ],
                 'selector' => '{{WRAPPER}} .wps_cat_img',
             )
         );
@@ -400,7 +541,11 @@ $this->add_control(
             'thumbnail_catx_border_radius',
             array(
                 'label'     => __( 'Border Radius', 'wpsection' ),
-                'condition'    => array( 'show_block' => 'show' ),
+       
+			'condition' => [
+            'show_product_cat_features' => '1',
+            'show_thumbnail' => 'show'
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
                 'selectors' => array(
@@ -408,5 +553,146 @@ $this->add_control(
                 ),
             )
         );  
+
+// Catagory Reaa Setting 
+ 	$this->add_control(
+			'hr_cat_2_area',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+    $this->add_control(
+            'title_catx_alingment',
+            array(
+                'label' => esc_html__( 'Alignment', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'flex-start' => [
+                        'title' => esc_html__( 'Left', 'wpsection' ),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'wpsection' ),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'flex-end' => [
+                        'title' => esc_html__( 'Right', 'wpsection' ),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'flex-start',
+              	'condition' => [
+            'show_product_cat_features' => '1',
+ 
+        ],
+                'toggle' => true,
+                'selectors' => array(
+                
+                    '{{WRAPPER}} .wps_cat' => 'justify-content: {{VALUE}} !important',
+                ),
+            )
+        ); 
+
+    $this->add_control( 'cat_area_catx_width',
+                    [
+                        'label' => esc_html__( 'Width',  'wpsection' ),
+						'condition' => [
+            'show_product_cat_features' => '1',
+
+        ],
+                        'type' => \Elementor\Controls_Manager::SLIDER,
+                        'size_units' => [ 'px', '%' ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                                'step' => 1,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        
+                        'selectors' => [
+                            '{{WRAPPER}} .wps_cat' => 'width: {{SIZE}}{{UNIT}};',
+                        ]
+                    
+                    ]
+                );
+
+
+  $this->add_control(
+            'cat_area_catx_padding',
+            array(
+                'label'     => __( 'Cat Area Padding', 'wpsection' ),
+					'condition' => [
+            'show_product_cat_features' => '1',
+        ],
+            
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+        
+                'size_units' =>  ['px', '%', 'em' ],
+            
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_cat' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+    $this->add_control(
+            'cat_area_catx_margin',
+            array(
+                'label'     => __( 'Cat Area Margin', 'wpsection' ),
+              
+					'condition' => [
+            'show_product_cat_features' => '1',
+        
+        ],
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+            
+                'size_units' =>  ['px', '%', 'em' ],
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_cat' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );
+
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            array(
+                'name' => 'cat_area_catx_border',
+    
+							'condition' => [
+            'show_product_cat_features' => '1',
+         
+        ],
+                'selector' => '{{WRAPPER}} .wps_cat',
+            )
+        );
+                
+            $this->add_control(
+            'cat_area_catx_border_radius',
+            array(
+                'label'     => __( 'Cat Area Border Radius', 'wpsection' ),
+       
+			'condition' => [
+            'show_product_cat_features' => '1',
+            'show_thumbnail' => 'show'
+        ],
+                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' =>  ['px', '%', 'em' ],
+                'selectors' => array(
+                    '{{WRAPPER}} .wps_cat' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
+                ),
+            )
+        );  
+	
+	
+	
+
+
         $this->end_controls_section();
 //Catagr thumbnail Settings    

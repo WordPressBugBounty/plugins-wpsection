@@ -23,7 +23,7 @@ use Elementor\Plugin;
         $this->start_controls_section(
             'meta_position_settings',
             array(
-                'label' => __( 'Meta Position Setting', 'wpsection' ),
+                'label' => __( 'Meta Setting', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             )
         );
@@ -117,27 +117,26 @@ use Elementor\Plugin;
                 'selectors' => array(
                     '{{WRAPPER}}  .mr_pro_list' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
                 ),
-                 'separator' => 'after',
+             
             )
         );
 
-    $this->end_controls_section();
- //Code of Meta feild
+ 	$this->add_control(
+			'hr_idfjdasf',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+ //Code of Singe Meta feild =========================
 
        
-$this->start_controls_section(
-            'meta_button_control',
-            array(
-                'label' => __( 'Meta Settings', 'wpsection' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                
-            )
-        );
+
 
         $this->add_control(
             'meta_title_color',
             array(
-                'label'     => __( 'Icon Color', 'wpsection' ),
+                'label'     => __( 'Meta Icon Color', 'wpsection' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .mr_pro_list li i' => 'color: {{VALUE}} !important',
@@ -161,10 +160,21 @@ $this->start_controls_section(
 $this->add_control(
             'meta_hover_color',
             array(
-                'label'     => __( 'Hover Color', 'wpsection' ),
+                'label'     => __( 'Hover BG Color', 'wpsection' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .mr_pro_list .single_metas:hover' => 'background: {{VALUE}} !important',
+                ),
+            )
+        ); 
+
+$this->add_control(
+            'meta_hover_color_icon',
+            array(
+                'label'     => __( 'Hover Icon Color', 'wpsection' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} .mr_pro_list .single_metas:hover i' => 'color: {{VALUE}} !important',
                 ),
             )
         ); 
@@ -341,18 +351,18 @@ $this->add_control(
                
             ]
         );
-    $this->end_controls_section();
 
-//tooltip area
+//tooltip area=======================================
 
-$this->start_controls_section(
-            'tooltip_button_control',
-            array(
-                'label' => __( 'Tool Tip Settings', 'wpsection' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                
-            )
-        );
+
+ 	$this->add_control(
+			'hr_idfjdasf_ss',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+
     $this->add_control(
             'show_tooltip',
             array(
@@ -372,7 +382,7 @@ $this->start_controls_section(
                 'selectors' => array(
                     '{{WRAPPER}} .tool_tip' => 'display: {{VALUE}} !important',
                 ),
-                 'separator' => 'before',
+       
             )
         );        
      

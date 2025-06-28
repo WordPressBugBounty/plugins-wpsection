@@ -16,42 +16,93 @@ use Elementor\Plugin;
 
 //price control============
 // bosch  666
+// ======================================= PRice Text =======================
+
+
+
     $this->start_controls_section(
             'price_settings',
             array(
                 'label' => __( 'Price Setting', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition'    => array( 'show_product_price' => '1' ),
+          
             )
         );
         
-    $this->add_control(
-            'show_price',
+      $this->add_control(
+                'show_product_price',
+               array(
+                    'label' => __( 'Show Price Area', 'wpsection' ),
+                    'type'     => \Elementor\Controls_Manager::SWITCHER,
+                     'return_value' => '1',
+                     'default'      => '1',
+                    'placeholder' => __( 'Show Price', 'wpsection' ),
+                )
+            );
+
+   $this->add_control(
+            'position_order_three',
             array(
-                'label' => esc_html__( 'Show Price', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'label' => __( 'Position Order Settings', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+            
+				 'condition' => [
+            'show_product_price' => '1',
+           
+        ],
+                'default' => '3',
                 'options' => [
-                    'show' => [
-                        'show' => esc_html__( 'Show', 'wpsection' ), 
-                        'icon' => 'eicon-check-circle',
-                    ],
-                    'none' => [
-                        'none' => esc_html__( 'Hide', 'wpsection' ),
-                        'icon' => 'eicon-close-circle',
-                    ],
+                    '1'  => __( '1st Position', 'wpsection' ),
+                    '2' => __( '2nd Position', 'wpsection' ),
+                    '3' => __( '3rd Position', 'wpsection' ),
+                    '4' => __( '4th Position', 'wpsection' ),
+                    '5' => __( '5th Position', 'wpsection' ),
+                    '6' => __( '6th Position', 'wpsection' ),
+                    '7' => __( '7th Position', 'wpsection' ),
+                    '8' => __( '8th Position', 'wpsection' ),
+                    '9' => __( '9th Position', 'wpsection' ),
+                    '10' => __( '10th Position', 'wpsection' ),
                 ],
-                'default' => 'show',
-                'selectors' => array(
-                    '{{WRAPPER}} .mr_shop_price' => 'display: {{VALUE}} !important',
-                ),
             )
-        );  
+        );
+
+$this->add_control(
+    'show_product_price_tag',
+    [
+        'label' => esc_html__( 'Show Price Tag', 'wpsection' ),
+		'condition' => [
+            'show_product_price' => '1',
+        
+        ],
+        'type' => \Elementor\Controls_Manager::CHOOSE,
+        'options' => [
+            'show' => [
+                'title' => esc_html__( 'Show', 'wpsection' ), 
+                'icon' => 'eicon-check-circle',
+            ],
+            'none' => [
+                'title' => esc_html__( 'Hide', 'wpsection' ),
+                'icon' => 'eicon-close-circle',
+            ],
+        ],
+        'default' => 'show',
+        'selectors' => [
+            '{{WRAPPER}} .wps_price_tag' => 'display: {{VALUE}} !important',
+        ],
+    ]
+);
+
+
 
 
     $this->add_control(
             'price_style_show',
             array(
                 'label'   => esc_html__( 'Price Type', 'wpsection' ),
+				 'condition' => [
+            'show_product_price' => '1',
+        
+        ],
                 'type'    =>  \Elementor\Controls_Manager::SELECT,
                 'default' => 'price_style_1',
                 'options' => array(
@@ -61,6 +112,10 @@ use Elementor\Plugin;
                 ),
             )
         );
+
+
+
+
 
     $this->add_control(
             'price_alingment',
@@ -82,7 +137,11 @@ use Elementor\Plugin;
                     ],
                 ],
                 'default' => 'center',
-                'condition'    => array( 'show_price' => 'show' ),
+              
+				 'condition' => [
+            'show_product_price' => '1',
+        
+        ],
                 'toggle' => true,
                 'selectors' => array(
                     '{{WRAPPER}} .mr_shop_price' => 'text-align: {{VALUE}} !important',
@@ -95,7 +154,10 @@ use Elementor\Plugin;
                 'label'     => __( 'Padding', 'wpsection' ),
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
-                'condition'    => array( 'show_price' => 'show' ),
+              'condition' => [
+            'show_product_price' => '1',
+      
+        ],
                 'selectors' => array(
                     '{{WRAPPER}} .mr_shop_price' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
                 ),
@@ -108,7 +170,10 @@ use Elementor\Plugin;
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
 				'separator'  => 'after',
                 'size_units' =>  ['px', '%', 'em' ],
-                'condition'    => array( 'show_price' => 'show' ),
+                'condition' => [
+            'show_product_price' => '1',
+       
+        ],
                 'selectors' => array(
                     '{{WRAPPER}} .mr_shop_price' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
                 ),
@@ -123,7 +188,11 @@ $this->add_group_control(
     \Elementor\Group_Control_Typography::get_type(),
     array(
         'name'      => 'price_typography',
-        'condition' => array( 'price_style_show' => 'price_style_1' ),
+      
+		 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
         'label'     => __( 'Regular Price Typography', 'wpsection' ),
         'selector'  => '{{WRAPPER}} .wps_basic_pricing >.amount',
     )
@@ -133,7 +202,11 @@ $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'currency_typography',
-                'condition' => array( 'price_style_show' => 'price_style_1' ),
+            
+				 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
                 'label'    => __( 'Regular Currency Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_basic_pricing >.amount > .woocommerce-Price-currencySymbol',
             )
@@ -143,7 +216,10 @@ $this->add_control(
     'price_color',
     array(
         'label'      => __( 'Regular Color', 'wpsection' ),
-       'condition' => array( 'price_style_show' => 'price_style_1' ),
+      'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
          'separator'  => 'after',
         'type'       => \Elementor\Controls_Manager::COLOR,
         'selectors'  => array(
@@ -157,9 +233,13 @@ $this->add_group_control(
     \Elementor\Group_Control_Typography::get_type(),
     array(
         'name'      => 'price_v_typography',
-        'condition' => array( 'price_style_show' => 'price_style_2' ),
+    
+		 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
         'label'     => __( 'Regular Price Typography', 'wpsection' ),
-        'selector'  => '{{WRAPPER}} .wps_advance_pricing >.price>.amount>bdi',
+        'selector'  => '{{WRAPPER}} .wps_advance_pricing .price>.amount>bdi',
     )
 );
 
@@ -167,9 +247,13 @@ $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'currency_v_typography',
-                'condition' => array( 'price_style_show' => 'price_style_2' ),
+          
+				 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
                 'label'    => __( 'Regular Currency Typography', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .wps_advance_pricing >.price>.amount > bdi>.woocommerce-Price-currencySymbol',
+                'selector' => '{{WRAPPER}} .wps_advance_pricing .price>.amount > bdi>.woocommerce-Price-currencySymbol',
             )
         );
 
@@ -177,11 +261,15 @@ $this->add_control(
     'price_v_color',
     array(
         'label'      => __( 'Regular Color', 'wpsection' ),
-       'condition' => array( 'price_style_show' => 'price_style_2' ),
+     
+		 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
          'separator'  => 'after',
         'type'       => \Elementor\Controls_Manager::COLOR,
         'selectors'  => array(
-            '{{WRAPPER}} .wps_advance_pricing >.price>.amount >bdi ' => 'color: {{VALUE}} !important',
+            '{{WRAPPER}} .wps_advance_pricing .price>.amount >bdi ' => 'color: {{VALUE}} !important',
         ),
     )
 );
@@ -193,7 +281,11 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'dicounted_price_typography',
-                'condition' => array( 'price_style_show' => 'price_style_1' ),
+               
+				 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
                 'label'    => __( 'Dicounted Price Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_basic_pricing>ins>.amount',
             )
@@ -205,7 +297,11 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'dicounted_currency_typography',
-                'condition' => array( 'price_style_show' => 'price_style_1' ),
+						 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
+              
                 'label'    => __( 'Dicounted Currency Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_basic_pricing>ins>.amount >.woocommerce-Price-currencySymbol',
             )
@@ -215,7 +311,11 @@ $this->add_control(
     'dicounted_price_color',
     array(
         'label'      => __( 'Discounted Color', 'wpsection' ),
-       'condition' => array( 'price_style_show' => 'price_style_1' ),
+				 'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
+
         'separator'  => 'after',
         'type'       => \Elementor\Controls_Manager::COLOR,
         'selectors'  => array(
@@ -229,9 +329,13 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'dicounted_price_v_typography',
-               'condition' => array( 'price_style_show' => 'price_style_2' ),
+           
+			'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
                 'label'    => __( 'Dicounted Price Typography', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .wps_advance_pricing>.price>ins>.amount>bdi ',
+                'selector' => '{{WRAPPER}} .wps_advance_pricing .price>ins>.amount>bdi ',
             )
         );
 
@@ -241,9 +345,13 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'dicounted_currency_v_typography',
-              'condition' => array( 'price_style_show' => 'price_style_2' ),
+             	'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
+				
                 'label'    => __( 'Dicounted Currency Typography', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .wps_advance_pricing>.price>ins>.amount >bdi> .woocommerce-Price-currencySymbol',
+                'selector' => '{{WRAPPER}} .wps_advance_pricing .price>ins>.amount >bdi> .woocommerce-Price-currencySymbol',
             )
         );
 
@@ -251,12 +359,15 @@ $this->add_control(
     'dicounted_price_v_color',
     array(
         'label'      => __( 'Discounted Color', 'wpsection' ),
-      'condition' => array( 'price_style_show' => 'price_style_2' ),
+     	'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
         'separator'  => 'after',
         'type'       => \Elementor\Controls_Manager::COLOR,
         'selectors'  => array(
-            '{{WRAPPER}} .wps_advance_pricing>.price>ins>.amount>bdi' => 'color: {{VALUE}} !important',
-            '{{WRAPPER}} .wps_advance_pricing>.price>ins>.amount >bdi> .woocommerce-Price-currencySymbol' => 'color: {{VALUE}} !important',
+            '{{WRAPPER}} .wps_advance_pricing .price>ins>.amount>bdi' => 'color: {{VALUE}} !important',
+            '{{WRAPPER}} .wps_advance_pricing .price>ins>.amount >bdi> .woocommerce-Price-currencySymbol' => 'color: {{VALUE}} !important',
         ),
     )
 );
@@ -268,7 +379,11 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'old_price_typography',
-              'condition' => array( 'price_style_show' => 'price_style_1' ),
+					'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
+         
                 'label'    => __( 'Old Price Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_basic_pricing>del>.amount ',
             )
@@ -280,7 +395,10 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'old_currency_typography',
-                'condition' => array( 'price_style_show' => 'price_style_1' ),
+               			'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
                 'label'    => __( 'Old Currency Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_basic_pricing>del>.amount>.woocommerce-Price-currencySymbol',
 				
@@ -290,7 +408,10 @@ $this->add_control(
     'old_price_color',
     array(
         'label'      => __( 'Old Color', 'wpsection' ),
-        'condition' => array( 'price_style_show' => 'price_style_1' ),
+     			'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
         'type'       => \Elementor\Controls_Manager::COLOR,
         'selectors'  => array(
             '{{WRAPPER}} .wps_basic_pricing>del>.amount ' => 'color: {{VALUE}} !important',
@@ -304,7 +425,10 @@ $this->add_control(
             'price_underline_color',
             array(
                 'label'     => __( 'Price Old Under-Line Color', 'wpsection' ),
-                 'condition' => array( 'price_style_show' => 'price_style_1' ),
+               			'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_basic_pricing>del>.amount' => 'text-decoration-color: {{VALUE}} !important',
@@ -319,9 +443,13 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'old_price_v_typography',
-              'condition' => array( 'price_style_show' => 'price_style_2' ),
+							'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
+          
                 'label'    => __( 'Old Price Typography', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .wps_advance_pricing>.price>del>.amount>bdi ',
+                'selector' => '{{WRAPPER}} .wps_advance_pricing .price>del>.amount>bdi ',
             )
         );
 
@@ -331,9 +459,12 @@ $this->add_control(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'old_currency_v_typography',
-                'condition' => array( 'price_style_show' => 'price_style_2' ),
+             'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
                 'label'    => __( 'Old Currency Typography', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .wps_advance_pricing>.price>del>.amount > bdi >.woocommerce-Price-currencySymbol',
+                'selector' => '{{WRAPPER}} .wps_advance_pricing .price>del>.amount > bdi >.woocommerce-Price-currencySymbol',
 				
             )
         );
@@ -341,10 +472,13 @@ $this->add_control(
     'old_price_v_color',
     array(
         'label'      => __( 'Old Color', 'wpsection' ),
-        'condition' => array( 'price_style_show' => 'price_style_2' ),
+       					'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
         'type'       => \Elementor\Controls_Manager::COLOR,
         'selectors'  => array(
-            '{{WRAPPER}} .wps_advance_pricing>.price>del>.amount>bdi ' => 'color: {{VALUE}} !important',
+            '{{WRAPPER}} .wps_advance_pricing .price>del>.amount>bdi ' => 'color: {{VALUE}} !important',
         ),
     )
 );
@@ -355,10 +489,13 @@ $this->add_control(
             'price_underline_v_color',
             array(
                 'label'     => __( 'Price Old Under-Line Color', 'wpsection' ),
-                 'condition' => array( 'price_style_show' => 'price_style_2' ),
+                					'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
-                    '{{WRAPPER}} .wps_advance_pricing > .price > del >.amount >bdi' => 'text-decoration-color: {{VALUE}} !important',
+                    '{{WRAPPER}} .wps_advance_pricing .price > del >.amount >bdi' => 'text-decoration-color: {{VALUE}} !important',
                 ),
             )
         );
@@ -368,7 +505,10 @@ $this->add_control(
             'price_underline_size',
             [
                 'label' => esc_html__( 'Under Line Size', 'wpsection' ),
-				'condition' => array( 'price_style_show' => 'price_style_2' ),
+								'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_2'
+        ],
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -387,7 +527,7 @@ $this->add_control(
                     'size' => 1,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wps_advance_pricing > .price > del >.amount >bdi' => 'text-decoration-thickness: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .wps_advance_pricing .price > del >.amount >bdi' => 'text-decoration-thickness: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -399,7 +539,11 @@ $this->add_control(
             'price_underline_size_two',
             [
                 'label' => esc_html__( 'Under Line Size', 'wpsection' ),
-				 'condition' => array( 'price_style_show' => 'price_style_1' ),
+		'condition' => [
+            'show_product_price' => '1',
+            'price_style_show' => 'price_style_1'
+        ],
+			
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => [ 'px', '%' ],
                 'range' => [
@@ -422,6 +566,7 @@ $this->add_control(
                 ],
             ]
         );
+
 
 
 

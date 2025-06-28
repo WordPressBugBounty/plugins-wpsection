@@ -46,7 +46,7 @@ use Elementor\Plugin;
         );  
 
 
-        
+     
 
 $this->add_control(
             'box_bottom_height',

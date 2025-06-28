@@ -79,7 +79,6 @@ echo '
                     <?php do_action('woocommerce_after_add_to_cart_form'); ?>
                 <?php endif; ?>
             <?php endif; ?>
-
         </div>                            
     <?php endif; ?>                                         
 <?php endif; ?>  

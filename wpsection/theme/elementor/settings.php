@@ -54,35 +54,30 @@ final class wpsection_Elementor_Extension {
 		add_action( 'elementor/widgets/register', [ $this, 'init_widgets' ] );
 		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'elementor_assets'] );
 	}
-
-
 public function admin_notice_missing_main_plugin() {
 	
-	$nonce       = wpsection()->get_settings_atts( 'wpsection_nonce', '', $posted_data );
+   $posted_data = $_POST; 
+    $nonce = wpsection()->get_settings_atts( 'wpsection_nonce', '', $posted_data );
 
-if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
+    if ( wp_verify_nonce( $nonce, 'wpsection_nonce_action' ) ) {
 
-	$elements_active = wpsection()->get_settings_atts( 'wpsection_elements_active', array(), $posted_data );
+        $elements_active = wpsection()->get_settings_atts( 'wpsection_elements_active', array(), $posted_data );
 
-	if ( is_array( $elements_active ) ) {
-		update_option( 'wpsection_elements_active', $elements_active );
-	}
-}	
+        if ( is_array( $elements_active ) ) {
+            update_option( 'wpsection_elements_active', $elements_active );
+        }
+    }
 
     if ( isset( $_GET['activate'] ) ) {
         unset( $_GET['activate'] );
     }
 
-    $message = sprintf(
- 
-        esc_html__( ' WpSection requires Elementor to be installed and activated.', 'wpsection' ),
-
-    );
+    $message = esc_html__( 'WpSection requires Elementor to be installed and activated.', 'wpsection' );
 
     // Escape the message when outputting it
     printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message ) );
-
 }
+
 
 
 	public function admin_notice_minimum_elementor_version() {

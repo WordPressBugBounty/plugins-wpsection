@@ -18,11 +18,11 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
     }
 
     public function get_keywords() {
-      return ['wpsection_category'];
+        return ['wpsection_category'];
     }
 
     public function get_categories() {
-        return [ 'wpsection_shop' ]; // Ensure this category exists in Elementor
+        return [ 'wpsection_shop' ];
     }
 
     protected function _register_controls() {
@@ -33,46 +33,37 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
             ]
         );
 
-        // Column settings for desktop, tablet, and mobile
-        $this->add_responsive_control(
-            'columns',
+
+        $this->add_control(
+            'columns_desktop',
             [
-                'label' => esc_html__( 'Columns', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::NUMBER,
+                'label' => esc_html__( 'Columns (Desktop)', 'wpsection' ),
+                'type' => Controls_Manager::NUMBER,
                 'default' => 3,
-                'tablet_default' => 2,
-                'mobile_default' => 1,
                 'min' => 1,
                 'max' => 12,
-                'step' => 1,
-            ]
-        );
-        
-        $this->add_responsive_control(
-            'columns_tablet',
-            [
-                'label' => esc_html__( 'Tab Columns', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 3,
-                'tablet_default' => 2,
-                'mobile_default' => 1,
-                'min' => 1,
-                'max' => 12,
-                'step' => 1,
             ]
         );
 
-        $this->add_responsive_control(
-            'columns_mobile',
+        $this->add_control(
+            'columns_tablet',
             [
-                'label' => esc_html__( 'Mobile Columns', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'default' => 3,
-                'tablet_default' => 2,
-                'mobile_default' => 1,
+                'label' => esc_html__( 'Columns (Tablet)', 'wpsection' ),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 2,
                 'min' => 1,
                 'max' => 12,
-                'step' => 1,
+            ]
+        );
+
+        $this->add_control(
+            'columns_mobile',
+            [
+                'label' => esc_html__( 'Columns (Mobile)', 'wpsection' ),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 1,
+                'min' => 1,
+                'max' => 12,
             ]
         );
 
@@ -80,7 +71,7 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
             'auto_loop',
             [
                 'label' => esc_html__( 'Auto Loop', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'type' => Controls_Manager::SWITCHER,
                 'label_on' => esc_html__( 'Yes', 'wpsection' ),
                 'label_off' => esc_html__( 'No', 'wpsection' ),
                 'return_value' => 'yes',
@@ -92,7 +83,7 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
             'auto_play',
             [
                 'label' => esc_html__( 'Auto Play', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'type' => Controls_Manager::SWITCHER,
                 'label_on' => esc_html__( 'Yes', 'wpsection' ),
                 'label_off' => esc_html__( 'No', 'wpsection' ),
                 'return_value' => 'yes',
@@ -104,7 +95,7 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
             'auto_play_speed',
             [
                 'label' => esc_html__( 'Auto Play Speed (ms)', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::NUMBER,
+                'type' => Controls_Manager::NUMBER,
                 'default' => 3000,
                 'min' => 1000,
                 'max' => 10000,
@@ -118,17 +109,16 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
         $this->add_control(
             'thumbnail_position',
             [
-                'label'   => __( 'Thumbnail Position', 'wpsection' ),
-                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label' => __( 'Thumbnail Position', 'wpsection' ),
+                'type' => Controls_Manager::SELECT,
                 'default' => 'top',
                 'options' => [
-                    'top'    => __( 'Top', 'wpsection' ),
-                    'left'   => __( 'Left', 'wpsection' ),
+                    'top' => __( 'Top', 'wpsection' ),
+                    'left' => __( 'Left', 'wpsection' ),
                 ],
             ]
         );
 
-        // Create a repeater for title, text, and image
         $repeater = new \Elementor\Repeater();
 
         $repeater->add_control(
@@ -185,74 +175,83 @@ class WPSection_wps_slide_block_Widget extends Widget_Base {
         $this->end_controls_section();
     }
 
-    protected function render() {
-        $settings = $this->get_settings_for_display();
+protected function render() {
+    $settings = $this->get_settings_for_display();
 
-        if ( ! empty( $settings['marquee_items'] ) ) {
-            // Unique ID for this marquee section
-            $unique_id = 'wps-owl-carousel-' . uniqid();
-            $thumbnail_position = $settings['thumbnail_position']; // Get the selected position
+    if ( ! empty( $settings['marquee_items'] ) ) {
+        $unique_id = 'wps-swiper-' . uniqid();
+        $thumbnail_position = $settings['thumbnail_position'];
 
-            ?>
+        // Fallbacks
+        $columns_mobile  = !empty( $settings['columns_mobile'] ) ? $settings['columns_mobile'] : 1;
+        $columns_tablet  = !empty( $settings['columns_tablet'] ) ? $settings['columns_tablet'] : 2;
+        $columns_desktop = !empty( $settings['columns_desktop'] ) ? $settings['columns_desktop'] : 3;
 
-            <div id="<?php echo esc_attr( $unique_id ); ?>" class="wps_marquie_area owl-carousel">
+        // Autoplay
+        $autoplay = ( $settings['auto_play'] === 'yes' ) ? 'true' : 'false';
+        $autoplay_speed = !empty( $settings['auto_play_speed'] ) ? intval( $settings['auto_play_speed'] ) : 3000;
+        ?>
+        
+        <!-- Swiper CSS (Add this globally or enqueue in functions.php) -->
+
+        <div class="swiper <?php echo esc_attr( $unique_id ); ?>">
+            <div class="swiper-wrapper">
                 <?php foreach ( $settings['marquee_items'] as $item ) : ?>
-                    <div class="swiper-slide" style="<?php echo ( 'left' === $thumbnail_position ) ? 'display: flex;' : ''; ?>">
+                    <div class="swiper-slide <?php echo ( 'left' === $thumbnail_position ) ? 'thumbnail-left' : ''; ?>">
                         <div class="thumbnail">
                             <?php if ( ! empty( $item['image']['url'] ) ) : ?>
                                 <img src="<?php echo esc_url( $item['image']['url'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" />
                             <?php endif; ?>
                         </div>
-
                         <div class="content">
                             <?php if ( ! empty( $item['title'] ) ) : ?>
                                 <h4><?php echo esc_html( $item['title'] ); ?></h4>
                             <?php endif; ?>
-
                             <?php if ( ! empty( $item['text'] ) ) : ?>
                                 <p><?php echo esc_html( $item['text'] ); ?></p>
                             <?php endif; ?>
                         </div>
-                    </div> <!-- End .swiper-slide -->
+                    </div>
                 <?php endforeach; ?>
-            </div> <!-- End .owl-carousel -->
+            </div>
+        </div>
 
+        <script>
+        jQuery(document).ready(function($) {
+            new Swiper('.<?php echo esc_js( $unique_id ); ?>', {
+                slidesPerView: <?php echo esc_js( $columns_desktop ); ?>,
+                spaceBetween: 10,
+                loop: <?php echo $settings['auto_loop'] === 'yes' ? 'true' : 'false'; ?>,
+				autoplay: <?php echo ( $settings['auto_play'] === 'yes' ) ? '{ delay: ' . esc_js( $autoplay_speed ) . ', disableOnInteraction: false }' : 'false'; ?>,
+                breakpoints: {
+                    0: {
+                        slidesPerView: <?php echo esc_js( $columns_mobile ); ?>
+                    },
+                    768: {
+                        slidesPerView: <?php echo esc_js( $columns_tablet ); ?>
+                    },
+                    1024: {
+                        slidesPerView: <?php echo esc_js( $columns_desktop ); ?>
+                    }
+                }
+            });
+        });
+        </script>
 
-<script>
-    jQuery(document).ready(function($) {
-        var carouselSettings = {
-            loop: <?php echo wp_json_encode( $settings['auto_loop'] === 'yes' ); ?>,
-            autoplay: <?php echo wp_json_encode( $settings['auto_play'] === 'yes' ); ?>,
-            margin: 10,
-            responsive: {
-                0: { items: Math.min(2, <?php echo esc_js( $settings['columns_mobile'] ); ?> ) },
-                480: { items: Math.min(2, <?php echo esc_js( $settings['columns_mobile'] ); ?>) },
-                768: { items: Math.min(3, <?php echo esc_js( $settings['columns_tablet'] ); ?> ) },
-                1024: { items: Math.min(6, <?php echo esc_js( $settings['columns'] ); ?>) }
+        <style>
+            .thumbnail-left {
+                display: flex;
+                gap: 10px;
             }
-        };
+            .swiper-slide {
+                text-align: left;
+            }
+        </style>
 
-        // Add autoplayTimeout only if autoplay is 'yes' and speed is set
-        <?php if ( $settings['auto_play'] === 'yes' && !empty( $settings['auto_play_speed'] ) ) : ?>
-            carouselSettings.autoplayTimeout = <?php echo esc_js( $settings['auto_play_speed'] ); ?>;
-        <?php endif; ?>
-
-        // Initialize Owl Carousel with settings
-        $('#<?php echo esc_js( $unique_id ); ?>').owlCarousel(carouselSettings);
-    });
-</script>
-
-
-
-
-
-
-
-            <?php
-        }
+        <?php
     }
+}
 
 }
 
-// Register the widget
 Plugin::instance()->widgets_manager->register_widget_type( new WPSection_wps_slide_block_Widget() );

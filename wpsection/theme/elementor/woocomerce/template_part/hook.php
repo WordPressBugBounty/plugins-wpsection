@@ -10,13 +10,7 @@
     $review_count = $product->get_review_count();
 
 
-$review_count_var = '';
 
-if (isset($settings['review_text'])) {
-    $review_count_var = is_numeric($review_count) ? "($review_count) " . $settings['review_text'] : $review_count . $settings['review_text'];
-} else {
-    $review_count_var = is_numeric($review_count) ? "($review_count)" : $review_count;
-}
 
 
 

@@ -11,7 +11,7 @@ if (isset($settings['show_hot']) && $settings['show_hot']) {
                         <?php if ($settings['show_hot_percent']) { ?>
                         <?php
                         // Translators: Percentage placeholder for displaying percent value.
-                        echo esc_html(sprintf(__(' %d%%', 'wpsection'), $returned['percent']));
+                        echo esc_html(sprintf(__('- %d%%', 'wpsection'), $returned['percent']));
                         ?>
                         <?php } ?>
 

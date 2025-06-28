@@ -1,34 +1,42 @@
-<style>
-    <?php if (!esc_attr($settings['show_block_column_slide_nav'], true)) : 
-	$unique_id = 'id_' . uniqid(); // Generate a unique ID
-	?>
-       .wps_thumb_<?php echo esc_attr($unique_id); ?> .product_block_one .hover-slider-indicator {
-            display:none!important;
+<?php
+$custom_css = '';
+$unique_id = 'id_' . uniqid(); // Generate once
+
+?>
+<?php
+if (empty($settings['show_block_column_slide_nav'])) {
+    $custom_css .= "
+        .wps_thumb_{$unique_id} .product_block_one .hover-slider-indicator {
+            display: none !important;
         }
-    <?php endif; ?>
+    ";
+}
 
-    <?php
-  if ( 'product_color' === $settings['wps_product_color_dot'] ) {   
-    $images = $repeater_images;
-    if ($images && isset($images['pagination_button_color'])) {
-        foreach ($images['pagination_button_color'] as $index => $color_value) {
-            if (!empty($color_value)) {
-                echo '
-                .wps_thumbnail_area .swiper-pagination .swiper-pagination-bullet:nth-child(' . esc_attr($index + 1) . ') {
-                    background: ' . esc_attr($color_value) . ';
+if ('product_color' === $settings['wps_product_color_dot'] && !empty($repeater_images['pagination_button_color'])) {
+    foreach ($repeater_images['pagination_button_color'] as $index => $color_value) {
+        if (!empty($color_value)) {
+            $bullet_index = intval($index) + 1;
+            $safe_color = esc_attr($color_value);
+            $custom_css .= "
+                .wps_thumbnail_area .swiper-pagination .swiper-pagination-bullet:nth-child({$bullet_index}) {
+                    background: {$safe_color};
                 }
-				.wps_thumbnail_area .product_block_one .hover-slider-indicator-dot:nth-child(' . esc_attr($index + 1) . ') {
-                    background: ' . esc_attr($color_value) . ';	
+                .wps_thumbnail_area .product_block_one .hover-slider-indicator-dot:nth-child({$bullet_index}) {
+                    background: {$safe_color};
                 }
-
-				';
-            }
+            ";
         }
     }
-  }
- ;
+}
 ?>
-</style>
+
+<?php if ( ! empty( $custom_css ) ) : ?>
+    <style>
+        <?php echo esc_html( trim( wp_strip_all_tags( $custom_css ) ) ); ?>
+    </style>
+<?php endif; ?>
+
+
 
 <?php
 
@@ -237,7 +245,7 @@ if ('thumbnai_meta_optins' === sanitize_text_field($settings['show_thumbnaili_vi
 		
 
         <?php else : ?>
-            <!-- Default Thumbnail -->
+            <!-- Default Thumbnail --> 
             <div class="wps_thumb_<?php echo esc_attr($unique_id); ?> product_block_one mr_product_thumb product_image">
                 <figure class="image-box" style="<?php echo esc_attr($inlineStyle); ?>">
                     <?php echo get_the_post_thumbnail(); ?>

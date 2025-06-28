@@ -13,204 +13,64 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Plugin;
 
 
-//Special Offer Button 
 
-$this->start_controls_section(
-            'spcl_button_control',
-            array(
-                'label' => __( 'Special Offer Settings', 'wpsection' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                
-            )
-        );
-        
-        $this->add_control(
-                    'spcl_show_button',
-                    array(
-                        'label' => esc_html__( 'Show Button', 'wpsection' ),
-                        'type' => \Elementor\Controls_Manager::CHOOSE,
-                        'options' => [
-                            'show' => [
-                                'show' => esc_html__( 'Show', 'wpsection' ), 
-                                'icon' => 'eicon-check-circle',
-                            ],
-                            'none' => [
-                                'none' => esc_html__( 'Hide', 'wpsection' ),
-                                'icon' => 'eicon-close-circle',
-                            ],
-                        ],
-                        'default' => 'show',
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_spcl' => 'display: {{VALUE}} !important',
+   
+//===============================Offer Text ======================================
 
-                        ),
-                    )
-                );      
-        $this->add_control(
-                    'spcl_button_alingment',
-                    array(
-                        'label' => esc_html__( 'Alignment', 'wpsection' ),
-                        'type' => \Elementor\Controls_Manager::CHOOSE,
-                        'condition'    => array( 'spcl_show_button' => 'show' ),
-                        'options' => [
-                            'left' => [
-                                'title' => esc_html__( 'Left', 'wpsection' ),
-                                'icon' => 'eicon-text-align-left',
-                            ],
-                            'center' => [
-                                'title' => esc_html__( 'Center', 'wpsection' ),
-                                'icon' => 'eicon-text-align-center',
-                            ],
-                            'right' => [
-                                'title' => esc_html__( 'Right', 'wpsection' ),
-                                'icon' => 'eicon-text-align-right',
-                            ],
-                        ],
-                        'default' => 'left',
-                        'toggle' => true,
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_spcl' => 'text-align: {{VALUE}} !important',
-                        ),
-                    )
-                );  
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            array(
-                'name'     => 'spcl_button_typography',
-                'condition'    => array( 'spcl_show_button' => 'show' ),
-                'label'    => __( 'Typography', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .mr_spcl .spcl_text',
-            )
-        );      
-        $this->add_control(
-                    'spcl_button_color',
-                    array(
-                        'label'     => __( 'Button Color', 'wpsection' ),
-                        'condition'    => array( 'spcl_show_button' => 'show' ),
-                        'type'      => \Elementor\Controls_Manager::COLOR,
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_spcl .spcl_text' => 'color: {{VALUE}} !important',
-
-                        ),
-                    )
-                );
-        $this->add_control(
-                    'spcl_button_bg_color',
-                    array(
-                        'label'     => __( 'Background Color', 'wpsection' ),
-                        'condition'    => array( 'spcl_show_button' => 'show' ),
-                        'type'      => \Elementor\Controls_Manager::COLOR,
-                        'selectors' => array(
-                            '{{WRAPPER}} .mr_spcl .spcl_text' => 'background: {{VALUE}} !important',
-                        ),
-                    )
-                );  
-            
-    $this->add_control(
-            'spcl_button_padding',
-            array(
-                'label'     => __( 'Padding', 'wpsection' ),
-                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
-                'condition'    => array( 'spcl_show_button' => 'show' ),
-                'size_units' =>  ['px', '%', 'em' ],
-            
-                'selectors' => array(
-                    '{{WRAPPER}} .mr_spcl .spcl_text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
-                ),
-            ) 
-        );
-
-    $this->add_control(
-            'spcl_button_margin',
-            array(
-                'label'     => __( 'Margin', 'wpsection' ),
-                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
-                'condition'    => array( 'spcl_show_button' => 'show' ),
-                'size_units' =>  ['px', '%', 'em' ],
-                'selectors' => array(
-                    '{{WRAPPER}} .mr_spcl .spcl_text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
-                ),
-            )
-        );
-        
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            array(
-                'name' => 'spcl_border',
-                'condition'    => array( 'spcl_show_button' => 'show' ),
-                'selector' => '{{WRAPPER}} .mr_spcl .spcl_text',
-            )
-        );
-
-        $this->add_control(
-            'spcl_border_radius',
-            array(
-                'label'     => __( 'Border Radius', 'wpsection' ),
-                'condition'    => array( 'spcl_show_button' => 'show' ),
-                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' =>  ['px', '%', 'em' ],
-                'selectors' => array(
-                    '{{WRAPPER}} .mr_spcl .spcl_text' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important',
-                ),
-            )
-        );
-        
-        $this->add_group_control(
-            \Elementor\Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'spcl_shadow',
-                'condition'    => array( 'spcl_show_button' => 'show' ),
-                'label' => esc_html__( 'Box Shadow', 'wpsection' ),
-                'selector' => '{{WRAPPER}} .mr_spcl .spcl_text',
-            ]
-        );
-
-        
-        
-    
-        
-        $this->end_controls_section();
-        
-
-//End of Special Offer   
-//Offer Text
    $this->start_controls_section(
             'product_offerx_settings',
             array(
                 'label' => __( 'Offer Text Setting', 'wpsection' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition'    => array( 'show_offer_x_event' => '1' ),
+    
             )
         );
-        
-        
+       $this->add_control(
+                'show_offer_x_event',
+                array(
+                    'label' => __( 'Show Offer Text', 'wpsection' ),
+                    'type'     => \Elementor\Controls_Manager::SWITCHER,
+                    'return_value' => '1',
+                    'default'      => '0',
+                    'placeholder' => __( 'Show Offer Text', 'wpsection' ),
+                     'separator' => 'after'
+                )
+            );      
+       
     $this->add_control(
-            'show_offerx_title',
+            'position_order_ten',
             array(
-                'label' => esc_html__( 'Show Title', 'wpsection' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'label' => __( 'Position Order Settings', 'wpsection' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'condition'    => array( 'show_offer_x_event' => '1' ),
+                'default' => '7',
                 'options' => [
-                    'show' => [
-                        'show' => esc_html__( 'Show', 'wpsection' ), 
-                        'icon' => 'eicon-check-circle',
-                    ],
-                    'none' => [
-                        'none' => esc_html__( 'Hide', 'wpsection' ),
-                        'icon' => 'eicon-close-circle',
-                    ],
+                    '1'  => __( '1st Position', 'wpsection' ),
+                    '2' => __( '2nd Position', 'wpsection' ),
+                    '3' => __( '3rd Position', 'wpsection' ),
+                    '4' => __( '4th Position', 'wpsection' ),
+                    '5' => __( '5th Position', 'wpsection' ),
+                    '6' => __( '6th Position', 'wpsection' ),
+                    '7' => __( '7th Position', 'wpsection' ),
+                    '8' => __( '8th Position', 'wpsection' ),
+                    '9' => __( '9th Position', 'wpsection' ),
+                    '10' => __( '10th Position', 'wpsection' ),
                 ],
-                'default' => 'show',
-                'selectors' => array(
-                    '{{WRAPPER}} .wps_offer_text' => 'display: {{VALUE}} !important',
-                ),
             )
-        );  
+        );
+
+
+
+
+ 
     $this->add_control(
             'title_offerx_alingment',
             array(
                 'label' => esc_html__( 'Alignment', 'wpsection' ),
+				 'condition' => [
+            'show_offer_x_event' => '1',
+         
+        ],
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -227,7 +87,7 @@ $this->start_controls_section(
                     ],
                 ],
                 'default' => 'left',
-                'condition'    => array( 'show_offerx_title' => 'show' ),
+         
                 'toggle' => true,
                 'selectors' => array(
                 
@@ -241,7 +101,11 @@ $this->start_controls_section(
             'offerx_padding',
             array(
                 'label'     => __( 'Padding', 'wpsection' ),
-                'condition'    => array( 'show_offerx_title' => 'show' ),
+               
+						 'condition' => [
+            'show_offer_x_event' => '1',
+        
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -255,7 +119,11 @@ $this->start_controls_section(
             'cofferx_margin',
             array(
                 'label'     => __( 'Margin', 'wpsection' ),
-                'condition'    => array( 'show_offerx_title' => 'show' ),
+          
+						 'condition' => [
+            'show_offer_x_event' => '1',
+     
+        ],
                 'type'      => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' =>  ['px', '%', 'em' ],
             
@@ -268,7 +136,10 @@ $this->start_controls_section(
             \Elementor\Group_Control_Typography::get_type(),
             array(
                 'name'     => 'offerx_typography',
-                'condition'    => array( 'show_offerx_title' => 'show' ),
+        		 'condition' => [
+            'show_offer_x_event' => '1',
+    
+        ],
                 'label'    => __( 'Typography', 'wpsection' ),
                 'selector' => '{{WRAPPER}} .wps_offer_text p',
             )
@@ -278,7 +149,10 @@ $this->start_controls_section(
             'offerx_color',
             array(
                 'label'     => __( 'Color', 'wpsection' ),
-                'condition'    => array( 'show_offerx_title' => 'show' ),
+               		 'condition' => [
+            'show_offer_x_event' => '1',
+    
+        ],
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => array(
                     '{{WRAPPER}} .wps_offer_text p' => 'color: {{VALUE}} !important',
